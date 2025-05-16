@@ -60,7 +60,8 @@
         "optional": "cpp",
         "sstream": "cpp",
         "unordered_map": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "iomanip": "cpp"
     },
     "editor.quickSuggestions": {
         "other": true,

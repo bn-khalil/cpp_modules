@@ -5,28 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/14 16:10:30 by kben-tou          #+#    #+#              #
-#    Updated: 2025/05/14 16:28:41 by kben-tou         ###   ########.fr        #
+#    Created: 2025/05/09 23:17:20 by kben-tou          #+#    #+#              #
+#    Updated: 2025/05/14 20:53:22 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
-SRCS = main.cpp \
-		PhoneBook.cpp \
-		Contact.cpp
-OBJS = $(SRCS:.cpp=.o)
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = Megaphone
+SRC = megaphone.cpp
+OBJ = megaphone.o
 
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 all: $(NAME)
 
-%.o: %.cpp Contact.hpp PhoneBook.hpp
-	c++ $(CXXFLAGS) -c $< -o $@
+$(OBJ): $(SRC)
+	c++ $(CPPFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	c++ $(CPPFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJ)
+	c++ $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -rf $(OBJS)
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)

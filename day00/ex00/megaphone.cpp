@@ -6,19 +6,18 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:58:45 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/04/28 10:31:42 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:50:24 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-using namespace std;
 
 int main(int ac, char **av)
 {
     int i = 1;
 
     if (ac == 1)
-        return (cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl, 0);
+        return (std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl, 0);
     while (av[i])
     {
         int j = 0;
@@ -27,7 +26,7 @@ int main(int ac, char **av)
                 av[i][j] -= 32;
             j++;
         }
-        cout << av[i];
+        std::cout << av[i];
         i++;
     }
     return (0);

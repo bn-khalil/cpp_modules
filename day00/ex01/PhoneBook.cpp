@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:03:50 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/14 15:05:54 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/05/16 10:20:28 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,27 +63,28 @@ void PhoneBook::display_contact(void) {
     for (size_t i = 0; i < this->contact_size; i++)
     {
         std::cout << '|';
+        std::cout << std::setw(10);
         std::cout << i + 1;
-        print_white_spaces(9);
         if (this->contact[i].get_firstname().length() > 10)
-            std::cout << "|" << this->contact[i].get_firstname().substr(0, 9) << ".";
-        else
-        {
-            std::cout << "|" << this->contact[i].get_firstname();
-            print_white_spaces(10 - this->contact[i].get_firstname().length());
+            std::cout << this->contact[i].get_firstname().substr(0, 9) << ".";
+        else {
+            std::cout << "|";
+            std::cout<<std::setw(10);
+            std::cout << this->contact[i].get_firstname();
         }
         if (this->contact[i].get_lastname().length() > 10)
             std::cout << "|" << this->contact[i].get_lastname().substr(0, 9) << ".";
-        else
-        {
-            std::cout << "|" << this->contact[i].get_lastname();
-            print_white_spaces(10 - this->contact[i].get_lastname().length());
+        else {
+            std::cout << "|";
+            std::cout<<std::setw(10);
+            std::cout << this->contact[i].get_lastname();
         }
         if (this->contact[i].get_nickname().length() > 10)
             std::cout << "|" << this->contact[i].get_nickname().substr(0, 9) << ".";
         else {
-            std::cout << "|" << this->contact[i].get_nickname();
-            print_white_spaces(10 - this->contact[i].get_nickname().length());
+            std::cout << "|";
+            std::cout<<std::setw(10);
+            std::cout << this->contact[i].get_nickname();
         }
         std::cout << '|' <<std::endl;
     }

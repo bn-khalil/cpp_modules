@@ -5,8 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/09 23:17:20 by kben-tou          #+#    #+#              #
-#    Updated: 2025/05/09 23:17:24 by kben-tou         ###   ########.fr        #
+#    Created: 2025/05/14 16:10:30 by kben-tou          #+#    #+#              #
+#    Updated: 2025/05/16 16:27:25 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = phonebook
+SRCS = main.cpp \
+		PhoneBook.cpp \
+		Contact.cpp
+OBJS = $(SRCS:.cpp=.o)
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+
+all: $(NAME)
+
+%.o: %.cpp Contact.hpp PhoneBook.hpp
+	c++ $(CPPFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	c++ $(CPPFLAGS) $(OBJS) -o $(NAME)
+
+clean:
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
