@@ -3,13 +3,6 @@
 
 #include <iostream>
 
-typedef enum s_type{
-    DEBUG,
-    INFO,
-    WARNING,
-    ERROR
-} t_type;
-
 class Harl
 {
     private:

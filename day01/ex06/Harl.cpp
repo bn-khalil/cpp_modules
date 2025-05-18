@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 14:18:44 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/18 15:01:43 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/05/18 15:07:34 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void Harl::complain( std::string level ) {
         }
     }
     switch (choice) {
-        case DEBUG:
+        case 0:
             (this->*com_s[0])();
-        case INFO:
+        case 1:
             (this->*com_s[1])();
-        case WARNING:
+        case 2:
             (this->*com_s[2])();
-        case ERROR:
+        case 3:
             (this->*com_s[3])();
         default:
             break;
