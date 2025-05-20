@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 16:51:12 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/18 15:00:05 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/05/18 15:13:58 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int main(int ac, char **av)
         std::cout << "invalid number of arguments!" << std::endl;
         return ( 1 );
     }
-    
     if (std::string(av[1]) == "DEBUG" \
     || std::string(av[1]) == "INFO" \
     || std::string(av[1]) == "WARNING" \

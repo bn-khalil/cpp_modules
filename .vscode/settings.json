@@ -61,7 +61,11 @@
         "sstream": "cpp",
         "unordered_map": "cpp",
         "vector": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "fstream": "cpp",
+        "test": "cpp",
+        "deque": "cpp",
+        "stack": "cpp"
     },
     "editor.quickSuggestions": {
         "other": true,
