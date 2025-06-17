@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:30:17 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/17 14:14:14 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:17:48 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,4 @@ int main( void ) {
     std::cout << Fixed::max( a, b ) << std::endl;
     return 0;
 }
+

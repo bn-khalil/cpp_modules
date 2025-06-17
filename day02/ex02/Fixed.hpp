@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:30:20 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/16 17:37:04 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/17 09:45:20 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ class Fixed
         int toInt( void ) const;
 };
 
-std::ostream& operator<< (std::ostream& cout , const Fixed& fixed);
+std::ostream& operator << (std::ostream& cout , const Fixed& fixed);
 
 #endif
