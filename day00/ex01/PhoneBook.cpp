@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:03:50 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/16 10:20:28 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:42:14 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void PhoneBook::display_contact(void) {
         return ;
     }
     std::cout<<"---------------------------------------------"<<std::endl;
-    for (size_t i = 0; i < this->contact_size; i++)
+    for (int i = 0; i < this->contact_size; i++)
     {
         std::cout << '|';
         std::cout << std::setw(10);

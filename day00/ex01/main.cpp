@@ -6,13 +6,13 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 10:35:21 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/15 10:35:36 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:49:08 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-int main(int argc, char *argv[])
+int main()
 {
     PhoneBook app;
     Contact finded;

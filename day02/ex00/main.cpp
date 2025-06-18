@@ -6,31 +6,23 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:30:17 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/18 11:01:38 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:52:04 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Fixed.hpp"
-#include "Point.hpp"
-
-static void print_status(Point &a, Point &b, Point &c, Point &point) {
-    std::cout << "triangle coordinates" << std::endl;
-    std::cout << "a ( " << a.getX() << " , " << a.getX() << " )" << std::endl;
-    std::cout << "b ( " << b.getX() << " , " << b.getX() << " )" << std::endl;
-    std::cout << "c ( " << c.getX() << " , " << c.getX() << " )" << std::endl;
-    std::cout << "point coordinates" << std::endl;
-    std::cout << "point ( " << point.getX() << " , " << point.getX() << " )" << std::endl;
-    
-}
 
 int main( void ) {
-    Point a(3, 4);
-    Point b(1, 2);
-    Point c(4, 2);
-    Point d(3, 5);
-    
-    print_status(a, b, c, d);
-    std::cout << "the point is " << (bsp(a, b , c, d) ? "inside" : "outside") << " the triangle area" << std::endl;
+
+    Fixed a;
+    Fixed b( a );
+    Fixed c;
+
+    c = b;
+
+    std::cout << a.getRawBits() << std::endl;
+    std::cout << b.getRawBits() << std::endl;
+    std::cout << c.getRawBits() << std::endl;
     return 0;
 }
