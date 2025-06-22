@@ -6,18 +6,18 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:35:13 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/22 16:50:56 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/22 21:17:38 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap( void ) {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "ClapTrap Default constructor called!" << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string name ) {
-    std::cout << "parameterized  constructor called" << std::endl;
+    std::cout << "ClapTrap constructor called!" << std::endl;
     this->Name = name;
     this->hit_points = 10;
     this->energy_points = 10;
@@ -25,7 +25,7 @@ ClapTrap::ClapTrap( std::string name ) {
 }
 
 ClapTrap::ClapTrap( const ClapTrap& diff ) {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Copy ClapTrap constructor called!" << std::endl;
     *this = diff;
 }
 
@@ -41,7 +41,7 @@ ClapTrap& ClapTrap::operator= ( const ClapTrap &diff ) {
 }
 
 ClapTrap::~ClapTrap( void ) {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "ClapTrap Destructor called!" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -51,7 +51,7 @@ void ClapTrap::attack(const std::string& target) {
         std::cout << "ClapTrap " << this->Name << " attacks " << target << ", causing " << this->attack_damage << " points of damage! " << this->energy_points << std::endl;
     }
     else
-        std::cout << "ClapTrap " << this->Name << " can't attack, No energy or hit points left" << std::endl;
+    std::cout << "ClapTrap " << this->Name << " can't attack, No energy or hit points left" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
