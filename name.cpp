@@ -1,25 +1,26 @@
 #include <iostream>
 
-namespace student{
-    std::string name = "stend";
-};
-
-namespace cla{
-    std::string name = "clas";
-};
-
-class Name{
+class a{
     public:
-    int s;
+    int sd;
+    void sed(int sd) {
+        sd = sd;
+    }
 };
+
+// class b: public virtual a{
+// };
+
+// class c: public virtual a{
+
+// };
+
+// class d: public b, public c{
+
+// };
 
 int main() {
-    int a  = 4;
-    int c = 5;
-
-    int &rf = a;
-    std::cout<< rf;
-    rf = c;
-    std::cout<< rf;
+    a d;
+    d.sed(1);
     return (0);
 }
