@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 15:07:25 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/23 11:43:19 by kben-tou         ###   ########.fr       */
+/*   Created: 2025/06/18 11:26:05 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/06/23 10:15:22 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FLAGTRAP_H
+#define FLAGTRAP_H
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include <iostream>
 
-int main() {
-    FragTrap b("bn");
+class FragTrap: public ClapTrap
+{
+    public :
+        FragTrap( void );
+        FragTrap( std::string name );
+        FragTrap( const FragTrap& diff );
+        FragTrap& operator=( const FragTrap &diff );
+        ~FragTrap( void );
 
-    b.takeDamage(12);
-    b.attack("new");
-    b.highFivesGuys();
-    b.takeDamage(50);
-    b.attack("bn");
-    return (0);
-}
+        void highFivesGuys(void);
+};
+
+#endif

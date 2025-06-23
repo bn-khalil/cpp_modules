@@ -6,14 +6,15 @@
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 11:13:45 by kben-tou          #+#    #+#              #
-#    Updated: 2025/06/22 21:12:42 by kben-tou         ###   ########.fr        #
+#    Updated: 2025/06/23 10:16:25 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScavTrap
+NAME = FragTrap
 SRCS = main.cpp \
 		ClapTrap.cpp \
 		ScavTrap.cpp \
+		FragTrap.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
