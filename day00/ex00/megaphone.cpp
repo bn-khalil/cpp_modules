@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:58:45 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/14 20:50:24 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/23 22:55:52 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av)
                 av[i][j] -= 32;
             j++;
         }
-        std::cout << av[i];
+        std::cout << av[i] << std::endl;
         i++;
     }
     return (0);

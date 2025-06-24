@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:03:50 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/17 12:42:14 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/24 00:09:38 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,26 @@ PhoneBook::PhoneBook(): last_position(0), contact_size(0) {}
 
 void PhoneBook::add_contact(std::string firstname, std::string lastname, \
 std::string number, std::string nickname, std::string darkestsecret) {
-        if (last_position >= 8)
+        if ( last_position >= 8 )
             last_position = 0;
         this->contact[last_position].set_phone_number(number);
         this->contact[last_position].set_firstname(firstname);
         this->contact[last_position].set_lastname(lastname);
         this->contact[last_position].set_nickname(nickname);
         this->contact[last_position].set_darkest_secret(darkestsecret);
-        if (this->last_position < 8) {
-            this->last_position++; 
-        }
-        if (this->last_position < 8 && this->contact_size < 8) {
+        this->last_position++;
+        if ( this->contact_size < 8 )
             this->contact_size++;
-        }
 };
 
 Contact* PhoneBook::get_contacts(void) {
     return (this->contact);
 }
 
-void print_white_spaces(int number) {
-    for( int i = 0; i < number; i++)  {
-        std::cout << " ";
-    }
-}
-
-int PhoneBook::get_size() {
-    return (this->contact_size);
-}
-
-Contact PhoneBook::find(int index) {
-   for(int i = 0; i < this->contact_size; i++) {
-        if (i + 1 == index) {
-            return (this->contact[i]);
-        }
-   }
-   return (Contact());
+Contact* PhoneBook::find(int index) {
+    if (index < 1 || index > this->contact_size)
+        return nullptr;
+    return &(this->contact[index - 1]);
 }
 
 void PhoneBook::display_contact(void) {
