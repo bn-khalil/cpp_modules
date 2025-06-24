@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:03:50 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/24 00:09:38 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:40:55 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ Contact* PhoneBook::find(int index) {
     return &(this->contact[index - 1]);
 }
 
-void PhoneBook::display_contact(void) {
+int PhoneBook::display_contact(void) {
     if (this->contact_size <= 0) {
         std::cout<< "there is no contacts available!"<<std::endl;
-        return ;
+        return ( 1 );
     }
     std::cout<<"---------------------------------------------"<<std::endl;
     for (int i = 0; i < this->contact_size; i++)
@@ -73,4 +73,5 @@ void PhoneBook::display_contact(void) {
         std::cout << '|' <<std::endl;
     }
     std::cout<<"---------------------------------------------"<<std::endl;
+    return ( 0 );
 }

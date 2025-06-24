@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 10:35:21 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/24 00:12:41 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:43:17 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int main()
             }
             app.add_contact(att[0], att[1], att[2], att[3], att[4]);
         } else if (opt == "SEARCH") {
-            app.display_contact();
+            if (app.display_contact())
+                continue ;
             while (1){
                 std::cout << "Shose contact> ";
                 if (!std::getline(std::cin, search))

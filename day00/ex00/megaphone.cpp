@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 20:58:45 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/23 22:55:52 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:19:13 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int main(int ac, char **av)
     {
         int j = 0;
         while (av[i][j]) {
-            if ((av[i][j] >= 'a' && av[i][j] <= 'z'))
-                av[i][j] -= 32;
+            av[i][j] = (int)std::toupper(av[i][j]);
             j++;
         }
-        std::cout << av[i] << std::endl;
+        std::cout << av[i] ;
         i++;
     }
+    std:: cout << std::endl;
     return (0);
 }

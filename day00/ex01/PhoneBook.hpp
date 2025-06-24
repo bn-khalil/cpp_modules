@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 11:52:19 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/24 00:10:01 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:41:23 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PhoneBook
     public:
         PhoneBook();
         void add_contact(std::string firstname, std::string lastname, std::string number, std::string nickname, std::string darkestsecret);
-        void display_contact(void);
+        int display_contact(void);
         Contact *find(int index);
         Contact *get_contacts(void);
 };
