@@ -104,4 +104,3 @@ int Account::getNbDeposits( void ) {
 int Account::getNbWithdrawals( void ) {
     return (_totalNbWithdrawals);
 }
-
