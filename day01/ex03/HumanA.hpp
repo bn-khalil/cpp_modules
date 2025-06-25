@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 22:14:22 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/16 23:24:47 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:26:09 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class HumanA {
     private:
         std::string name;
-        Weapon &weapon; 
+        Weapon &weapon;
 
     public:
         HumanA( std::string name, Weapon &wp);

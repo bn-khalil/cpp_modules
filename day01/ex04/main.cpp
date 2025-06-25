@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 15:33:28 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/17 15:42:39 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:38:22 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,24 @@ int main( int ac, char **av ) {
     std::string line;
     std::string content;
 
-    if ( ac != 4 )
+    if ( ac != 4 || std::string ( av[2] ).empty() )
         return ( std::cerr << "Invalid arguments!" << std::endl, 1);
-    std::ifstream  inf( av[1] );
 
-    if ( !inf.is_open() ) {
-        std::cout << "input file opening process failed!" << std::endl;
-        return (1);
-    }
+    std::ifstream  inf( av[1] );
+    if ( !inf.is_open() )
+        return ( std::cout << "input file opening process failed!" << std::endl, 1 );
 
     while ( std::getline(inf, line) )
-        content.append( line + "\n" );
+    {
+        content.append( line );
+        if ( !inf.eof() )
+            content += "\n";
+    }
 
-    std::ofstream outf( std::string( av[1] ) + ".replace" );
+    std::ofstream outf ( std::string( av[1] ) + ".replace" );
     if ( !inf.is_open() ) {
         inf.close();
-        std::cout << "output file opening process failed!" << std::endl;
-        return ( 1 );
+        return ( std::cout << "output file opening process failed!" << std::endl, 1 );
     }
 
     outf << rep( content, av[2], av[3] );

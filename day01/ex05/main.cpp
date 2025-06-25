@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 16:51:12 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/05/17 18:04:24 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:40:40 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int main()
 {
     Harl a;
 
-    a.complain("ERROR");
     a.complain("DEBUG");
+    a.complain("ERROR");
     a.complain("INFO");
     return 0;
 }
