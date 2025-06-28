@@ -6,10 +6,9 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:43:58 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/23 13:25:48 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/28 23:09:47 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SCAVTRAP_H
 #define SCAVTRAP_H

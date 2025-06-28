@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:26:05 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/23 11:38:02 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/28 22:04:45 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ FragTrap::FragTrap( void ) {
 
 FragTrap::FragTrap( std::string name ) {
     std::cout << "FragTrap params constructor called!" << std::endl;
-    this->Name = name;
+    this->name = name;
     this->hit_points = 100;
     this->energy_points = 100;
     this->attack_damage = 30;
@@ -32,7 +32,7 @@ FragTrap::FragTrap( const FragTrap& diff ) {
 FragTrap& FragTrap::operator= ( const FragTrap &diff ) {
     if (this != &diff)
     {
-        this->Name = diff.Name;
+        this->name = diff.name;
         this->hit_points = diff.hit_points;
         this->energy_points = diff.energy_points;
         this->attack_damage = diff.attack_damage;
@@ -41,9 +41,9 @@ FragTrap& FragTrap::operator= ( const FragTrap &diff ) {
 }
 
 void FragTrap::highFivesGuys( void ) {
-    std::cout << this->Name << "FragTrap says 🙌" << std::endl;
+    std::cout << this->name << "FragTrap sands a positive high-fives" << std::endl;
 }
 
 FragTrap::~FragTrap( void ) {
-    std::cout << this->Name << "FragTrap destructor colled!" << std::endl;
+    std::cout << this->name << "FragTrap destructor colled!" << std::endl;
 };

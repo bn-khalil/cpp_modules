@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 11:26:05 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/23 13:54:12 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/28 23:15:18 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 #define DIAMONDTRAP_H
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-#include <iostream>
 
-class DiamondTrap: public ScavTrap, public FragTrap
-{
-    private:
-        std::string name;
+class DiamondTrap : public ScavTrap, public FragTrap {
+private:
+    std::string _name;
 
-    public :
-        DiamondTrap( void );
-        DiamondTrap( std::string name );
-        DiamondTrap( const DiamondTrap& diff );
-        DiamondTrap& operator=( const DiamondTrap &diff );
-        ~DiamondTrap( void );
-        
-        void attack( const std::string& targe );
-        void whoAmI( void );
+public:
+    DiamondTrap(void);
+    DiamondTrap(std::string name);
+    DiamondTrap(const DiamondTrap& diff);
+    DiamondTrap& operator=(const DiamondTrap& diff);
+    ~DiamondTrap(void);
+
+    void attack(const std::string& target);
+    void whoAmI(void);
 };
 
 #endif

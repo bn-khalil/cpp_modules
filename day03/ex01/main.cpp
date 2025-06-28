@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:07:25 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/23 09:53:27 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/28 21:05:28 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 #include <iostream>
 
 int main() {
-    ScavTrap b("bn");
-
-    b.takeDamage(12);
-    b.takeDamage(1);
-    b.takeDamage(30);
-    b.takeDamage(7);
-    b.beRepaired(7);
-    b.takeDamage(7);
-    b.takeDamage(50);
-    b.attack("bn");
+    ScavTrap robot1("bn");
+    
+    robot1.guardGate();
+    robot1.attack("wall");
+    robot1.attack("tree");
+    robot1.takeDamage(50);
+    robot1.beRepaired(10);
+    robot1.takeDamage(200);
+    robot1.attack("tree");
     return (0);
 }

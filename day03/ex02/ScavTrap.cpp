@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:43:58 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/22 21:18:31 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/28 22:04:45 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ScavTrap::ScavTrap( void ) {
 
 ScavTrap::ScavTrap( std::string name ) {
     std::cout << "ScavTrap params constructor called!" << std::endl;
-    this->Name = name;
+    this->name = name;
     this->hit_points = 100;
     this->energy_points = 50;
     this->attack_damage = 20;
@@ -32,7 +32,7 @@ ScavTrap::ScavTrap( const ScavTrap& diff ) {
 ScavTrap& ScavTrap::operator= ( const ScavTrap &diff ) {
     if (this != &diff)
     {
-        this->Name = diff.Name;
+        this->name = diff.name;
         this->hit_points = diff.hit_points;
         this->energy_points = diff.energy_points;
         this->attack_damage = diff.attack_damage;
@@ -41,7 +41,7 @@ ScavTrap& ScavTrap::operator= ( const ScavTrap &diff ) {
 }
 
 void ScavTrap::guardGate() {
-    std::cout << "ScavTrap is now in Gate keeper mode!" << std::endl;
+    std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode!" << std::endl;
 }
 
 ScavTrap::~ScavTrap( void ) {

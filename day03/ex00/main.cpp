@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:07:25 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/06/18 15:52:01 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/06/28 21:45:21 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@ int main() {
     a.takeDamage(3);
     a.attack("bn");
     a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.attack("bn");
-    a.takeDamage(3);
-    a.takeDamage(3);
-    a.takeDamage(3);
     a.takeDamage(3);
     a.takeDamage(3);
     a.beRepaired(3);
