@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/01 16:18:01 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 16:18:02 by kben-tou         ###   ########.fr       */
+/*   Created: 2025/08/01 11:34:36 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/08/01 16:21:29 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef WRONGCAT_H
+#define WRONGCAT_H
 
-Cat::Cat(): Animal("Cat") {}
+#include <iostream>
+#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-Cat::Cat( const Cat &other ) {
-    *this = other;
-}
+class WrongCat : public WrongAnimal
+{
+    public:
+        WrongCat();
+        WrongCat( const WrongCat &other );
+        WrongCat &operator=( const WrongCat &other );
+        ~WrongCat();
+        
+        void makeSound() const;
+};
 
-Cat& Cat::operator=( const Cat &other ) {
-    if ( this != &other) {
-        this->type = other.type;
-    }
-    return ( *this );
-}
-
-Cat::~Cat() {}
-
-void Cat::makeSound() const {
-    std::cout << this->type << " Meow" << std::endl;
-}
+#endif
