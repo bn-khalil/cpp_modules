@@ -1,0 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/01 16:32:32 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/08/01 18:25:01 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#ifndef BRAIN_H
+#define BRAIN_H
+
+#include <iostream>
+
+class Brain
+{
+    private:
+        std::string ideas[100];
+    public:
+        Brain();
+        Brain( const Brain &other );
+        Brain &operator=( const Brain &other );
+        ~Brain();
+
+        std::string *getIdeas();
+};
+
+#endif
