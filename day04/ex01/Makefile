@@ -6,7 +6,7 @@
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/01 18:57:17 by kben-tou          #+#    #+#              #
-#    Updated: 2025/08/01 18:57:18 by kben-tou         ###   ########.fr        #
+#    Updated: 2025/08/02 11:37:46 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-%.o: %.cpp Animal.hpp
+%.o: %.cpp Animal.hpp Cat.hpp Dog.hpp Brain.hpp
 	c++ $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)

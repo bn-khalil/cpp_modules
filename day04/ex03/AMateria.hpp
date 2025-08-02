@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/01 19:45:50 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/02 11:43:09 by kben-tou         ###   ########.fr       */
+/*   Created: 2025/08/02 11:58:19 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/08/02 16:01:21 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef ANIMAL_H
-#define ANIMAL_H
+#ifndef INTERFACES_H
+#define INTERFACES_H
 
 #include <iostream>
-#include "Brain.hpp"
+#include "ICharacter.hpp"
 
-class Animal
+class ICharacter;
+
+class AMateria
 {
     protected:
         std::string type;
-        Brain *brain;
     public:
-        Animal();
-        Animal( std::string type);
-        Animal( const Animal &other );
-        Animal &operator=( const Animal &other );
-        virtual ~Animal();
+        AMateria();
+        AMateria( std::string const & type );
+        AMateria( AMateria const & other );
+        AMateria & operator=( const AMateria & other);
+        virtual ~AMateria();
 
-        virtual void makeSound() const = 0;
+        std::string const & getType() const;
+        virtual AMateria* clone() const = 0;
+        virtual void use(ICharacter& target);
 };
 #endif

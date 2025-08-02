@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/02 11:35:41 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/02 11:35:45 by kben-tou         ###   ########.fr       */
+/*   Created: 2025/08/02 12:13:01 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/08/02 13:43:45 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include <iostream>
+#include "Ice.hpp"
 
-Animal::Animal() {
-    std::cout << "Animal Constructor called!" << std::endl;
-}
+Ice::Ice(): AMateria( "ice" ) {}
 
-Animal::Animal( std::string type) {
-    this->type = type;
-}
-
-Animal::Animal( const Animal &other ) {
+Ice::Ice( Ice const & other ) {
     *this = other;
 }
 
-Animal& Animal::operator=( const Animal &other ) {
-    if ( this != &other) {
+Ice & Ice::operator=( const Ice & other) {
+    if (&other != this) {
         this->type = other.type;
     }
     return ( *this );
 }
 
-Animal::~Animal() {
-    std::cout << "Animal Distructor called!" << std::endl;
+Ice::~Ice(){}
+
+AMateria* Ice::clone() const{
+    return ( new Ice() );
 }
 
-
+void Ice::use(ICharacter& target) {
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}

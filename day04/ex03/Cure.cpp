@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/02 11:35:41 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/02 11:35:45 by kben-tou         ###   ########.fr       */
+/*   Created: 2025/08/02 12:48:13 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/08/02 13:47:24 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include <iostream>
+#include "Cure.hpp"
 
-Animal::Animal() {
-    std::cout << "Animal Constructor called!" << std::endl;
-}
+Cure::Cure(): AMateria( "Cure" ) {}
 
-Animal::Animal( std::string type) {
-    this->type = type;
-}
-
-Animal::Animal( const Animal &other ) {
+Cure::Cure( Cure const & other ) {
     *this = other;
 }
 
-Animal& Animal::operator=( const Animal &other ) {
-    if ( this != &other) {
+Cure & Cure::operator=( const Cure & other) {
+    if (&other != this) {
         this->type = other.type;
     }
     return ( *this );
 }
 
-Animal::~Animal() {
-    std::cout << "Animal Distructor called!" << std::endl;
+Cure::~Cure(){}
+
+AMateria* Cure::clone() const{
+    return ( new Cure() );
 }
 
+void Cure::use(ICharacter& target) {
+    std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+}
 

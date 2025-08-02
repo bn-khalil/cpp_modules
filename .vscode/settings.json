@@ -1,5 +1,6 @@
 {
-    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "C_Cpp.errorSquiggles": "enabled",
     "files.associations": {
         "iosfwd": "cpp",
         "ostream": "cpp",
@@ -65,12 +66,14 @@
         "fstream": "cpp",
         "test": "cpp",
         "deque": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "filesystem": "cpp",
+        "__functional_base_03": "cpp",
+        "__functional_03": "cpp"
     },
     "editor.quickSuggestions": {
         "other": true,
         "comments": true,
         "strings": true
       },
-      "editor.quickSuggestionsDelay": 10,
 }
