@@ -6,13 +6,13 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 12:48:13 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/02 13:47:24 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/05 10:46:26 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure(): AMateria( "Cure" ) {}
+Cure::Cure(): AMateria( "cure" ) {}
 
 Cure::Cure( Cure const & other ) {
     *this = other;
