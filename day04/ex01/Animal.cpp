@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/20 11:06:33 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/08/20 12:48:26 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
-#include <iostream>
 
 Animal::Animal() {
-    std::cout << "Animal Constructor called!" << std::endl;
-    // must add messages for constructors
+    std::cout << "Animal Constructor Called!" << std::endl;
 }
 
-Animal::Animal( std::string type) {
+Animal::Animal( std::string type ) {
+    std::cout << "Animal parameterized Constructor Called!" << std::endl;
     this->type = type;
 }
 
 Animal::Animal( const Animal &other ) {
+    std::cout << "Animal copy Constructor Called!" << std::endl;
     *this = other;
 }
 
@@ -22,7 +34,7 @@ Animal& Animal::operator=( const Animal &other ) {
 }
 
 Animal::~Animal() {
-    std::cout << "Animal Distructor called!" << std::endl;
+    std::cout << "Animal Destructor Called!" << std::endl;
 }
 
 std::string Animal::getType() const {
@@ -30,4 +42,9 @@ std::string Animal::getType() const {
 }
 
 void Animal::makeSound() const {
+    std::cout << "Animal make sound!" << std::endl;
+}
+
+Brain *Animal::getBrain() const {
+    return ( NULL );
 }

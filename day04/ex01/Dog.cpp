@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:51:44 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 18:48:50 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 12:50:04 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ Dog::Dog(): Animal("Dog") {
 }
 
 Dog::Dog( const Dog &other ) {
+    std::cout << "Dog Constructor Called!" << std::endl;
     *this = other;
 }
 
 Dog& Dog::operator=( const Dog &other ) {
     if ( this != &other) {
         this->type = other.type;
+        this->brain = other.brain;
     }
     return ( *this );
 }
@@ -36,4 +38,12 @@ Dog::~Dog() {
 
 void Dog::makeSound() const {
     std::cout << this->type << " bark" << std::endl;
+}
+
+Brain *Dog::getBrain() const {
+    return ( this->brain );
+}
+
+void Dog::setBrain( Brain *brain ) {
+    this->brain = brain;
 }
