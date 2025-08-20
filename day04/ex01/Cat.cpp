@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:18:01 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/20 13:31:56 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:06:56 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ Cat& Cat::operator=( const Cat &other ) {
 
 Cat::~Cat() {
     std::cout << "Cat Destructor Called!" << std::endl;
+    delete this->brain;
 }
 
 void Cat::makeSound() const {

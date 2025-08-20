@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:36 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 18:26:13 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 14:52:20 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@
 
 class Cat : public Animal
 {
+    private:
+        Brain *brain;
     public:
         Cat();
         Cat( const Cat &other );
         Cat &operator=( const Cat &other );
         ~Cat();
         
+        Brain *getBrain () const;
+        void setBrain( Brain *brain );
         void makeSound() const;
+
 };
 
 #endif

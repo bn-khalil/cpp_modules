@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 19:45:50 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/02 11:43:09 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 14:56:45 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Animal
 {
     protected:
         std::string type;
-        Brain *brain;
+
     public:
         Animal();
         Animal( std::string type);
@@ -30,5 +30,6 @@ class Animal
         virtual ~Animal();
 
         virtual void makeSound() const = 0;
+        virtual Brain *getBrain() const = 0;
 };
 #endif

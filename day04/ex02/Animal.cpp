@@ -6,22 +6,23 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 11:35:41 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/02 11:35:45 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:06:00 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-#include <iostream>
 
 Animal::Animal() {
-    std::cout << "Animal Constructor called!" << std::endl;
+    std::cout << "Animal Constructor Called!" << std::endl;
 }
 
-Animal::Animal( std::string type) {
+Animal::Animal( std::string type ) {
+    std::cout << "Animal parameterized Constructor Called!" << std::endl;
     this->type = type;
 }
 
 Animal::Animal( const Animal &other ) {
+    std::cout << "Animal copy Constructor Called!" << std::endl;
     *this = other;
 }
 
@@ -33,7 +34,5 @@ Animal& Animal::operator=( const Animal &other ) {
 }
 
 Animal::~Animal() {
-    std::cout << "Animal Distructor called!" << std::endl;
+    std::cout << "Animal Destructor Called!" << std::endl;
 }
-
-

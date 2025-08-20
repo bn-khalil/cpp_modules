@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:32:32 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 18:25:01 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 14:57:45 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 #define BRAIN_H
 
 #include <iostream>
+#include "Brain.hpp"
 
 class Brain
 {
     private:
         std::string ideas[100];
+        int index;
     public:
         Brain();
         Brain( const Brain &other );
@@ -27,6 +29,7 @@ class Brain
         ~Brain();
 
         std::string *getIdeas();
+        void setIdea( std::string idea );
 };
 
 #endif

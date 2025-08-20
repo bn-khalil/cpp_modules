@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:02:06 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 16:54:19 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 14:52:49 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@
 
 class Dog : public Animal
 {
+    private:
+        Brain *brain;
     public:
         Dog();
         Dog( const Dog &other );
         Dog &operator=( const Dog &other );
         ~Dog();
     
+        Brain *getBrain() const;
+        void setBrain( Brain *brain );
         void makeSound() const;
 };
 
