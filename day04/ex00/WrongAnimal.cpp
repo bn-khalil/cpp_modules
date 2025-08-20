@@ -6,16 +6,18 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:10:29 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 16:22:18 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 10:21:40 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
-#include <iostream>
 
-WrongAnimal::WrongAnimal() {}
+WrongAnimal::WrongAnimal() {
+    std::cout << "WrongAnimal Constructor Called!" << std::endl;
+}
 
 WrongAnimal::WrongAnimal( std::string type) {
+    std::cout << "WrongAnimal Parametrized Constructor Called!" << std::endl;
     this->type = type;
 }
 
@@ -30,7 +32,9 @@ WrongAnimal& WrongAnimal::operator=( const WrongAnimal &other ) {
     return ( *this );
 }
 
-WrongAnimal::~WrongAnimal() {}
+WrongAnimal::~WrongAnimal() {
+    std::cout << "WrongAnimal Destructor Called!" << std::endl;
+}
 
 std::string WrongAnimal::getType() const {
     return ( this->type );

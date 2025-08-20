@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/20 09:51:36 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/08/20 10:33:24 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
@@ -16,17 +28,19 @@ int main()
     meta->makeSound();
     dog->makeSound();
     dog->makeSound();
+    dog->makeSound();
 
     const Animal* s = cat;
     s->makeSound();
     s = dog;
     s->makeSound();
 
-    std::cout << std::endl;
-
     const WrongAnimal* beta = new WrongCat();
     beta->makeSound();
-
+    
+    delete meta;
+    delete cat;
+    delete dog;
     delete beta;
     return 0;
 }

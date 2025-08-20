@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:02:06 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 16:03:43 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 10:17:07 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Dog : public Animal
         Dog();
         Dog( const Dog &other );
         Dog &operator=( const Dog &other );
-        ~Dog();
-    
+        virtual ~Dog();
+
         void makeSound() const;
 };
 

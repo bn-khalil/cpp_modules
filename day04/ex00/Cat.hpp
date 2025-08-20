@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:36 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 12:00:50 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 09:54:34 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Cat : public Animal
         Cat();
         Cat( const Cat &other );
         Cat &operator=( const Cat &other );
-        ~Cat();
+        virtual ~Cat();
         
         void makeSound() const;
 };

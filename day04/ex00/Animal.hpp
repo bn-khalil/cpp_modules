@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/20 10:34:50 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/08/20 10:34:51 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef ANIMAL_H
 #define ANIMAL_H
@@ -13,7 +25,7 @@ class Animal
         Animal( std::string type);
         Animal( const Animal &other );
         Animal &operator=( const Animal &other );
-        ~Animal();
+        virtual ~Animal();
 
         std::string getType() const;
         virtual void makeSound() const;

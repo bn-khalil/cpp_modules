@@ -6,15 +6,18 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:18:01 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/01 16:18:02 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/20 09:50:19 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(): Animal("Cat") {}
+Cat::Cat(): Animal("Cat") {
+    std::cout << "Cat Constructor Called!" << std::endl;
+}
 
 Cat::Cat( const Cat &other ) {
+    std::cout << "Cat copy Constructor Called!" << std::endl;
     *this = other;
 }
 
@@ -25,7 +28,9 @@ Cat& Cat::operator=( const Cat &other ) {
     return ( *this );
 }
 
-Cat::~Cat() {}
+Cat::~Cat() {
+    std::cout << "Cat Destructor Called!" << std::endl;
+}
 
 void Cat::makeSound() const {
     std::cout << this->type << " Meow" << std::endl;
