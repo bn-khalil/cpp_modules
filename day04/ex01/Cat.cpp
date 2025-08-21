@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:18:01 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/20 15:06:56 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/21 22:09:06 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Cat::Cat( const Cat &other ) {
 Cat& Cat::operator=( const Cat &other ) {
     if ( this != &other) {
         this->type = other.type;
+        this->brain = new Brain( *other.brain );
     }
     return ( *this );
 }

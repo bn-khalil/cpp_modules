@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:34:36 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/20 12:49:46 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/21 22:09:03 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class Cat : public Animal
         Brain *getBrain () const;
         void setBrain( Brain *brain );
         void makeSound() const;
-
 };
 
 #endif

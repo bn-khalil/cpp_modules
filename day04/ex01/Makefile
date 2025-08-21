@@ -6,11 +6,11 @@
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/01 18:57:17 by kben-tou          #+#    #+#              #
-#    Updated: 2025/08/02 11:37:46 by kben-tou         ###   ########.fr        #
+#    Updated: 2025/08/21 21:59:53 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = word_on_fire
+NAME = world_on_fire
 SRCS = main.cpp \
 		Animal.cpp \
 		Cat.cpp \

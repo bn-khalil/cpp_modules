@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 12:13:01 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/02 13:43:45 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/21 22:53:11 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Ice & Ice::operator=( const Ice & other) {
 
 Ice::~Ice(){}
 
-AMateria* Ice::clone() const{
+AMateria* Ice::clone() const {
     return ( new Ice() );
 }
 

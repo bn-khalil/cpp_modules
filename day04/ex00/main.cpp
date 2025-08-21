@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 09:51:36 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/21 21:11:32 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:42:22 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 {
     const Animal* meta = new Animal();
     const Animal* cat = new Cat();
-    const Animal* dog = new Dog();
+    const Animal* dog (cat);
 
     cat->makeSound();
     cat->makeSound();
