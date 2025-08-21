@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 09:43:23 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/20 10:50:32 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/21 20:58:58 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ Animal::~Animal() {
 
 std::string Animal::getType() const {
     return ( this->type );
+}
+
+void Animal::setType( std::string type ) {
+    this->type = type;
 }
 
 void Animal::makeSound() const {

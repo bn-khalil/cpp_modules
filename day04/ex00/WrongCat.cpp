@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:18:38 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/20 10:57:33 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:13:58 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ WrongCat::~WrongCat() {
 }
 
 void WrongCat::makeSound() const {
-    std::cout << this->type << " Meow" << std::endl;
+    std::cout << this->type << " Wrong Meow" << std::endl;
 }

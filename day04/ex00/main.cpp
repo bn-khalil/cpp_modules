@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 09:51:36 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/20 10:33:24 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:11:32 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ int main()
     meta->makeSound();
     dog->makeSound();
     dog->makeSound();
-    dog->makeSound();
-
-    const Animal* s = cat;
-    s->makeSound();
-    s = dog;
-    s->makeSound();
 
     const WrongAnimal* beta = new WrongCat();
     beta->makeSound();
@@ -42,5 +36,6 @@ int main()
     delete cat;
     delete dog;
     delete beta;
+
     return 0;
 }

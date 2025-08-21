@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:10:29 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/20 10:21:40 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:13:03 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ WrongAnimal::WrongAnimal() {
     std::cout << "WrongAnimal Constructor Called!" << std::endl;
 }
 
-WrongAnimal::WrongAnimal( std::string type) {
+WrongAnimal::WrongAnimal( std::string type ) {
     std::cout << "WrongAnimal Parametrized Constructor Called!" << std::endl;
     this->type = type;
 }
@@ -41,5 +41,5 @@ std::string WrongAnimal::getType() const {
 }
 
 void WrongAnimal::makeSound() const {
-    std::cout << "wrong animal sound" << std::endl;
+    std::cout << "wrong animal sound!" << std::endl;
 }
