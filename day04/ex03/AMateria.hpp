@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 11:58:19 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/22 10:33:40 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/22 14:33:32 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
-
-class ICharacter;
 
 class AMateria
 {
