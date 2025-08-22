@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 12:27:57 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/21 22:48:53 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:28:47 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ std::string const & AMateria::getType() const {
 
 void AMateria::use(ICharacter& target) {
     (void)target;
-    std::cout << "there is no materia" << std::endl;
+    std::cout << "you can't use this materia!" << std::endl;
 }

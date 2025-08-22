@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 11:30:59 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/03 11:31:49 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/22 10:38:56 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define IMATERIASOURCE_H
 
 #include <iostream>
-#include "AMateria.hpp"
 
 class AMateria;
 

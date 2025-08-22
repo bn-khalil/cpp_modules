@@ -6,7 +6,7 @@
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/02 11:57:03 by kben-tou          #+#    #+#              #
-#    Updated: 2025/08/05 10:26:19 by kben-tou         ###   ########.fr        #
+#    Updated: 2025/08/22 10:30:33 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-%.o: %.cpp AMateria.hpp
+%.o: %.cpp AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp MateriaSource.hpp
 	c++ $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
