@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 18:58:06 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/21 22:30:16 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/24 21:59:02 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 
     for (int i = 0; i < 20; i++)
     {
-        if ( i < 8 )
+        if ( i < 10 )
             animals[i] = new Cat();
         else 
             animals[i] = new Dog();

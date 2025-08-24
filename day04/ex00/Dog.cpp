@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 09:50:44 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/20 09:51:22 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/24 22:03:02 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Dog::Dog(): Animal("Dog") {
     std::cout << "Dog Constructor Called!" << std::endl;
 }
 
-Dog::Dog( const Dog &other ) {
+Dog::Dog( const Dog &other ): Animal("Dog") {
     std::cout << "Dog copy Constructor Called!" << std::endl;
     *this = other;
 }

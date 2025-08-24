@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 13:01:37 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/02 14:40:38 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/24 22:12:13 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ class Character: public ICharacter
     private:
         std::string name;
         AMateria *inventories[4];
+        AMateria *store[100];
         int materia_numbers;
+        int number_of_backup;
     public:
         Character();
         Character( std::string const & name );

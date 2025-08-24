@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 12:26:57 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/22 22:10:54 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/24 22:45:33 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main()
     ICharacter* bob = new Character("bob");
     me->use(0, *bob);
     me->use(1, *bob);
+
     delete bob;
     delete me;
     delete src;

@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 12:48:13 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/05 10:46:26 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/23 08:51:20 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ AMateria* Cure::clone() const{
 void Cure::use(ICharacter& target) {
     std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
-

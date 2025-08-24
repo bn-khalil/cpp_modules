@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:51:44 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/21 22:37:01 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/24 22:00:48 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Dog::Dog(): Animal("Dog") {
     this->brain = new Brain();
 }
 
-Dog::Dog( const Dog &other ) {
+Dog::Dog( const Dog &other ): Animal("Dog") {
     std::cout << "Dog Constructor Called!" << std::endl;
     *this = other;
 }

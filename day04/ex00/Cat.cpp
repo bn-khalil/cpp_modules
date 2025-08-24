@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:18:01 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/21 21:49:52 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/24 22:02:46 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Cat::Cat(): Animal("Cat") {
     std::cout << "Cat Constructor Called!" << std::endl;
 }
 
-Cat::Cat( const Cat &other ) {
+Cat::Cat( const Cat &other ): Animal("Cat") {
     std::cout << "Cat copy Constructor Called!" << std::endl;
     *this = other;
 }
