@@ -6,14 +6,13 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 14:37:39 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/24 22:36:57 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/25 14:21:02 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
 Character::Character() {
-    printf("default\n");
     for (int i = 0; i < 100; i++) {
         if ( i < 4 )
             this->inventories[i] = NULL;
@@ -35,12 +34,10 @@ Character::Character( std::string const & name ) {
 }
 
 Character::Character( Character const & other  ) {
-    printf("copy \n");
     *this = other;
 }
 
 Character& Character::operator= ( const Character &other ) {
-    printf("operator\n");
     if ( this != &other) {
         this->name = other.name;
         for (int i = 0; i < 4; i++) {
@@ -87,6 +84,8 @@ void Character::equip(AMateria* m) {
     {
         if ( this->inventories[i] == NULL ) {
             this->inventories[i] = m;
+            if (this->store[number_of_backup % 100])
+                delete this->store[number_of_backup % 100];
             this->store[number_of_backup % 100] = m;
             this->number_of_backup++;
             this->materia_numbers++;

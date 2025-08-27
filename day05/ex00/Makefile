@@ -6,12 +6,13 @@
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/22 14:50:17 by kben-tou          #+#    #+#              #
-#    Updated: 2025/08/22 14:50:42 by kben-tou         ###   ########.fr        #
+#    Updated: 2025/08/25 14:08:12 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Bureaucrat
 SRCS = main.cpp \
+		Bureaucrat.cpp \
 
 
 OBJS = $(SRCS:.cpp=.o)

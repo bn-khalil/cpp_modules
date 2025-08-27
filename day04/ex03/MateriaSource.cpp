@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 11:32:20 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/24 11:33:37 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/25 12:32:01 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,10 @@ void MateriaSource::learnMateria(AMateria* materia) {
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type) {
-    AMateria *new_materia = NULL;
-
     for (int i = 0; i < 4; i++)
     {
         if (this->backUp[i] && this->backUp[i]->getType() == type) {
-            new_materia = this->backUp[i]->clone();
-            return ( new_materia );
+            return ( this->backUp[i]->clone() );
         }
     }
     return ( NULL );

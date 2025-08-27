@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 18:58:06 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/24 21:59:02 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/25 11:25:42 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ int main()
     
     Brain *s = animals[1]->getBrain();
     
-    s->setIdea("new idea");
+    animals[1]->getBrain()->setIdea("hi");
+    animals[1]->getBrain()->setIdea("what is that");
+    animals[1]->getBrain()->setIdea("new idea");
+    
     std::cout << s->getIdeas()[0] << std::endl;
+    std::cout << s->getIdeas()[1] << std::endl;
 
     for (int i = 0; i < 20; i++)
         delete animals[i];

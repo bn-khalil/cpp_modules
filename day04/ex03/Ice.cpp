@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 12:13:01 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/21 22:53:11 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/25 10:54:11 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Ice::Ice(): AMateria( "ice" ) {}
 
-Ice::Ice( Ice const & other ) {
+Ice::Ice( Ice const & other ): AMateria( "ice" ) {
     *this = other;
 }
 

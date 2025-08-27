@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 09:51:36 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/24 21:50:32 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/25 11:09:26 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,23 @@ int main()
 
     cat->makeSound();
     cat->makeSound();
-    meta->makeSound();
+    meta->makeSound();Cat::Cat(): Animal("Cat") {
+    std::cout << "Cat Constructor Called!" << std::endl;
+    this->brain = new Brain();
+}
+
+Cat::Cat( const Cat &other ): Animal("Cat") {
+    std::cout << "Cat copy Constructor Called!" << std::endl;
+    *this = other;
+}
+
+Cat& Cat::operator=( const Cat &other ) {
+    if ( this != &other) {
+        this->type = other.type;
+        this->brain = new Brain( *other.brain );
+    }
+    return ( *this );
+}
     dog->makeSound();
     dog->makeSound();
 

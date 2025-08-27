@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 12:48:13 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/23 08:51:20 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/08/25 10:54:53 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cure::Cure(): AMateria( "cure" ) {}
 
-Cure::Cure( Cure const & other ) {
+Cure::Cure( Cure const & other ): AMateria( "cure" ) {
     *this = other;
 }
 
