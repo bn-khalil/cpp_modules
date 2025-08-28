@@ -2,9 +2,8 @@
 
 class a{
     public:
-    int sd;
-    void sed(int sd) {
-        sd = sd;
+    ~a(){
+        throw 12;
     }
 };
 
@@ -19,8 +18,26 @@ class a{
 
 // };
 
+void f2() {
+    // a d;
+    try
+    {
+        throw 21;
+        /* code */
+    }
+    catch(int e)
+    {
+        std::cerr << e << '\n';
+    }
+}
+
+void f1() {
+    f2();
+}
+
 int main() {
-    a d;
-    d.sed(1);
+        f1();
+    
     return (0);
 }
+
