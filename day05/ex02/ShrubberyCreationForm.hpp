@@ -1,6 +1,6 @@
 #include "AForm.hpp"
 
-class ShrubberyCreationForm: private AForm
+class ShrubberyCreationForm: public AForm
 {
     private:
         std::string target;
@@ -11,5 +11,5 @@ class ShrubberyCreationForm: private AForm
         ShrubberyCreationForm& operator = ( const ShrubberyCreationForm& other );
         ~ShrubberyCreationForm();
 
-        void execute(Bureaucrat const & executor);
+        void execute(Bureaucrat const & executor) const;
 };

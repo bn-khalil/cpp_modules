@@ -76,17 +76,26 @@ void Bureaucrat::setGrade( int grade ) {
     this->grade = grade;
 }
 
-void Bureaucrat::signForm( Form& form ) {
+void Bureaucrat::signForm( AForm& form ) {
     try {
         form.beSigned( *this );
     }
-    catch(const GradeTooHighException& e) {
-        std::cout << this->getName() << " " <<  "couldn’t sign " << form.getName() << " because grade too high"<< std::endl;
-    }
-    catch(const GradeTooLowException& e) {
-        std::cout << this->getName() << " " <<  "couldn’t sign " << form.getName() << " because grade too low"<< std::endl;
+    catch(std::exception & e) {
+        std::cout << this->getName() << " " <<  "couldn’t sign " << form.getName() << " because form grade is too high"<< std::endl;
     }
 }
+
+void Bureaucrat::executeForm(AForm const & form) const {
+    try
+    {
+        form.execute( *this );
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+}
+
 
 std::ostream& operator << ( std::ostream& out , const Bureaucrat& other ) {
     out << other.getName() << ", bureaucrat grade " << other.getGrade();

@@ -13,7 +13,8 @@
 NAME = Bureaucrat
 SRCS = main.cpp \
 		Bureaucrat.cpp \
-		Form.cpp \
+		ShrubberyCreationForm.cpp \
+		AForm.cpp
 
 
 OBJS = $(SRCS:.cpp=.o)
@@ -21,7 +22,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-%.o: %.cpp Bureaucrat.hpp
+%.o: %.cpp Bureaucrat.hpp 
 	c++ $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)

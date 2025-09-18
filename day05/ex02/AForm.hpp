@@ -22,22 +22,35 @@ class AForm
 {
     private:
         const std::string name;
-        bool is_singed;
+        bool is_signed;
         const int grade_sing;
         const int grade_execute;
     public:
         AForm();
-        AForm( const std::string name, bool is_singed, int grade_sing, int grade_execute );
+        AForm( const std::string name, bool is_signed, int grade_sing, int grade_execute );
         AForm( const AForm &other );
         AForm &operator=( AForm &other );
-        ~AForm();
+        virtual ~AForm();
 
-        std::string getName();
-        int get_is_singed();
-        int get_grade_sing();
-        int get_grade_execute();
+        std::string getName() const;
+        bool get_is_signed() const;
+        int get_grade_sing() const;
+        int get_grade_execute() const;
+        void set_is_signed(bool is_signed);
         void beSigned( Bureaucrat bureaucrat );
         virtual void execute(Bureaucrat const & executor) const = 0;
+
+        class GradeTooHighException : public std::exception {
+            const char* what() const throw(); 
+        };
+
+        class GradeTooLowException : public std::exception {
+            const char* what() const throw(); 
+        };
+
+        class FormNotSinged : public std::exception {
+            const char* what() const throw();
+        };
 };
 
 #endif
