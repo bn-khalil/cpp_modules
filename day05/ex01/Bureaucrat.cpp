@@ -61,11 +61,11 @@ void Bureaucrat::decrement( int less ) {
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-    return ( "grade too hight exception!" );
+    return ( "Bureaucrat grade too hight exception!" );
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-    return ( "grade too low exception!" );
+    return ( "Bureaucrat grade too low exception!" );
 }
 
 void Bureaucrat::setGrade( int grade ) {
@@ -81,10 +81,10 @@ void Bureaucrat::signForm( Form& form ) {
         form.beSigned( *this );
     }
     catch(const GradeTooHighException& e) {
-        std::cout << this->getName() << " " <<  "couldn’t sign " << form.getName() << " because grade too high"<< std::endl;
+        std::cerr << this->getName() << " " <<  "couldn’t sign " << form.getName() << " because grade too high"<< std::endl;
     }
     catch(const GradeTooLowException& e) {
-        std::cout << this->getName() << " " <<  "couldn’t sign " << form.getName() << " because grade too low"<< std::endl;
+        std::cerr << this->getName() << " " <<  "couldn’t sign " << form.getName() << " because grade too low"<< std::endl;
     }
 }
 

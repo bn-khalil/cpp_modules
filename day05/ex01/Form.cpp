@@ -13,28 +13,28 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-Form::Form(): name(""), is_singed(false), grade_sing(0), grade_execute(0) {
+Form::Form(): name(""), is_signed(false), grade_sing(0), grade_execute(0) {
     std::cout << "Form Constructor Called!" << std::endl;
 }
 
 Form::Form( const std::string name, 
-    bool is_singed, 
+    bool is_signed, 
     int grade_sing, 
     int grade_execute ): 
     name ( name ),
-    is_singed ( is_singed ),
+    is_signed ( is_signed ),
     grade_sing ( grade_sing ),
     grade_execute ( grade_execute ) {
     if ( grade_sing < 1 || grade_execute < 1)
-        throw Bureaucrat::GradeTooHighException();
+        throw Form::GradeTooHighException();
     else if ( grade_sing > 150 || grade_execute > 150 )
-        throw Bureaucrat::GradeTooLowException();
+        throw Form::GradeTooLowException();
     std::cout << "Form parameterized Constructor Called!" << std::endl;
 }
 
 Form::Form( const Form &other ):
     name ( other.name ),
-    is_singed ( other.is_singed ),
+    is_signed ( other.is_signed ),
     grade_sing ( other.grade_sing ),
     grade_execute ( other.grade_execute ) {
     std::cout << "Form copy Constructor Called!" << std::endl;
@@ -44,7 +44,7 @@ Form& Form::operator=( Form &other ) {
     if ( this != &other) {
         // this->grade_sing = other.grade_sing;
         // this->grade_execute = other.grade_execute;
-        this->is_singed = other.is_singed;
+        this->is_signed = other.is_signed;
     }
     return ( *this );
 }
@@ -53,20 +53,27 @@ Form::~Form() {
     std::cout << "Form Destructor Called!" << std::endl;
 }
 
-void Form::beSigned( Bureaucrat bureaucrat ) {
-    if ( bureaucrat.getGrade() > this->grade_sing )
-        throw Bureaucrat::GradeTooLowException();
-    this->is_singed = true;
-    std::cout << bureaucrat.getName() << " singed " << this->name << std::endl;
+const char *Form::GradeTooHighException::what() const throw() {
+    return ( "Form grade too hight exception!" );
 }
 
+const char *Form::GradeTooLowException::what() const throw() {
+    return ( "Form grade too low exception!" );
+}
+
+void Form::beSigned( Bureaucrat bureaucrat ) {
+    if ( bureaucrat.getGrade() > this->grade_sing )
+        throw Form::GradeTooLowException();
+    this->is_signed = true;
+    std::cout << bureaucrat.getName() << " singed " << this->name << std::endl;
+}
 
 std::string Form::getName() {
     return ( this->name );
 }
 
-int Form::get_is_singed() {
-    return ( this->is_singed );
+int Form::get_is_signed() {
+    return ( this->is_signed );
 }
 
 int Form::get_grade_sing() {
