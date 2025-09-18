@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_H
-#define FORM_H
+#ifndef AFORM_H
+#define AFORM_H
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
     private:
         const std::string name;
@@ -26,17 +26,18 @@ class Form
         const int grade_sing;
         const int grade_execute;
     public:
-        Form();
-        Form( const std::string name, bool is_singed, int grade_sing, int grade_execute );
-        Form( const Form &other );
-        Form &operator=( Form &other );
-        ~Form();
+        AForm();
+        AForm( const std::string name, bool is_singed, int grade_sing, int grade_execute );
+        AForm( const AForm &other );
+        AForm &operator=( AForm &other );
+        ~AForm();
 
         std::string getName();
         int get_is_singed();
         int get_grade_sing();
         int get_grade_execute();
         void beSigned( Bureaucrat bureaucrat );
+        virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
 #endif

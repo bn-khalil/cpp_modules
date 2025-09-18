@@ -11,17 +11,16 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form(): name(""), is_singed(false), grade_sing(0), grade_execute(0) {
-    std::cout << "Form Constructor Called!" << std::endl;
+AForm::AForm(): name(""), is_singed(false), grade_sing(0), grade_execute(0) {
+    std::cout << "AForm Constructor Called!" << std::endl;
 }
 
-Form::Form( const std::string name, 
+AForm::AForm( const std::string name, 
     bool is_singed, 
     int grade_sing, 
-    int grade_execute ): 
-    name ( name ),
+    int grade_execute ): name ( name ),
     is_singed ( is_singed ),
     grade_sing ( grade_sing ),
     grade_execute ( grade_execute ) {
@@ -29,18 +28,18 @@ Form::Form( const std::string name,
         throw Bureaucrat::GradeTooHighException();
     else if ( grade_sing > 150 || grade_execute > 150 )
         throw Bureaucrat::GradeTooLowException();
-    std::cout << "Form parameterized Constructor Called!" << std::endl;
+    std::cout << "AForm parameterized Constructor Called!" << std::endl;
 }
 
-Form::Form( const Form &other ):
+AForm::AForm( const AForm &other ):
     name ( other.name ),
     is_singed ( other.is_singed ),
     grade_sing ( other.grade_sing ),
     grade_execute ( other.grade_execute ) {
-    std::cout << "Form copy Constructor Called!" << std::endl;
+    std::cout << "AForm copy Constructor Called!" << std::endl;
 }
 
-Form& Form::operator=( Form &other ) {
+AForm& AForm::operator=( AForm &other ) {
     if ( this != &other) {
         // this->grade_sing = other.grade_sing;
         // this->grade_execute = other.grade_execute;
@@ -49,23 +48,22 @@ Form& Form::operator=( Form &other ) {
     return ( *this );
 }
 
-Form::~Form() {
-    std::cout << "Form Destructor Called!" << std::endl;
+AForm::~AForm() {
+    std::cout << "AForm Destructor Called!" << std::endl;
 }
 
-void Form::beSigned( Bureaucrat bureaucrat ) {
+void AForm::beSigned( Bureaucrat bureaucrat ) {
     if ( bureaucrat.getGrade() > this->grade_sing )
         throw Bureaucrat::GradeTooLowException();
     this->is_singed = true;
     std::cout << bureaucrat.getName() << " singed " << this->name << std::endl;
 }
 
-
-std::string Form::getName() {
+std::string AForm::getName() {
     return ( this->name );
 }
 
-int Form::get_is_singed() {
+int AForm::get_is_singed() {
     return ( this->is_singed );
 }
 
