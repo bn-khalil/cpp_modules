@@ -61,11 +61,11 @@ void Bureaucrat::decrement( int less ) {
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-    return ( "grade too hight exception!" );
+    return ( "-> grade too hight exception!" );
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-    return ( "grade too low exception!" );
+    return ( "-> grade too low exception!" );
 }
 
 void Bureaucrat::setGrade( int grade ) {
@@ -89,6 +89,7 @@ void Bureaucrat::executeForm(AForm const & form) const {
     try
     {
         form.execute( *this );
+        std::cout << this->name << " executed " << form.getName() << std::endl;
     }
     catch(const std::exception& e)
     {

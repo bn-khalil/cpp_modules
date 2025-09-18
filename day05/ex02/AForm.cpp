@@ -53,15 +53,15 @@ AForm::~AForm() {
 }
 
 const char *AForm::GradeTooHighException::what() const throw() {
-    return ( "AForm grade too hight exception!" );
+    return ( "-> AForm grade too hight exception!" );
 }
 
 const char *AForm::GradeTooLowException::what() const throw() {
-    return ( "AForm grade too low exception!" );
+    return ( "-> AForm grade too low exception!" );
 }
 
 const char *AForm::FormNotSinged::what() const throw() {
-    return ( "form not singed exception!" );
+    return ( "-> form not singed exception!" );
 }
 
 void AForm::set_is_signed(bool is_signed)

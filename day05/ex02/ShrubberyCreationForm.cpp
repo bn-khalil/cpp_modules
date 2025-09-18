@@ -39,12 +39,19 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
     std::ofstream outf((this->target + "__shrubbery").c_str());
     if (!outf.is_open())
         std::cerr << "file opening failed!" << std::endl;
-    outf << "    ^\n";
-    outf << "   ***\n";
-    outf << "  *****\n";
-    outf << " *******\n";
-    outf << "****|****\n";
-    outf << "    |\n";
+    outf 
+    << "       ccee88oo\n"
+    << "   C8O8O8Q8PoOb o8oo\n"
+    << " dOB69QO8PdUOpugoO9bD\n"
+    << "CgggbU8OU qOp qOdoUOdcb\n"
+    << "    6OuU  /p u gcoUodpP\n"
+    << "      \\\\//  /douUP\n"
+    << "        \\\\////\n"
+    << "         |||/\\\n"
+    << "         |||\\/\n"
+    << "         |||||\n"
+    << "   .....//||||\\...."
+    << std::endl;
     outf.close();
     std::cout << executor.getName() << " execute " << this->target << " form!" << std::endl;
 }

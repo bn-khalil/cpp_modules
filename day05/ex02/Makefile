@@ -14,6 +14,8 @@ NAME = Bureaucrat
 SRCS = main.cpp \
 		Bureaucrat.cpp \
 		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
 		AForm.cpp
 
 
