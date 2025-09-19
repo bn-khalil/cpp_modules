@@ -40,11 +40,9 @@ AForm::AForm( const AForm &other ):
 }
 
 AForm& AForm::operator=( AForm &other ) {
-    if ( this != &other) {
-        // this->grade_sing = other.grade_sing;
-        // this->grade_execute = other.grade_execute;
+    std::cout << "AForm copy assignment operator Called!" << std::endl;
+    if ( this != &other)
         this->is_signed = other.is_signed;
-    }
     return ( *this );
 }
 

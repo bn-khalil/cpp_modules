@@ -36,6 +36,7 @@ class Form
         int get_is_signed();
         int get_grade_sing();
         int get_grade_execute();
+        void set_is_signed( bool is_signed );
         void beSigned( Bureaucrat bureaucrat );
 
 

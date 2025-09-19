@@ -1,3 +1,4 @@
+#include "Form.hpp"
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -41,11 +42,9 @@ Form::Form( const Form &other ):
 }
 
 Form& Form::operator=( Form &other ) {
-    if ( this != &other) {
-        // this->grade_sing = other.grade_sing;
-        // this->grade_execute = other.grade_execute;
+    std::cout << "Form copy assignment operator Called!" << std::endl;
+    if ( this != &other)
         this->is_signed = other.is_signed;
-    }
     return ( *this );
 }
 
@@ -82,4 +81,8 @@ int Form::get_grade_sing() {
 
 int Form::get_grade_execute() {
     return ( this->grade_execute );
+}
+
+void Form::set_is_signed( bool is_signed ) {
+    this->is_signed = is_signed;
 }

@@ -1,11 +1,12 @@
 #include <iostream>
+#include <array>
 
-class a{
-    public:
-    ~a(){
-        throw 12;
-    }
-};
+// class a{
+//     public:
+//     ~a(){
+//         throw 12;
+//     }
+// };
 
 // class b: public virtual a{
 // };
@@ -18,26 +19,34 @@ class a{
 
 // };
 
-void f2() {
-    // a d;
-    try
-    {
-        throw 21;
-        /* code */
-    }
-    catch(int e)
-    {
-        std::cerr << e << '\n';
-    }
+// void f2() {
+//     // a d;
+//     try
+//     {
+//         throw 21;
+//         /* code */
+//     }
+//     catch(int e)
+//     {
+//         std::cerr << e << '\n';
+//     }
+// }
+#include <stdexcept>
+
+void f1(int a) {
+    std::cout << a << std::endl;
 }
 
-void f1() {
-    f2();
+int f1(float a) {
+    std::cout << a << std::endl;
+    return 12;
 }
 
 int main() {
-        f1();
+    if (1 == 1)
+        throw std::runtime_error("this is error");
+    std::cout << "this sdfsdf" << std::endl;
     
+
     return (0);
 }
-
