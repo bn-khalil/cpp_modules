@@ -12,7 +12,7 @@
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() {
+Bureaucrat::Bureaucrat() name("BureaucratNoName"), grade( 150 ) {
     std::cout << "Bureaucrat Constructor Called!" << std::endl;
 }
 
@@ -29,10 +29,9 @@ Bureaucrat::Bureaucrat( Bureaucrat &other ): name ( other.name ), grade( other.g
 }
 
 Bureaucrat& Bureaucrat::operator=( Bureaucrat &other ) {
-    if ( this != &other) {
-        // this->name = other.name;
+    std::cout << "Bureaucrat copy assignment operator Called!" << std::endl;
+    if ( this != &other) 
         this->grade = other.grade;
-    }
     return ( *this );
 }
 
@@ -48,16 +47,15 @@ int Bureaucrat::getGrade() const {
     return ( this->grade );
 }
 
-void Bureaucrat::increment( int add ) {
-    if ((this->grade - add) < 1 )
+void Bureaucrat::increment() {
+    if ( (this->grade - 1) < 1 )
         throw Bureaucrat::GradeTooHighException();
-    this->grade -= add;
+    this->grade--;
 }
-
-void Bureaucrat::decrement( int less ) {
-    if ((this->grade + less) > 150 )
+void Bureaucrat::decrement() {
+    if ( (this->grade + 1) > 150 )
         throw Bureaucrat::GradeTooLowException();
-    this->grade +=less;
+    this->grade++;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
