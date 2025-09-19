@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:27:25 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/29 10:07:07 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/19 18:36:28 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ AForm::AForm( const AForm &other ):
 }
 
 AForm& AForm::operator=( AForm &other ) {
-    if ( this != &other) {
-        // this->grade_sing = other.grade_sing;
-        // this->grade_execute = other.grade_execute;
+    std::cout << "AForm copy assignment operator Called!" << std::endl;
+    if ( this != &other)
         this->is_signed = other.is_signed;
-    }
     return ( *this );
 }
 
@@ -69,8 +67,7 @@ void AForm::set_is_signed(bool is_signed)
     this->is_signed = is_signed;
 }
 
-void AForm::beSigned(Bureaucrat bureaucrat)
-{
+void AForm::beSigned( const Bureaucrat & bureaucrat ) {
     if ( bureaucrat.getGrade() > this->grade_sing )
         throw AForm::GradeTooHighException();
     if (this->is_signed)
@@ -96,4 +93,15 @@ int AForm::get_grade_sing() const{
 
 int AForm::get_grade_execute() const{
     return ( this->grade_execute );
+}
+
+
+std::ostream& operator<<(std::ostream &out, const AForm &other)
+{
+    out << "- form name : " << other.getName()
+    << " - grade to sign : " << other.get_grade_sing()
+    << " - grade to execute : " << other.get_grade_execute()
+    << " - form sigend : " << (other.get_is_signed() ? "ture" : "false");
+
+    return out;
 }

@@ -35,7 +35,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
     if (!get_is_signed())
         throw AForm::FormNotSinged();
     if (executor.getGrade() > get_grade_execute())
-        throw AForm::GradeTooLowException();
+        throw AForm::GradeTooHighException();
+
     std::ofstream outf((this->target + "__shrubbery").c_str());
     if (!outf.is_open())
         std::cerr << "file opening failed!" << std::endl;
@@ -53,5 +54,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
     << "   .....//||||\\...."
     << std::endl;
     outf.close();
-    std::cout << executor.getName() << " execute " << this->target << " form!" << std::endl;
 }

@@ -36,7 +36,8 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
     if (!get_is_signed())
         throw AForm::FormNotSinged();
     if (executor.getGrade() > get_grade_execute())
-        throw AForm::GradeTooLowException();
+        throw AForm::GradeTooHighException();
+
     std::cout << "Bzzzzzzzz... drilling noises..." << std::endl;
     if (time(NULL) % 2)
         std::cout << this->target << " has been robotomized successfully!" << std::endl;

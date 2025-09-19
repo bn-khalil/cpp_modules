@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/19 17:43:57 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/09/19 18:12:13 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 #include "AForm.hpp"
 #include <fstream>
@@ -35,7 +47,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
     if (!get_is_signed())
         throw AForm::FormNotSinged();
     if (executor.getGrade() > get_grade_execute())
-        throw AForm::GradeTooLowException();
+        throw AForm::GradeTooHighException();
     std::ofstream outf((this->target + "__shrubbery").c_str());
     if (!outf.is_open())
         std::cerr << "file opening failed!" << std::endl;

@@ -5,17 +5,35 @@
 int main() {
     try
     {
-        Bureaucrat s1("me", 2);
-        Form s("vi", 0, 1, 151);
-        s1.signForm(s);
-        // Bureaucrat *s2 = new Bureaucrat("m", 0);
-        // *s1 = *s2;
-        // std::cout << s1 << std::endl;
+        Bureaucrat b1("bn", 2);
+        Bureaucrat b2("m1", 3);
+
+        Bureaucrat* b3 = new Bureaucrat("sp", 20);
+
+        std::cout << b1 << std::endl;
+        std::cout << b2 << std::endl;
+
+        Form f1("formF1", false, 20, 15);
+        Form f2("formF2", false, 5, 50);
+
+        Form *f3 = new Form(f1);
+
+        std::cout << *f3 << std::endl;
+        std::cout << f1 << std::endl;
+
+        b1.signForm(f1);
+        f2.beSigned(b2);
+
+        std::cout << f1 << std::endl;
+        std::cout << f2 << std::endl;
+
+        std::cout << *f3 << std::endl;
+        b3->signForm(*f3);
+        std::cout << *f3 << std::endl;
     }
     catch(const std::exception & e)
     {
         std::cerr << e.what() << '\n';
     }
-    
     return 0;
 }

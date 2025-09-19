@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/19 17:44:07 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/09/19 18:09:01 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
 #include <ctime>
@@ -36,7 +48,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
     if (!get_is_signed())
         throw AForm::FormNotSinged();
     if (executor.getGrade() > get_grade_execute())
-        throw AForm::GradeTooLowException();
+        throw AForm::GradeTooHighException();
     std::cout << "Bzzzzzzzz... drilling noises..." << std::endl;
     if (time(NULL) % 2)
         std::cout << this->target << " has been robotomized successfully!" << std::endl;

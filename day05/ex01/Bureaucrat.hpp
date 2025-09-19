@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:52:16 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/29 10:04:15 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/19 17:08:28 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Bureaucrat
     public:
         Bureaucrat();
         Bureaucrat( const std::string name, int grade );
-        Bureaucrat( Bureaucrat &other );
+        Bureaucrat( const Bureaucrat &other );
         Bureaucrat &operator=( Bureaucrat &other );
         ~Bureaucrat();
 
@@ -46,6 +46,6 @@ class Bureaucrat
         };
 };
 
-std::ostream& operator << ( std::ostream& os , const Bureaucrat &other );
+std::ostream& operator << ( std::ostream& out , const Bureaucrat &other );
 
 #endif

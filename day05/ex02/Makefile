@@ -6,7 +6,7 @@
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/22 14:50:17 by kben-tou          #+#    #+#              #
-#    Updated: 2025/08/28 21:32:17 by kben-tou         ###   ########.fr        #
+#    Updated: 2025/09/19 17:37:45 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,12 @@ SRCS = main.cpp \
 		PresidentialPardonForm.cpp \
 		AForm.cpp
 
-
 OBJS = $(SRCS:.cpp=.o)
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-%.o: %.cpp Bureaucrat.hpp 
+%.o: %.cpp Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 	c++ $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)

@@ -13,7 +13,7 @@ int main() {
         std::cout << bur1 << std::endl;
         std::cout << bur2 << std::endl;
 
-        Bureaucrat *b1 = new Bureaucrat("ka", 40);
+        Bureaucrat *b1 = new Bureaucrat("ka", 1);
         Bureaucrat *b2 = new Bureaucrat("li", 31);
         
         b1->decrement();

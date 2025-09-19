@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/19 17:44:27 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/09/19 18:33:30 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
@@ -8,23 +20,51 @@
 int main() {
     try
     {
-        Bureaucrat s1("me", 6);
+        Bureaucrat president_bn("pres_bn", 5);
+        Bureaucrat co_president("co_bn", 15);
+        Bureaucrat director("lil", 25);
+        Bureaucrat co_director("kh", 50);
 
-        PresidentialPardonForm a("jon");
-        s1.signForm(a);
-        s1.executeForm(a);
-        // Bureaucrat s2("hid", 130);
-        // ShrubberyCreationForm s("true f1");
-        // s1.signForm(s);
-        // s2.executeForm(s);
-        // s1.signForm(s);
-        // Bureaucrat *s2 = new Bureaucrat("m", 0);
-        // *s1 = *s2;
-        std::cout << s1 << std::endl;
+        std::cout << president_bn << std::endl;
+        std::cout << director << std::endl;
+        std::cout << co_director << std::endl;
+        std::cout << co_president << std::endl;
+
+        PresidentialPardonForm F1("jon");
+        RobotomyRequestForm F2("clup");
+        ShrubberyCreationForm F3("tree");
+
+        std::cout << F1 << std::endl;
+        std::cout << F2 << std::endl;
+        std::cout << F3 << std::endl;
+
+        // correct cases:
+        
+        // co_president.signForm(F1);
+        // std::cout << F1 << std::endl;
+        // president_bn.executeForm(F1);
+
+        // co_director.signForm(F2);
+        // std::cout << F2 << std::endl;
+        // director.executeForm(F2);
+
+        // co_director.signForm(F3);
+        // std::cout << F2 << std::endl;
+        // co_director.executeForm(F3);
+
+        // cases that will throw exceptions:
+
+        // president_bn.signForm(F1);
+        // std::cout << F1 << std::endl;
+        // co_president.executeForm(F1);
+
+        // co_director.signForm(F2);
+        // std::cout << F2 << std::endl;
+        // co_director.executeForm(F2);
     }
     catch(const std::exception & e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << std::endl;
     }
     
     return 0;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/19 18:38:59 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/09/19 18:39:00 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
 
@@ -34,7 +46,7 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const{
     if (!get_is_signed())
         throw AForm::FormNotSinged();
     if (executor.getGrade() > get_grade_execute())
-        throw AForm::GradeTooLowException();
+        throw AForm::GradeTooHighException();
 
-    std::cout << this->target << "has been pardoned by Zaphod Beeblebrox !" << std::endl; 
+    std::cout << this->target << " has been pardoned by Zaphod Beeblebrox !" << std::endl; 
 }

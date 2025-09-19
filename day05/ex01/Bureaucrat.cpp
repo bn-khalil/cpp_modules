@@ -6,13 +6,13 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 15:23:37 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/29 10:07:18 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/19 17:20:53 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() name("BureaucratNoName"), grade( 150 ) {
+Bureaucrat::Bureaucrat(): name("BureaucratNoName"), grade( 150 ) {
     std::cout << "Bureaucrat Constructor Called!" << std::endl;
 }
 
@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat( const std::string name, int grade ): name ( name ), grad
     std::cout << "Bureaucrat parameterized Constructor Called!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat &other ): name ( other.name ), grade( other.grade ) {
+Bureaucrat::Bureaucrat( const Bureaucrat &other ): name ( other.name ), grade( other.grade ) {
     std::cout << "Bureaucrat copy Constructor Called!" << std::endl;
 }
 
@@ -59,11 +59,11 @@ void Bureaucrat::decrement() {
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-    return ( "Bureaucrat grade too hight exception!" );
+    return ( "-> Bureaucrat grade too hight exception!" );
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-    return ( "Bureaucrat grade too low exception!" );
+    return ( "-> Bureaucrat grade too low exception!" );
 }
 
 void Bureaucrat::setGrade( int grade ) {

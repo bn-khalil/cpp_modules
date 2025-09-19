@@ -18,10 +18,7 @@ Form::Form(): name(""), is_signed(false), grade_sing(0), grade_execute(0) {
     std::cout << "Form Constructor Called!" << std::endl;
 }
 
-Form::Form( const std::string name, 
-    bool is_signed, 
-    int grade_sing, 
-    int grade_execute ): 
+Form::Form( const std::string name, bool is_signed, int grade_sing, int grade_execute ): 
     name ( name ),
     is_signed ( is_signed ),
     grade_sing ( grade_sing ),
@@ -53,36 +50,46 @@ Form::~Form() {
 }
 
 const char *Form::GradeTooHighException::what() const throw() {
-    return ( "Form grade too hight exception!" );
+    return ( "->Form grade too hight exception!" );
 }
 
 const char *Form::GradeTooLowException::what() const throw() {
-    return ( "Form grade too low exception!" );
+    return ( "->Form grade too low exception!" );
 }
 
-void Form::beSigned( Bureaucrat bureaucrat ) {
+void Form::beSigned( const Bureaucrat & bureaucrat ) {
     if ( bureaucrat.getGrade() > this->grade_sing )
         throw Form::GradeTooLowException();
     this->is_signed = true;
     std::cout << bureaucrat.getName() << " singed " << this->name << std::endl;
 }
 
-std::string Form::getName() {
+std::string Form::getName() const {
     return ( this->name );
 }
 
-int Form::get_is_signed() {
+int Form::get_is_signed() const {
     return ( this->is_signed );
 }
 
-int Form::get_grade_sing() {
+int Form::get_grade_sing() const {
     return ( this->grade_sing );
 }
 
-int Form::get_grade_execute() {
+int Form::get_grade_execute() const {
     return ( this->grade_execute );
 }
 
 void Form::set_is_signed( bool is_signed ) {
     this->is_signed = is_signed;
+}
+
+std::ostream& operator<<(std::ostream &out, const Form &other)
+{
+    out << "- form name : " << other.getName()
+    << " - grade to sign : " << other.get_grade_sing()
+    << " - grade to execute : " << other.get_grade_execute()
+    << " - form sigend : " << (other.get_is_signed() ? "ture" : "false");
+
+    return out;
 }

@@ -22,6 +22,20 @@ Intern::~Intern() {
     std::cout << "Intern Destructor Called!" << std::endl;
 }
 
+AForm *Intern::create_ShrubberyCreationForm(std::string target) {
+    return new ShrubberyCreationForm(target);
+}
+AForm *Intern::create_RobotomyRequestForm(std::string target) {
+    return new RobotomyRequestForm(target);
+}
+AForm *Intern::create_PresidentialPardonForm(std::string target) {
+    return new PresidentialPardonForm(target);
+}
+
+const char *Intern::FormNotFound::what() const throw() {
+    return ( "-> Form Not Found Exception!" );
+}
+
 AForm *Intern::makeForm(std::string formName, std::string target)
 {
     std::string names_of_forms[3] = {
@@ -29,19 +43,16 @@ AForm *Intern::makeForm(std::string formName, std::string target)
         "robotomy request",
          "presidential pardon"
     };
+    AForm* ( Intern::*forms[3] )( std::string ) = {
+        &Intern::create_RobotomyRequestForm,
+        &Intern::create_ShrubberyCreationForm,
+        &Intern::create_PresidentialPardonForm
+    };
+
     int i = 0;
-    while(names_of_forms[i] != formName)
+    while( i < 3 && names_of_forms[i] != formName)
         i++;
-    switch (i)
-    {
-        case 0:
-            return new ShrubberyCreationForm(target);
-        case 1:
-            return new RobotomyRequestForm(target);
-        case 2:
-            return new PresidentialPardonForm(target);
-        default:
-            std::cout << "form not found!" << std::endl;
-    }
-    return NULL;
+    if (i >= 3)
+        throw Intern::FormNotFound();
+    return (this->*forms[i])(target);
 }

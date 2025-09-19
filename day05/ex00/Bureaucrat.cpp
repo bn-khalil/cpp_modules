@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 15:23:37 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/19 15:57:03 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/19 18:37:53 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat( const std::string name, int grade ): name ( name ), grad
     std::cout << "Bureaucrat parameterized Constructor Called!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat &other ): name ( other.name ), grade( other.grade ) {
+Bureaucrat::Bureaucrat( const Bureaucrat &other ): name ( other.name ), grade( other.grade ) {
     std::cout << "Bureaucrat copy Constructor Called!" << std::endl;
 }
 
