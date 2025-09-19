@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:52:16 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/28 11:20:45 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/19 15:56:51 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class Bureaucrat
 
         std::string getName() const;
         int getGrade() const;
+        void setGrade( int grade );
         void increment();
         void decrement();
 

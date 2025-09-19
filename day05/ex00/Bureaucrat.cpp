@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 15:23:37 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/08/28 11:08:02 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/19 15:57:03 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ std::string Bureaucrat::getName() const {
 
 int Bureaucrat::getGrade() const {
     return ( this->grade );
+}
+
+void Bureaucrat::setGrade( int grade ) {
+    if ( grade > 150)
+        throw Bureaucrat::GradeTooLowException();
+    else if ( grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    this->grade = grade;
 }
 
 void Bureaucrat::increment() {
