@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/20 20:55:13 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/09/20 20:55:14 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
@@ -30,6 +42,14 @@ int main() {
         std::cout << *f3 << std::endl;
         b3->signForm(*f3);
         std::cout << *f3 << std::endl;
+
+        // incorrect cases
+
+        Form f8("formF3", false, 0, 15);
+        Form f9("formF4", false, 5, 200);
+
+        Form f10("formF5", false, 1, 1);
+        f10.beSigned(b1);
     }
     catch(const std::exception & e)
     {

@@ -6,12 +6,11 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:38:59 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/20 10:53:15 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 20:55:58 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
-#include "AForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", false, 25, 5){
     std::cout << "PresidentialPardonForm Constructor Called!" << std::endl;

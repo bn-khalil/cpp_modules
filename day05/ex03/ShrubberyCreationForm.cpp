@@ -6,13 +6,11 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 10:17:14 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/20 11:36:56 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 21:02:17 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include "AForm.hpp"
-#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", false, 145, 137){
     std::cout << "ShrubberyCreationForm Constructor Called!" << std::endl;

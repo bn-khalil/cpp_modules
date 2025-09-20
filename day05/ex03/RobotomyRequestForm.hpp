@@ -6,11 +6,13 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 10:17:08 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/20 10:17:09 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 20:56:30 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 class RobotomyRequestForm: public AForm
 {

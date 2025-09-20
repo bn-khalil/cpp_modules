@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/20 20:55:20 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/09/20 20:55:21 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
@@ -20,14 +32,20 @@ int main() {
         AForm *per = ber2->makeForm("presidential pardon", "kiko");
 
         std::cout << "==============================" << std::endl;
+
         s1.signForm(*rrf);
         s1.executeForm(*rrf);
+
         std::cout << "==============================" << std::endl;
+
         s1.signForm(*cre);
         s1.executeForm(*cre);
+
         std::cout << "==============================" << std::endl;
+
         s1.signForm(*per);
         s1.executeForm(*per);
+        
         std::cout << "==============================" << std::endl;
 
         AForm *inc = ber1.makeForm("invalid", "tito");

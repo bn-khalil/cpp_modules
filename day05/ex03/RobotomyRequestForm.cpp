@@ -6,13 +6,11 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 10:17:05 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/20 10:55:33 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 20:56:09 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
-#include "AForm.hpp"
-#include <ctime>
 
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", false, 72, 45){

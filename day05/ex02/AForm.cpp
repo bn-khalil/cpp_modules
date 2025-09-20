@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:27:25 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/19 17:25:52 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 20:45:03 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void AForm::set_is_signed(bool is_signed)
 
 void AForm::beSigned( const Bureaucrat & bureaucrat ) {
     if ( bureaucrat.getGrade() > this->grade_sing )
-        throw AForm::GradeTooHighException();
+        throw AForm::GradeTooLowException();
     if (this->is_signed)
     {
         std::cout  << "form " << this->name << " is already singed by " << bureaucrat.getName() << std::endl;
