@@ -6,12 +6,11 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:44:13 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/19 18:22:25 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 10:59:06 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
-#include "AForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", false, 25, 5){
     std::cout << "PresidentialPardonForm Constructor Called!" << std::endl;
@@ -31,6 +30,7 @@ PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm &ot
 }
 
 PresidentialPardonForm & PresidentialPardonForm::operator=( const PresidentialPardonForm &other ) {
+    std::cout << "PresidentialPardonForm copy operator Called!" << std::endl;
     if ( this != &other){
         this->target = other.target;
         set_is_signed(other.get_is_signed());

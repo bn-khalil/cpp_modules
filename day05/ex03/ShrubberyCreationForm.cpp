@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/20 10:17:14 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/09/20 11:36:56 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 #include "AForm.hpp"
 #include <fstream>
@@ -20,6 +32,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &other
 }
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=( const ShrubberyCreationForm &other ) {
+    std::cout << "ShrubberyCreationForm copy operator Called!" << std::endl;
     if ( this != &other){
         this->target = other.target;
         set_is_signed(other.get_is_signed());
@@ -40,7 +53,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
     std::ofstream outf((this->target + "__shrubbery").c_str());
     if (!outf.is_open())
         std::cerr << "file opening failed!" << std::endl;
-    outf 
+    outf
     << "       ccee88oo\n"
     << "   C8O8O8Q8PoOb o8oo\n"
     << " dOB69QO8PdUOpugoO9bD\n"

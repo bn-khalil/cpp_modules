@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:38:59 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/19 18:39:00 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 10:53:15 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm &ot
 }
 
 PresidentialPardonForm & PresidentialPardonForm::operator=( const PresidentialPardonForm &other ) {
+    std::cout << "PresidentialPardonForm copy operator Called!" << std::endl;
     if ( this != &other){
         this->target = other.target;
         set_is_signed(other.get_is_signed());

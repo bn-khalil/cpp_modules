@@ -6,14 +6,11 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:44:07 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/19 18:09:01 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 10:58:45 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
-#include "AForm.hpp"
-#include <ctime>
-
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", false, 72, 45){
     std::cout << "RobotomyRequestForm Constructor Called!" << std::endl;
@@ -33,6 +30,7 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm &other ):
 }
 
 RobotomyRequestForm & RobotomyRequestForm::operator=( const RobotomyRequestForm &other ) {
+    std::cout << "RobotomyRequestForm copy operator Called!" << std::endl;
     if ( this != &other){
         this->target = other.target;
         set_is_signed(other.get_is_signed());
@@ -50,7 +48,8 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
     if (executor.getGrade() > get_grade_execute())
         throw AForm::GradeTooHighException();
     std::cout << "Bzzzzzzzz... drilling noises..." << std::endl;
-    if (time(NULL) % 2)
+    std::srand(std::time(NULL));
+    if (rand() % 2)
         std::cout << this->target << " has been robotomized successfully!" << std::endl;
     else
         std::cout << this->target << " robotomized failed!" << std::endl;

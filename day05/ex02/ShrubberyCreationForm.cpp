@@ -6,13 +6,11 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:43:57 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/19 18:12:13 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/20 11:41:43 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include "AForm.hpp"
-#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", false, 145, 137){
     std::cout << "ShrubberyCreationForm Constructor Called!" << std::endl;
@@ -32,6 +30,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &other
 }
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=( const ShrubberyCreationForm &other ) {
+    std::cout << "ShrubberyCreationForm copy operator Called!" << std::endl;
     if ( this != &other){
         this->target = other.target;
         set_is_signed(other.get_is_signed());
@@ -65,5 +64,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
     << "   .....//||||\\...."
     << std::endl;
     outf.close();
-    std::cout << executor.getName() << " execute " << this->target << " form!" << std::endl;
 }

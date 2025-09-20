@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/20 10:17:05 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/09/20 10:55:33 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
 #include <ctime>
@@ -21,6 +33,7 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm &other ):
 }
 
 RobotomyRequestForm & RobotomyRequestForm::operator=( const RobotomyRequestForm &other ) {
+    std::cout << "RobotomyRequestForm copy operator Called!" << std::endl;
     if ( this != &other){
         this->target = other.target;
         set_is_signed(other.get_is_signed());
@@ -39,7 +52,8 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
         throw AForm::GradeTooHighException();
 
     std::cout << "Bzzzzzzzz... drilling noises..." << std::endl;
-    if (time(NULL) % 2)
+    std::srand(std::time(NULL));
+    if (rand() % 2)
         std::cout << this->target << " has been robotomized successfully!" << std::endl;
     else
         std::cout << this->target << " robotomized failed!" << std::endl;
