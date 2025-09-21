@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 15:23:37 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/09/19 17:20:53 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/09/21 20:00:00 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Bureaucrat::Bureaucrat( const std::string name, int grade ): name ( name ), grad
     if ( grade < 1)
         throw Bureaucrat::GradeTooHighException();
     else if ( grade > 150 )
-        throw Bureaucrat::GradeTooHighException();
+        throw Bureaucrat::GradeTooLowException();
     std::cout << "Bureaucrat parameterized Constructor Called!" << std::endl;
 }
 
