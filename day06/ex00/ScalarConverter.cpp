@@ -57,6 +57,8 @@ void ScalarConverter::displayPseudoLiterals(std::string str) {
     }
 }
 
+
+
 void ScalarConverter::convert( std::string str ) {
 
     if (isPseudo(str)) {

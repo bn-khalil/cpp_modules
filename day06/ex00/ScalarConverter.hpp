@@ -20,4 +20,6 @@ class ScalarConverter {
         static void convert( std::string str );
 };
 
+
+
 #endif
