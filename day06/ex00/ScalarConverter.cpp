@@ -23,7 +23,9 @@ ScalarConverter::~ScalarConverter( void ) {
 }
 
 bool ScalarConverter::isPseudo(std::string arg) {
-    if (arg == "nan" || arg == "nanf" || arg == "+inf" || arg == "-inf" || arg == "+inff" || arg == "-inff")
+    if (arg == "nan" || arg == "nanf" 
+        || arg == "+inf" || arg == "-inf" 
+        || arg == "+inff" || arg == "-inff")
         return true;
     return false;
 }
@@ -40,7 +42,20 @@ std::string ScalarConverter::trimSpaces(std::string arg) {
 }
 
 bool ScalarConverter::isChar(std::string arg) {
-    if (arg[0] >= 32 && arg[0] <= 126)
+    if (std::isprint(arg[0]) && !std::isdigit(arg[0]))
+        return true;
+    return false;
+}
+
+bool ScalarConverter::isNum(std::string arg) {
+    size_t i = 0;
+    if (arg[i] == '-' || arg[i] == '+')
+        i++;
+    if (arg.length() == i)
+        return false;
+    while(i < arg.length() && std::isdigit(arg[i]))
+        i++;
+    if (arg.length() == i)
         return true;
     return false;
 }
@@ -49,11 +64,11 @@ void ScalarConverter::displayPseudoLiterals(std::string arg) {
     std::cout << "char: " << "impossible" << std::endl;
     std::cout << "int: " << "impossible" << std::endl;
     if (arg == "-inf" || arg == "-inff") {
-        std::cout << "float: " << "-inf" << std::endl;
-        std::cout << "double: " << "-inff" << std::endl;
+        std::cout << "float: " << "-inff" << std::endl;
+        std::cout << "double: " << "-inf" << std::endl;
     } else if (arg == "+inf" || arg == "+inff") {
-        std::cout << "float: " << "+inf" << std::endl;
-        std::cout << "double: " << "+inff" << std::endl;
+        std::cout << "float: " << "+inff" << std::endl;
+        std::cout << "double: " << "+inf" << std::endl;
     }
     else {
         std::cout << "float: " << "nanf" << std::endl;
@@ -70,17 +85,6 @@ void ScalarConverter::printChar(std::string arg) {
     std::cout << std::fixed << std::setprecision(1);
     std::cout << "float: " << static_cast<float>(arg[0]) << "f"<< std::endl;
     std::cout << "double: " << static_cast<double>(arg[0]) << std::endl;
-}
-
-bool ScalarConverter::isNum(std::string arg) {
-    size_t i = 0;
-    if (arg[i] == '-')
-        i++;
-    while(i < arg.length() && std::isdigit(arg[i]))
-        i++;
-    if (arg.length() == i)
-        return true;
-    return false;
 }
 
 void ScalarConverter::displayInterger(int num) {
@@ -127,7 +131,12 @@ bool ScalarConverter::isFloat(std::string arg) {
     size_t i = 0;
     bool point = false;
 
-    if (arg[arg.length() - 1] != 'f')
+    if (arg.back() != 'f')
+        return false;
+    if (arg[0] == '-' || arg[0] == '+')
+        i++;
+    
+    if ((arg.length() - 1) == i)
         return false;
     while(i < arg.length() - 1) {
         if (arg[i] == '.' && point == false) {
@@ -148,6 +157,10 @@ bool ScalarConverter::isDouble(std::string arg) {
     size_t i = 0;
     bool point = false;
 
+    if (arg[0] == '-' || arg[0] == '+')
+        i++;
+    if (arg.length() == i)
+        return false;
     while(i < arg.length() - 1) {
         if (arg[i] == '.' && point == false) {
             point = true;
@@ -170,6 +183,7 @@ void ScalarConverter::convert( std::string arg ) {
         return ;
     }
     // std::arging arg = trimSpaces(arg);
+
     if (isNum(arg))
         displayInterger(std::stoi(arg));
     else if (arg.size() <= 1)

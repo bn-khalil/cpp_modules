@@ -19,12 +19,12 @@ class ScalarConverter {
         static void displayImpossible();
         static bool isFloat(std::string arg);
         static bool isDouble(std::string arg);
-    public:
+
         ScalarConverter();
         ScalarConverter( const ScalarConverter &other );
         ScalarConverter& operator= ( const ScalarConverter &diff );
         ~ScalarConverter();
-
+    public:
         static void convert( std::string arg );
 };
 
