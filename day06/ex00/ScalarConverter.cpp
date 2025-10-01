@@ -3,7 +3,7 @@
 #include <iomanip>
 
 
-ScalarConverter::ScalarConverter( void ) {
+ScalarConverter::ScalarConverter() {
     std::cout << "ScalarConverter Default constructor called!" << std::endl;
 }
 
@@ -18,7 +18,7 @@ ScalarConverter& ScalarConverter::operator= ( const ScalarConverter &diff ) {
     return ( *this );
 }
 
-ScalarConverter::~ScalarConverter( void ) {
+ScalarConverter::~ScalarConverter() {
     std::cout << "ScalarConverter Destructor called!" << std::endl;
 }
 

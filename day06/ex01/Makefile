@@ -7,7 +7,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-%.o: %.cpp Serializer.hpp
+%.o: %.cpp Serializer.hpp Data.hpp
 	c++ $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
