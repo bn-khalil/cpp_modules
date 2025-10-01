@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-template <class T>
+template <typename T>
 
 void swap(T & param1, T & param2) {
     T tmp = param1;
@@ -11,13 +11,13 @@ void swap(T & param1, T & param2) {
     param2 = tmp;
 }
 
-template <class U>
+template <typename U>
 
 U min(U & param1, U & param2) {
     return param1 < param2 ? param1 : param2;
 }
 
-template <class V>
+template <typename V>
 
 V max(V & param1, V & param2) {
     return param1 > param2 ? param1 : param2;
