@@ -3,9 +3,11 @@
 
 #include <iostream>
 
-template <typename T, typename U, typename K>
+template <typename T>
 
-void iter(T param1, U param2, K param3) {
+void iter(T array[], size_t length, void (*funptr)(T &)) {
+    for (size_t i = 0; i < length; i++)
+        funptr(array[i]);
 }
 
 #endif
