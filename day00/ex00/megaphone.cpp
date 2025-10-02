@@ -22,7 +22,7 @@ int main(int ac, char **av)
     {
         int j = 0;
         while (av[i][j]) {
-            av[i][j] = (int)std::toupper(av[i][j]);
+            av[i][j] = std::toupper(av[i][j]);
             j++;
         }
         std::cout << av[i] ;

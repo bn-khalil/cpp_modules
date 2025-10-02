@@ -31,22 +31,20 @@
 //         std::cerr << e << '\n';
 //     }
 // }
-#include <stdexcept>
+// #include <stdexcept>
 
-void f1(int a) {
-    std::cout << a << std::endl;
-}
+// void f1(int a) {
+//     std::cout << a << std::endl;
+// }
 
-int f1(float a) {
-    std::cout << a << std::endl;
-    return 12;
-}
+// int f1(float a) {
+//     std::cout << a << std::endl;
+//     return 12;
+// }
 
 int main() {
-    if (1 == 1)
-        throw std::runtime_error("this is error");
-    std::cout << "this sdfsdf" << std::endl;
-    
-
+    // int s = 65;
+    // char& d  = reinterpret_cast<char &>(s);
+    std::cout << 0.0f / 0.0f;
     return (0);
 }
