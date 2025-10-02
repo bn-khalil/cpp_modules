@@ -6,7 +6,6 @@
 #include "Utils.hpp"
 
 class ScalarConverter {
-
     private:
         ScalarConverter();
         ScalarConverter( const ScalarConverter &other );
@@ -15,7 +14,5 @@ class ScalarConverter {
     public:
         static void convert( std::string arg );
 };
-
-
 
 #endif

@@ -8,25 +8,6 @@ bool isPseudo(std::string arg) {
     return false;
 }
 
-bool isChar(std::string arg) {
-    if (std::isprint(arg[0]) && !std::isdigit(arg[0]))
-        return true;
-    return false;
-}
-
-bool isNum(std::string arg) {
-    size_t i = 0;
-    if (arg[i] == '-' || arg[i] == '+')
-        i++;
-    if (arg.length() == i)
-        return false;
-    while(i < arg.length() && std::isdigit(arg[i]))
-        i++;
-    if (arg.length() == i)
-        return true;
-    return false;
-}
-
 void displayPseudoLiterals(std::string arg) {
     std::cout << "char: " << "impossible" << std::endl;
     std::cout << "int: " << "impossible" << std::endl;
@@ -88,10 +69,26 @@ void displayDouble(double num) {
 }
 
 void displayImpossible() {
-    std::cout << "char: impossible"<< std::endl;
-    std::cout << "int: impossible" << std::endl;
-    std::cout << "float: impossible" << std::endl;
-    std::cout << "double: impossible" << std::endl;
+        std::cerr << "Error: The enterd input is wrong!" << std::endl;
+}
+
+bool isChar(std::string arg) {
+    if (std::isprint(arg[0]) && !std::isdigit(arg[0]))
+        return true;
+    return false;
+}
+
+bool isNum(std::string arg) {
+    size_t i = 0;
+    if (arg.front() == '-' || arg.front() == '+')
+        i++;
+    if (arg.length() == i)
+        return false;
+    while(i < arg.length() && std::isdigit(arg[i]))
+        i++;
+    if (arg.length() == i)
+        return true;
+    return false;
 }
 
 bool isFloat(std::string arg) {
@@ -100,9 +97,8 @@ bool isFloat(std::string arg) {
 
     if (arg.back() != 'f')
         return false;
-    if (arg[0] == '-' || arg[0] == '+')
+    if (arg.front() == '-' || arg.front() == '+')
         i++;
-    
     if ((arg.length() - 1) == i)
         return false;
     while(i < arg.length() - 1) {
@@ -124,7 +120,7 @@ bool isDouble(std::string arg) {
     size_t i = 0;
     bool point = false;
 
-    if (arg[0] == '-' || arg[0] == '+')
+    if (arg.front() == '-' || arg.front() == '+')
         i++;
     if (arg.length() == i)
         return false;

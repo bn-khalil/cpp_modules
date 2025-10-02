@@ -9,8 +9,6 @@ bool isPseudo(std::string arg);
 
 void displayPseudoLiterals(std::string arg);
 
-std::string trimSpaces(std::string arg);
-
 bool isChar(std::string arg);
 
 void printChar(std::string arg);
