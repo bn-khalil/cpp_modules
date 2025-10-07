@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/07 18:25:26 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/10/07 19:40:57 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter() {
@@ -10,7 +22,7 @@ ScalarConverter::ScalarConverter( const ScalarConverter& diff ) {
 }
 
 ScalarConverter& ScalarConverter::operator= ( const ScalarConverter &diff ) {
-    std::cout << "Copy ScalarConverter assiment operator called!" << std::endl;
+    std::cout << "Copy ScalarConverter assinement operator called!" << std::endl;
     (void)diff;
     return ( *this );
 }

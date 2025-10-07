@@ -4,6 +4,11 @@
 #define MAX_VAL 750
 
 template <typename T>
+const char* Array<T>::ArrayException:: what() const throw(){
+    return ( "index out of bounds exception!" );
+}
+
+template <typename T>
 Array<T>::Array(): len(0) {
     std::cout << "Array Default constructor called!" << std::endl;
     array = new T [0];
@@ -51,7 +56,7 @@ Array<T>::~Array() {
 template <typename T>
 T& Array<T>::operator[] (int i) const {
     if (i < 0 || i >= static_cast<int>(size()))
-        throw std::out_of_range("index out of bounds!");
+        throw Array<T>::ArrayException();
     return array[i];
 }
 

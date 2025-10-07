@@ -20,6 +20,10 @@ class Array
 
         unsigned int size() const;
         T& operator[] (int i) const;
+
+        class ArrayException: public std::exception {
+            const char* what() const throw(); 
+        };
 };
 
 

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/07 18:25:29 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/10/07 18:25:30 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SCALCONVERTER_H
 #define SCALCONVERTER_H
@@ -9,9 +20,9 @@ class ScalarConverter {
     private:
         ScalarConverter();
         ScalarConverter( const ScalarConverter &other );
+    public:
         ScalarConverter& operator= ( const ScalarConverter &diff );
         ~ScalarConverter();
-    public:
         static void convert( std::string arg );
 };
 

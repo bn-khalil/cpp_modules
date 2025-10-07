@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Utils.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/07 18:25:35 by kben-tou          #+#    #+#             */
+/*   Updated: 2025/10/07 19:49:15 by kben-tou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Utils.hpp"
 
 bool isPseudo(std::string arg) {
@@ -124,7 +136,7 @@ bool isDouble(std::string arg) {
         i++;
     if (arg.length() == i)
         return false;
-    while(i < arg.length() - 1) {
+    while(i < arg.length()) {
         if (arg[i] == '.' && point == false) {
             point = true;
             i++;
