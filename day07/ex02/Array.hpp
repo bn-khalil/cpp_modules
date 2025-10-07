@@ -2,12 +2,15 @@
 #define ARRAY_H
 
 #include <iostream>
+#include <stdexcept>
 
 template <typename T>
 class Array
 {
     private:
-        T array[];
+        T *array;
+        unsigned int len;
+
     public:
         Array();
         Array( unsigned int n );
@@ -15,7 +18,8 @@ class Array
         Array &operator=( const Array &other );
         ~Array();
 
-        size_t size() const;
+        unsigned int size() const;
+        T& operator[] (int i) const;
 };
 
 
