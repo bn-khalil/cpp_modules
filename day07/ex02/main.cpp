@@ -1,11 +1,7 @@
 #include <iostream>
-
 #include "Array.hpp"
 
 #define MAX_VAL 750
-void bn(){
-    system("leaks Array");
-}
 
 template <typename T>
 Array<T>::Array(): len(0) {
@@ -31,12 +27,12 @@ Array<T>::Array( const Array& diff ): len(diff.size()) {
 template <typename T>
 Array<T>& Array<T>::operator= ( const Array &diff ) {
     std::cout << "Copy Array assiment operator called!" << std::endl;
-    if (*this != diff) {
+    if (this != &diff) {
+        delete[] this->array;
         this->array = new T[diff.size()];
-        for (unsigned int i = 0; i < diff.size(); i++) {
+        for (unsigned int i = 0; i < diff.size(); i++)
             this->array[i] = diff[i];
         this->len = diff.len;
-    }
     }
     return ( *this );
 }
@@ -53,16 +49,14 @@ Array<T>::~Array() {
 }
 
 template <typename T>
-T& Array<T>::operator[] (int i) const{
+T& Array<T>::operator[] (int i) const {
     if (i < 0 || i >= static_cast<int>(size()))
         throw std::out_of_range("index out of bounds!");
     return array[i];
 }
 
-
 int main(int, char**)
 {
-    atexit(bn);
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
@@ -76,7 +70,9 @@ int main(int, char**)
     //SCOPE
     {
         Array<int> tmp = numbers;
+
         Array<int> test(tmp);
+        test = numbers;
     }
     for (int i = 0; i < MAX_VAL; i++)
     {
