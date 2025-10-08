@@ -6,16 +6,13 @@
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 18:28:45 by kben-tou          #+#    #+#              #
-#    Updated: 2025/10/07 18:28:46 by kben-tou         ###   ########.fr        #
+#    Updated: 2025/10/08 10:07:50 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Identify_real_type
 SRCS = main.cpp \
 		Base.cpp \
-		DrivedA.cpp \
-		DrivedB.cpp \
-		DrivedC.cpp \
 		Utils.cpp
 
 OBJS = $(SRCS:.cpp=.o)

@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:25:59 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/10/07 18:26:20 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/10/08 09:49:01 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ class Serializer {
     private:
         Serializer();
         Serializer( const Serializer &other );
+    public:
         Serializer& operator= ( const Serializer &diff );
         ~Serializer();
-    public:
+
         static uintptr_t serialize(Data* ptr);
         static Data* deserialize(uintptr_t raw);
 };

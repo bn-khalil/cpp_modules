@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:25:35 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/10/07 19:49:15 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/10/08 09:39:06 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool isPseudo(std::string arg) {
     if (arg == "nan" || arg == "nanf" 
-        || arg == "+inf" || arg == "-inf" 
+        || arg == "+inf" || arg == "-inf"
         || arg == "+inff" || arg == "-inff")
         return true;
     return false;
@@ -48,7 +48,7 @@ void printChar(std::string arg) {
 }
 
 void displayInterger(int num) {
-    if (num >= 32 && num <= 126)
+    if (std::isprint(num))
         std::cout << "char: '" << static_cast<char>(num) << "'"<< std::endl;
     else
         std::cout << "char: Non displayable"<< std::endl;
@@ -59,7 +59,7 @@ void displayInterger(int num) {
 }
 
 void displayFloat(float num) {
-    if (num >= 32 && num <= 126)
+    if (std::isprint(static_cast<int>(num)))
         std::cout << "char: '" << static_cast<char>(num) << "'"<< std::endl;
     else
         std::cout << "char: Non displayable"<< std::endl;
@@ -70,7 +70,7 @@ void displayFloat(float num) {
 }
 
 void displayDouble(double num) {
-    if (num >= 32 && num <= 126)
+    if (std::isprint(static_cast<int>(num)))
         std::cout << "char: '" << static_cast<char>(num) << "'"<< std::endl;
     else
         std::cout << "char: Non displayable"<< std::endl;

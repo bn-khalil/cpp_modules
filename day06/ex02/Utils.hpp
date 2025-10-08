@@ -6,14 +6,13 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:28:51 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/10/07 18:28:52 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:23:41 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <cstdlib>
 #include <ctime>
 #include "Base.hpp"
 

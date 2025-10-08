@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:28:47 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/10/07 18:28:49 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:11:51 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,12 @@
 #include "DrivedC.hpp"
 
 Base * generate(void) {
-    std::time_t time = std::time(NULL);
-    std::tm *n = std::localtime(&time);
-    int rand = n->tm_sec % 6;
-    if (rand < 2)
+    int rand = std::time(NULL) % 3;
+    if (rand == 0)
         return new DrivedA();
-    else if (rand < 4)
+    else if (rand == 1)
         return new DrivedB();
-    else if (rand < 6)
-        return new DrivedC();
-    return new DrivedA();
+    return new DrivedC();
 }
 
 void identify(Base* p) {
