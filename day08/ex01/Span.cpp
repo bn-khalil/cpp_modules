@@ -43,10 +43,16 @@ void Span::addNumber( int n ) {
     this->ints.push_back(n);
 }
 
-void Span::addNumber( std::vector<int>::iterator b, std::vector<int>::iterator e) {
-    if ((std::distance(b, e) + this->ints.size()) > this->n)
+// void Span::addNumber( std::vector<int>::iterator b, std::vector<int>::iterator e) {
+//     if ((std::distance(b, e) + this->ints.size()) > this->n)
+//         throw collectionFullException();
+//     this->ints.insert(this->ints.end(), b, e);
+// }
+
+void Span::addNumber( std::vector<int>vec ) {
+    if (vec.size() + this->ints.size() > this->n)
         throw collectionFullException();
-    this->ints.insert(this->ints.end(), b, e);
+    this->ints.insert(this->ints.end(), vec.begin(), vec.end());
 }
 
 size_t Span::shortestSpan() {

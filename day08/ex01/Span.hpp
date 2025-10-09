@@ -29,7 +29,8 @@ class Span
         ~Span();
 
         void addNumber( int n );
-        void addNumber( std::vector<int>::iterator b, std::vector<int>::iterator e);
+        // void addNumber( std::vector<int>::iterator b, std::vector<int>::iterator e);
+        void addNumber( std::vector<int>vec );
 
         size_t shortestSpan();
         size_t longestSpan();

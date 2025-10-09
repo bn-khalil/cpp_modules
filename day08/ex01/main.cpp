@@ -1,8 +1,9 @@
 #include "Span.hpp"
 
 int main() {
-    Span span1(3);
-    Span span2(3);
+    Span span1(6);
+    // Span span2(3);
+
     
     span1.addNumber(1);
     span1.addNumber(10);
@@ -14,7 +15,15 @@ int main() {
 
     // span1 = span2;
 
-    std::cout << span1.longestSpan() << std::endl;
+    std::vector<int> col;
+    col.push_back(3);
+    col.push_back(6);
+    col.push_back(10);
+    
+    span1.addNumber(col);
+    col.push_back(10);
+    // span1.addNumber(5);
+    // std::cout << span << std::endl;
 
     return 0;
 }
