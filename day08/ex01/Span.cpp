@@ -43,11 +43,16 @@ void Span::addNumber( int n ) {
     this->ints.push_back(n);
 }
 
+// void Span::addNumber( int n ) {
+//     if (this->n == this->ints.size())
+//         throw collectionFullException();
+//     this->ints.push_back(n);
+// }
+
 size_t Span::shortestSpan() {
-    return (size_t)1;
+    return 1;
 }
 
 size_t Span::longestSpan() {
-    return (size_t)1;
-    
+    return *std::max_element(this->ints.begin(), this->ints.end()) - *std::min_element(this->ints.begin(), this->ints.end());
 }
