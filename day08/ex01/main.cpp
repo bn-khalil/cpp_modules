@@ -1,30 +1,14 @@
 #include "Span.hpp"
 
-int main() {
-    Span span1(6);
-    // Span span2(3);
-
-    
-    span1.addNumber(1);
-    span1.addNumber(10);
-    span1.addNumber(5);
-
-    // span2.addNumber(2);
-    // span2.addNumber(2);
-    // span2.addNumber(2);
-
-    // span1 = span2;
-
-    std::vector<int> col;
-    col.push_back(3);
-    col.push_back(6);
-    col.push_back(10);
-    
-    span1.addNumber(col);
-    span1.shortestSpan();
-    // span1.displayCollection();
-    // span1.addNumber(5);
-    // std::cout << span << std::endl;
-
+int main()
+{
+    Span sp = Span(5);
+    sp.addNumber(6);
+    sp.addNumber(3);
+    sp.addNumber(17);
+    sp.addNumber(9);
+    sp.addNumber(11);
+    std::cout << sp.shortestSpan() << std::endl;
+    std::cout << sp.longestSpan() << std::endl;
     return 0;
 }

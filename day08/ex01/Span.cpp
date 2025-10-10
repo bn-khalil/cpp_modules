@@ -63,10 +63,10 @@ size_t Span::shortestSpan() {
 
     int shortest = INT_MAX;
 
-    for(size_t i = 0;i < tmp.size(); i++) {
+    for(size_t i = 0;i < tmp.size() - 1; i++) {
         if (i + 1 <= tmp.size()) {
             int res = tmp[i + 1] - tmp[i];
-            if (shortest > res)
+            if (res < shortest)
                 shortest = res;
         }
     }
