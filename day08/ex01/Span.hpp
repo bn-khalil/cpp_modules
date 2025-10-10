@@ -21,7 +21,7 @@ class Span
     private:
         std::vector<int> ints;
         unsigned int n;
-        
+
     public:
         Span( unsigned int n );
         Span( const Span & other );
@@ -29,13 +29,16 @@ class Span
         ~Span();
 
         void addNumber( int n );
-        // void addNumber( std::vector<int>::iterator b, std::vector<int>::iterator e);
-        void addNumber( std::vector<int>vec );
-
+        void addNumber( std::vector<int>& vec );
+        void displayCollection();
         size_t shortestSpan();
         size_t longestSpan();
 
         class collectionFullException: public std::exception {
+            const char *what() const throw();
+        };
+
+        class shortSpanException: public std::exception {
             const char *what() const throw();
         };
 };

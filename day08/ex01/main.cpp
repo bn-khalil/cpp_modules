@@ -21,7 +21,8 @@ int main() {
     col.push_back(10);
     
     span1.addNumber(col);
-    col.push_back(10);
+    span1.shortestSpan();
+    // span1.displayCollection();
     // span1.addNumber(5);
     // std::cout << span << std::endl;
 

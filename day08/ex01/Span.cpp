@@ -36,6 +36,10 @@ Span::~Span() {
 const char *Span::collectionFullException::what() const throw() {
         return "can't add new item";
 }
+
+const char *Span::shortSpanException::what() const throw() {
+        return "not Enough items in collection";
+}
         
 void Span::addNumber( int n ) {
     if (this->n == this->ints.size())
@@ -43,22 +47,40 @@ void Span::addNumber( int n ) {
     this->ints.push_back(n);
 }
 
-// void Span::addNumber( std::vector<int>::iterator b, std::vector<int>::iterator e) {
-//     if ((std::distance(b, e) + this->ints.size()) > this->n)
-//         throw collectionFullException();
-//     this->ints.insert(this->ints.end(), b, e);
-// }
-
-void Span::addNumber( std::vector<int>vec ) {
+void Span::addNumber( std::vector<int>& vec ) {
     if (vec.size() + this->ints.size() > this->n)
         throw collectionFullException();
     this->ints.insert(this->ints.end(), vec.begin(), vec.end());
 }
 
 size_t Span::shortestSpan() {
-    return 1;
+
+    if (this->ints.size() < 2)
+        throw shortSpanException();
+
+    std::vector<int> tmp = this->ints;
+    std::sort(tmp.begin(), tmp.end());
+
+    int shortest = INT_MAX;
+
+    for(size_t i = 0;i < tmp.size(); i++) {
+        if (i + 1 <= tmp.size()) {
+            int res = tmp[i + 1] - tmp[i];
+            if (shortest > res)
+                shortest = res;
+        }
+    }
+    return static_cast<size_t>(shortest);
 }
 
 size_t Span::longestSpan() {
-    return *std::max_element(this->ints.begin(), this->ints.end()) - *std::min_element(this->ints.begin(), this->ints.end());
+    int maxints = *std::max_element(this->ints.begin(), this->ints.end());
+    int minints = *std::min_element(this->ints.begin(), this->ints.end());
+    return maxints - minints;
+}
+
+void Span::displayCollection() {
+    for(size_t ele = 0;ele < this->ints.size(); ele++) {
+        std::cout << this->ints.at(ele) << std::endl;
+    }
 }
