@@ -60,8 +60,13 @@ T& Array<T>::operator[] (int i) const {
     return array[i];
 }
 
+void f(){
+    system("leaks Array");
+}
+
 int main(int, char**)
 {
+    atexit(f);
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
