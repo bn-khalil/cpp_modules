@@ -42,6 +42,7 @@
 //     return 12;
 // }
 
+
 int main() {
     // int s = 65;
     // char& d  = reinterpret_cast<char &>(s);
@@ -49,6 +50,7 @@ int main() {
     // std::cout << 0.0f / 0.0f;
     // int *s = new int[0];
     // s[12] = 12;
+
     std::cout << .1f;
     return (0);
 }
