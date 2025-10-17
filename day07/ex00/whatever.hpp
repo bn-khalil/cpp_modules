@@ -4,12 +4,20 @@
 #include <iostream>
 
 template <typename T>
-void swap(T & param1, T & param2);
+void swap(T & param1, T & param2) {
+    T tmp = param1;
+    param1 = param2;
+    param2 = tmp;
+}
 
-template <typename U>
-U min(U & param1, U & param2);
+template <typename T>
+T min(T & param1, T & param2) {
+    return param1 < param2 ? param1 : param2;
+}
 
-template <typename V>
-V max(V & param1, V & param2);
+template <typename T>
+T max(T & param1, T & param2) {
+    return param1 > param2 ? param1 : param2;
+}
 
 #endif
