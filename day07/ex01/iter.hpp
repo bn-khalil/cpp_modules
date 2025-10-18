@@ -5,8 +5,10 @@
 
 template <typename T, typename F>
 void iter(T *array, const size_t length, F funptr) {
-    for (size_t i = 0; i < length; i++)
-        funptr(array[i]);
+    if (array) {
+        for (size_t i = 0; i < length; i++)
+            funptr(array[i]);
+    }
 }
 
 template <typename T>
