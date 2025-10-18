@@ -14,14 +14,15 @@
 #define EASYFIND_H
 
 #include <iostream>
+#include <stdexcept>
+#include <algorithm>
 
 template <typename T>
+std::string easyfind(const T & con, int n) {
+   if (std::find(con.begin(), con.end(), n) == con.end())
+        return "item not found!";
+    return "item found!";
+}
 
-void easyfind(T con, int n);
-
-class numberNotFoundException: public std::exception
-{
-    const char * what() const throw();
-};
 
 #endif
