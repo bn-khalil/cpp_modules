@@ -29,16 +29,23 @@ class Span
         ~Span();
 
         void addNumber( int n );
-        void addNumber( std::vector<int>& vec );
+        void addNumbers( std::vector<int>::const_iterator s, std::vector<int>::const_iterator e );
         void displayCollection();
         size_t shortestSpan();
         size_t longestSpan();
+
+        std::vector<int>::const_iterator begin() const;
+        std::vector<int>::const_iterator end() const;
 
         class collectionFullException: public std::exception {
             const char *what() const throw();
         };
 
-        class shortSpanException: public std::exception {
+        class shortestSpanException: public std::exception {
+            const char *what() const throw();
+        };
+
+        class itemsException: public std::exception {
             const char *what() const throw();
         };
 };

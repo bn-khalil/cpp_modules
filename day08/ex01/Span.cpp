@@ -37,26 +37,34 @@ const char *Span::collectionFullException::what() const throw() {
         return "can't add new item";
 }
 
-const char *Span::shortSpanException::what() const throw() {
+const char *Span::itemsException::what() const throw() {
         return "not Enough items in collection";
 }
-        
+
 void Span::addNumber( int n ) {
-    if (this->n == this->ints.size())
+    if (this->n <= this->ints.size())
         throw collectionFullException();
     this->ints.push_back(n);
 }
 
-void Span::addNumber( std::vector<int>& vec ) {
-    if (vec.size() + this->ints.size() > this->n)
+void Span::addNumbers(std::vector<int>::const_iterator s, std::vector<int>::const_iterator e) {
+    if (std::distance(s, e) + this->ints.size() > this->n)
         throw collectionFullException();
-    this->ints.insert(this->ints.end(), vec.begin(), vec.end());
+    this->ints.insert(this->ints.end(), s, e);
+}
+
+std::vector<int>::const_iterator Span::begin() const {
+    return this->ints.begin();
+}
+
+std::vector<int>::const_iterator Span::end() const{
+    return this->ints.end();
 }
 
 size_t Span::shortestSpan() {
 
     if (this->ints.size() < 2)
-        throw shortSpanException();
+        throw itemsException();
 
     std::vector<int> tmp = this->ints;
     std::sort(tmp.begin(), tmp.end());
@@ -74,9 +82,11 @@ size_t Span::shortestSpan() {
 }
 
 size_t Span::longestSpan() {
-    int maxints = *std::max_element(this->ints.begin(), this->ints.end());
-    int minints = *std::min_element(this->ints.begin(), this->ints.end());
-    return maxints - minints;
+    if (this->ints.size() < 2)
+        throw itemsException();
+    int maxint = *std::max_element(this->ints.begin(), this->ints.end());
+    int minint = *std::min_element(this->ints.begin(), this->ints.end());
+    return maxint - minint;
 }
 
 void Span::displayCollection() {
