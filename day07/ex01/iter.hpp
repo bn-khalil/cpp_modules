@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-template <typename T>
-void iter(T array[], const size_t length, void (*funptr)(T &)) {
+template <typename T, typename F>
+void iter(T *array, const size_t length, F funptr) {
     for (size_t i = 0; i < length; i++)
         funptr(array[i]);
 }
