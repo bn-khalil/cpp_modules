@@ -8,33 +8,33 @@ template <typename T>
 class Array
 {
     private:
-        T *array;
+        T *arr;
         unsigned int len;
 
     public:
-        Array(): array(new T [0]), len(0) {
+        Array(): arr(NULL), len(0) {
             std::cout << "Array Default constructor called!" << std::endl;
         }
 
-        Array( unsigned int n ):array(new T [n]), len(n) {
+        Array( unsigned int n ):arr(new T [n]()), len(n) {
             std::cout << "Array params constructor called!" << std::endl;
         }
 
-        Array( const Array &other ): len(other.size()) {
+        Array( const Array &other ): len(other.len) {
             std::cout << "Copy Array constructor called!" << std::endl;
-            array = new T[other.size()];
-            for (unsigned int i = 0; i < other.size(); i++) {
-                this->array[i] = other[i];
+            this->arr = new T[other.len];
+            for (unsigned int i = 0; i < other.len; i++) {
+                this->arr[i] = other[i];
             }
         }
 
         Array &operator = ( const Array &other ){
             std::cout << "Copy Array assiment operator called!" << std::endl;
             if (this != &other) {
-                delete[] this->array;
-                this->array = new T[other.size()];
-                for (unsigned int i = 0; i < other.size(); i++)
-                    this->array[i] = other[i];
+                delete[] this->arr;
+                this->arr = new T[other.len];
+                for (unsigned int i = 0; i < other.len; i++)
+                    this->arr[i] = other[i];
                 this->len = other.len;
             }
             return ( *this );
@@ -42,7 +42,7 @@ class Array
 
         ~Array(){
             std::cout << "Array Destructor called!" << std::endl;
-            delete []array;
+            delete []arr;
         };
 
         unsigned int size() const {
@@ -50,15 +50,15 @@ class Array
         }
 
         T& operator[] (unsigned int i) {
-            if (i < 0 || i >= size())
+            if (i >= this->size())
                 throw std::exception(); 
-            return array[i];
+            return arr[i];
         }
 
         const T& operator[] (unsigned int i) const {
-            if (i < 0 || i >= this->size())
+            if (i >= this->size())
                 throw std::exception(); 
-            return this->array[i];
+            return this->arr[i];
         }
 };
 
