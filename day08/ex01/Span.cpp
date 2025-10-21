@@ -12,8 +12,12 @@
 
 #include "Span.hpp"
 
-Span::Span( unsigned int n ): n(n) {
+Span::Span(): n(0) {
     std::cout << "Span Default constructor called!" << std::endl;
+}
+
+Span::Span( unsigned int n ): n(n) {
+    std::cout << "Span param constructor called!" << std::endl;
 }
 
 Span::Span( const Span& other ):ints(other.ints), n( other.n ) {
@@ -63,7 +67,7 @@ std::vector<int>::const_iterator Span::end() const{
 
 size_t Span::shortestSpan() {
 
-    if (this->ints.size() < 2)
+    if (this->ints.size() <= 1)
         throw itemsException();
 
     std::vector<int> tmp = this->ints;
@@ -82,7 +86,7 @@ size_t Span::shortestSpan() {
 }
 
 size_t Span::longestSpan() {
-    if (this->ints.size() < 2)
+    if (this->ints.size() <= 1)
         throw itemsException();
     int maxint = *std::max_element(this->ints.begin(), this->ints.end());
     int minint = *std::min_element(this->ints.begin(), this->ints.end());

@@ -23,6 +23,7 @@ class Span
         unsigned int n;
 
     public:
+        Span();
         Span( unsigned int n );
         Span( const Span & other );
         Span & operator = ( Span & other );

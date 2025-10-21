@@ -46,6 +46,17 @@ int main()
     std::cout << "|---------------------------------|" << std::endl;
 
     // TEST 3
+
+    Span big = Span(11000);
+    for(int i = 0; i < 11000; i++) {
+        big.addNumber(i + 1);
+    }
+
+    std::cout << big.shortestSpan() << std::endl;
+    std::cout << big.longestSpan() << std::endl;
+
+    std::cout << "|---------------------------------|" << std::endl;
+    // TEST 4
     
     Span sin = Span(1);
     sin.addNumber(42);
