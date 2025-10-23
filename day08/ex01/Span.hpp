@@ -44,10 +44,6 @@ class Span
             const char *what() const throw();
         };
 
-        class shortestSpanException: public std::exception {
-            const char *what() const throw();
-        };
-
         class itemsException: public std::exception {
             const char *what() const throw();
         };
