@@ -37,6 +37,8 @@ class Span
 
         std::vector<int>::const_iterator begin() const;
         std::vector<int>::const_iterator end() const;
+        std::vector<int>::iterator begin();
+        std::vector<int>::iterator end();
 
         class collectionFullException: public std::exception {
             const char *what() const throw();

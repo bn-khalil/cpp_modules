@@ -65,6 +65,14 @@ std::vector<int>::const_iterator Span::end() const{
     return this->ints.end();
 }
 
+std::vector<int>::iterator Span::begin() {
+    return this->ints.begin();
+}
+
+std::vector<int>::iterator Span::end() {
+    return this->ints.end();
+}
+
 size_t Span::shortestSpan() {
 
     if (this->ints.size() <= 1)
@@ -73,16 +81,16 @@ size_t Span::shortestSpan() {
     std::vector<int> tmp = this->ints;
     std::sort(tmp.begin(), tmp.end());
 
-    int shortest = INT_MAX;
+    size_t shortest = INT_MAX;
 
     for(size_t i = 0;i < tmp.size() - 1; i++) {
         if (i + 1 <= tmp.size()) {
-            int res = tmp[i + 1] - tmp[i];
+            size_t res = tmp[i + 1] - tmp[i];
             if (res < shortest)
                 shortest = res;
         }
     }
-    return static_cast<size_t>(shortest);
+    return shortest;
 }
 
 size_t Span::longestSpan() {
