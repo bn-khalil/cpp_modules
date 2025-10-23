@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include <stack>
+#include <algorithm>
 
 template <typename T, typename container = std::deque<T> >
 
-class MutantStack: public std::stack<T> {
+class MutantStack: public std::stack<T, container> {
     public:
         typedef typename container::iterator iterator;
         typedef typename container::const_iterator const_iterator;
@@ -20,10 +21,10 @@ class MutantStack: public std::stack<T> {
             (void) other;
         }
 
-        MutantStack<T> & 
-        operator = ( MutantStack &other ) {
+        MutantStack<T> & operator = ( MutantStack &other ) {
             std::cout << "Copy MutantStack assinement operator called!" << std::endl;
-            (void) other;
+            if (this != other)
+                this->c = other.c;
             return ( *this );
         }
 

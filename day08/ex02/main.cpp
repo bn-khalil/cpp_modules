@@ -3,7 +3,7 @@
 
 int main()
 {
-    std::cout << "|=======================================|" << std::endl;
+    std::cout << "TEST 1 |=======================================|" << std::endl;
 
     // TEST 1
 
@@ -31,7 +31,7 @@ int main()
         std::stack<int> s(mstack);
     }
 
-    std::cout << "|=======================================|" << std::endl;
+    std::cout << "TEST 2 |=======================================|" << std::endl;
 
     // TEST 2
 
@@ -51,6 +51,22 @@ int main()
         std::cout << *b << std::endl;
         ++b;
     }
+
+    std::cout << "TEST 3 |=======================================|" << std::endl;
+
+    // TEST 3
+
+    MutantStack<std::string> stk;
+
+    stk.push("bn");
+    stk.push("kb");
+
+    MutantStack<std::string>::iterator sit = stk.begin();
+    MutantStack<std::string>::iterator site = stk.end();
+
+    std::cout << *sit << std::endl;
+    --site;
+    std::cout << *site << std::endl;
 
     return 0;
 }
