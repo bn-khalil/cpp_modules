@@ -14,7 +14,6 @@
 #define EASYFIND_H
 
 #include <iostream>
-#include <stdexcept>
 #include <algorithm>
 
 template <typename T>
@@ -23,6 +22,5 @@ std::string easyfind(const T & con, int n) {
         return "item not found!";
     return "item found!";
 }
-
 
 #endif
