@@ -70,5 +70,7 @@ int main()
     --site;
     std::cout << *site << std::endl;
 
+    MutantStack<std::string> s(stk);
+
     return 0;
 }

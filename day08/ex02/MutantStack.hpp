@@ -23,7 +23,7 @@ class MutantStack: public std::stack<T, container> {
 
         MutantStack<T> & operator = ( MutantStack const & other ) {
             std::cout << "Copy MutantStack assinement operator called!" << std::endl;
-            if (this != other)
+            if (*this != other)
                 this->c = other.c;
             return ( *this );
         }
