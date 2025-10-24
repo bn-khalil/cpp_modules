@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 12:55:19 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/10/08 13:41:04 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/10/24 08:32:16 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Span
         Span();
         Span( unsigned int n );
         Span( const Span & other );
-        Span & operator = ( Span & other );
+        Span & operator = ( const Span & other );
         ~Span();
 
         void addNumber( int n );

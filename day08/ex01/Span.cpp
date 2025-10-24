@@ -6,7 +6,7 @@
 /*   By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 12:59:29 by kben-tou          #+#    #+#             */
-/*   Updated: 2025/10/08 13:46:06 by kben-tou         ###   ########.fr       */
+/*   Updated: 2025/10/24 08:34:29 by kben-tou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Span::Span( const Span& other ):ints(other.ints), n( other.n ) {
     std::cout << "Copy Span constructor called!" << std::endl;
 }
 
-Span & Span::operator = ( Span &other ) {
+Span & Span::operator = ( const Span &other ) {
     std::cout << "Copy Span assinement operator called!" << std::endl;
     if (this != &other) {
         this->n = other.n;
@@ -42,7 +42,7 @@ const char *Span::collectionFullException::what() const throw() {
 }
 
 const char *Span::itemsException::what() const throw() {
-        return "not Enough items in collection";
+        return "not Enough items in the collection";
 }
 
 void Span::addNumber( int n ) {

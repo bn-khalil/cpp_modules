@@ -16,12 +16,12 @@ class MutantStack: public std::stack<T, container> {
             std::cout << "MutantStack Default constructor called!" << std::endl;
         }
         
-        MutantStack( const MutantStack& other ) {
+        MutantStack( MutantStack const & other ) {
             std::cout << "Copy MutantStack constructor called!" << std::endl;
-            (void) other;
+            *this = other;
         }
 
-        MutantStack<T> & operator = ( MutantStack &other ) {
+        MutantStack<T> & operator = ( MutantStack const & other ) {
             std::cout << "Copy MutantStack assinement operator called!" << std::endl;
             if (this != other)
                 this->c = other.c;
