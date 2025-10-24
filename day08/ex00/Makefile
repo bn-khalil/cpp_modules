@@ -6,12 +6,12 @@
 #    By: kben-tou <kben-tou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/08 11:52:35 by kben-tou          #+#    #+#              #
-#    Updated: 2025/10/08 11:53:06 by kben-tou         ###   ########.fr        #
+#    Updated: 2025/10/24 14:56:58 by kben-tou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = easy_find
-SRCS = main.cpp \
+SRCS = main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
