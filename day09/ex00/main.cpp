@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "BitcoinExchange.hpp"
 
 int main(int argc, char const *argv[])
 {
@@ -21,12 +22,21 @@ int main(int argc, char const *argv[])
         return 1;
     }
 
-    BitcoinExchange btc();
+    BitcoinExchange btc;
 
     std::string line;
+    bool skeeper = false;
     while (std::getline(input, line)) {
-        std::cout << line << std::endl;
+        std::string key;
+        std::string value;
+        if (skeeper){
+            btc.suprateKeyValue(line, key, value);
+            btc.push(key, value);
+        }
+        skeeper = true;
     }
+
+    btc.display();
 
     input.close();
     database.close();
