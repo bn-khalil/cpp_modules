@@ -27,7 +27,7 @@ class BitcoinExchange
         BitcoinExchange & operator = ( const BitcoinExchange & other );
         ~BitcoinExchange();
 
-        void readAndParseInput(std::ifstream & input);
+        void readAndParseInput(const char * fileName);
         void readAndParseDatabase(std::ifstream & input);
         void display();
 };

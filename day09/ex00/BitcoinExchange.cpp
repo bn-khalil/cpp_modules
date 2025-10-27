@@ -2,12 +2,12 @@
 
 BitcoinExchange::BitcoinExchange() {
     std::cout << "BitcoinExchange Default constructor called!" << std::endl;
-    std::ifstream database(argv[1]);
+    std::ifstream database("data.csv");
     if (!database.is_open()) {
         std::string message = "Error: could not open file.";
         throw message; // should be handled in error hading phase
     }
-    this->dataBase = database;
+    readAndParseDatabase(database);
     // loading data from database file
 }
 
@@ -42,7 +42,7 @@ void BitcoinExchange::suprateInputKeyValue(std::string const & line,
     } catch( std::exception const & e) {}
 }
 
-void BitcoinExchange::suprateInputKeyValue(std::string const & line, 
+void BitcoinExchange::suprateDataKeyValue(std::string const & line, 
     std::string & key, std::string & value) {
     if (line.empty())
         return ;
@@ -112,11 +112,17 @@ void BitcoinExchange::dateValidator(std::string date) {
     }
 }
 
-void BitcoinExchange::readAndParseInput(std::ifstream & input) {
+void BitcoinExchange::readAndParseInput(const char * fileName) {
     std::string line;
     bool skeeper = false;
 
-    while (std::getline(input, line)) {
+    std::ifstream inputFile(fileName);
+    if (!inputFile.is_open()) {
+        std::string message = "Error: could not open file.";
+        throw message; // should be handled in error hading phase
+    }
+
+    while (std::getline(inputFile, line)) {
         std::string key;
         std::string value;
         if (skeeper){
@@ -128,16 +134,18 @@ void BitcoinExchange::readAndParseInput(std::ifstream & input) {
     }
 }
 
-void BitcoinExchange::readAndParseDatabase(std::ifstream & input) {
+void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
     std::string line;
     bool skeeper = false;
 
-    while (std::getline(input, line)) {
+    while (std::getline(database, line)) {
         std::string key;
         std::string value;
         if (skeeper) {
-            this->suprateInputKeyValue(line, key, value);
-            this->push(key, value);
+            // std::cout << line << std::endl;
+            // this->suprateInputKeyValue(line, key, value);
+            // double convertedValue = std::atof(value.c_str());
+            // this->actions.push_back(std::make_pair(key, convertedValue));
         }
         skeeper = true;
     }
