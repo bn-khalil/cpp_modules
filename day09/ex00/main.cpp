@@ -9,13 +9,8 @@ int main(int argc, char const *argv[])
         return 1;
     }
     
-    std::ifstream input(argv[1]);
     std::ifstream database("data.csv");
-    if (!input.is_open()) {
-        std::cerr << "Error: could not open file." << std::endl;
-        database.close();
-        return 1;
-    }
+
     if (!database.is_open()) {
         std::cerr << "Error: could not open file." << std::endl;
         input.close();
