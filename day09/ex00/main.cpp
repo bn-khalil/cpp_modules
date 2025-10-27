@@ -24,17 +24,8 @@ int main(int argc, char const *argv[])
 
     BitcoinExchange btc;
 
-    std::string line;
-    bool skeeper = false;
-    while (std::getline(input, line)) {
-        std::string key;
-        std::string value;
-        if (skeeper){
-            btc.suprateKeyValue(line, key, value);
-            btc.push(key, value);
-        }
-        skeeper = true;
-    }
+    btc.readAndParseInput(input);
+    // btc.readAndParseDatabase(input);
 
     btc.display();
 
