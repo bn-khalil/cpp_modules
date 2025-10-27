@@ -46,17 +46,16 @@ void BitcoinExchange::suprateDataKeyValue(std::string const & line,
     std::string & key, std::string & value) {
     if (line.empty())
         return ;
-    int supIndex = line.find(" | ");
+    int supIndex = line.find(",");
     if (supIndex < 0) {
         key = line;
         return ;
     }
     try {
         key = line.substr(0, supIndex);
-        value = line.substr(supIndex + 3);
+        value = line.substr(supIndex + 1);
     } catch( std::exception const & e) {}
 }
-
 
 void BitcoinExchange::push(std::string key, std::string value) {
 
@@ -143,9 +142,9 @@ void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
         std::string value;
         if (skeeper) {
             // std::cout << line << std::endl;
-            // this->suprateInputKeyValue(line, key, value);
-            // double convertedValue = std::atof(value.c_str());
-            // this->actions.push_back(std::make_pair(key, convertedValue));
+            this->suprateDataKeyValue(line, key, value);
+            double convertedValue = std::atof(value.c_str());
+            this->data.push_back(std::make_pair(key, convertedValue));
         }
         skeeper = true;
     }
@@ -154,6 +153,14 @@ void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
 void BitcoinExchange::display() {
     for(std::list<std::pair<std::string, double> >::iterator it = actions.begin() 
     ; it != actions.end()
+    ; it++) {
+        std::cout << "key => " << it->first << "value => " << it->second << std::endl;
+    }
+}
+
+void BitcoinExchange::displayData() {
+    for(std::list<std::pair<std::string, double> >::iterator it = data.begin() 
+    ; it != data.end()
     ; it++) {
         std::cout << "key => " << it->first << "value => " << it->second << std::endl;
     }

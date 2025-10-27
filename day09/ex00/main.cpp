@@ -14,6 +14,7 @@ int main(int argc, char **argv)
     btc.readAndParseInput(argv[1]);
     // btc.readAndParseDatabase(input);
 
-    btc.display();
+    // btc.display();
+    btc.displayData();
     return 0;
 }

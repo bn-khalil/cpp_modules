@@ -30,6 +30,7 @@ class BitcoinExchange
         void readAndParseInput(const char * fileName);
         void readAndParseDatabase(std::ifstream & input);
         void display();
+        void displayData();
 };
 
 #endif
