@@ -24,7 +24,6 @@ BitcoinExchange & BitcoinExchange::operator = ( const BitcoinExchange &other ) {
 
 BitcoinExchange::~BitcoinExchange() {
     std::cout << "BitcoinExchange Destructor called!" << std::endl;
-    this->dataBase.close();
 }
 
 void BitcoinExchange::suprateInputKeyValue(std::string const & line, 
@@ -124,12 +123,18 @@ void BitcoinExchange::readAndParseInput(const char * fileName) {
     while (std::getline(inputFile, line)) {
         std::string key;
         std::string value;
+        if (!skeeper) {
+            if (line == static_cast<std::string>("date | value")) {
+                skeeper = true;
+                continue;
+            } else 
+                throw std::exception(); // throw the correct exception
+        }
         if (skeeper){
             this->suprateInputKeyValue(line, key, value);
             this->dateValidator(key);
             this->push(key, value);
         }
-        skeeper = true;
     }
 }
 
@@ -164,4 +169,24 @@ void BitcoinExchange::displayData() {
     ; it++) {
         std::cout << "key => " << it->first << "value => " << it->second << std::endl;
     }
+}
+
+const char * BitcoinExchange::FileNotFoundException::what() const throw() {
+    return "Error: could not open file.";
+}
+
+const char * BitcoinExchange::InvalidDateException::what() const throw() {
+    return "Error: bad input => ";
+}
+
+const char * BitcoinExchange::InvalidValueException::what() const throw() {
+    return "Error: value not valid.";
+}
+
+const char * BitcoinExchange::InvalidFormatException::what() const throw() {
+    return "Error: Format not valid 'date | value'.";
+}
+
+const char * BitcoinExchange::NegativeNumberException::what() const throw() {
+    return "Error: not a positive number.";
 }
