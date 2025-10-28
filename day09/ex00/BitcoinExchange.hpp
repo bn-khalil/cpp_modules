@@ -11,13 +11,14 @@
 class BitcoinExchange
 {
     private:
-        std::list<std::pair<std::string, double> > data;
-        std::list<std::pair<std::string, double> > actions;
+        std::list<std::pair<std::string, float> > data;
 
         void suprateInputKeyValue(std::string const & line, std::string & key, std::string & value);
         void suprateDataKeyValue(std::string const & line, std::string & key, std::string & value);
         void push(std::string key, std::string value);
-        void dateValidator(std::string date);
+        bool dateValidator(std::string date);
+        bool ValueValidator(std::string value);
+        void exchangeDisplay(std::string key, std::string value);
 
     public:
         BitcoinExchange();
@@ -27,28 +28,7 @@ class BitcoinExchange
 
         void readAndParseInput(const char * fileName);
         void readAndParseDatabase(std::ifstream & input);
-        void display();
         void displayData();
-
-        class FileNotFoundException : public std::exception{
-            const char * what() const throw();
-        };
-
-        class InvalidDateException : public std::exception{
-            const char * what() const throw();
-        };
-
-        class InvalidValueException : public std::exception{
-            const char * what() const throw();
-        };
-
-        class InvalidFormatException : public std::exception{
-            const char * what() const throw();
-        };
-
-        class NegativeNumberException : public std::exception{
-            const char * what() const throw();
-        };
 };
 
 #endif

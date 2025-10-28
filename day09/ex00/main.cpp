@@ -12,9 +12,7 @@ int main(int argc, char **argv)
     BitcoinExchange btc;
 
     btc.readAndParseInput(argv[1]);
-    // btc.readAndParseDatabase(input);
 
-    btc.display();
     // btc.displayData();
     return 0;
 }
