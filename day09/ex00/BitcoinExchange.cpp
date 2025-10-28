@@ -122,6 +122,20 @@ bool BitcoinExchange::ValueValidator(std::string value) {
     return true;
 }
 
+void BitcoinExchange::exchangeDisplay(std::string key, float value) {
+    (void)key;
+    (void)value;
+    std::map<std::string, float>::iterator item = this->data.find(key);
+    if (item == this->data.end()) {
+        std::map<std::string, float>::iterator closest = this->data.lower_bound(key);
+        if (closest == this->data.begin())
+        else
+            std::cout << key << " => " << value << " = " << this->data.lower_bound(key)->second * value << std::endl;
+    }
+    else 
+        std::cout << key << " => " << value << " = " << item->second * value << std::endl;
+}
+
 
 void BitcoinExchange::readAndParseInput(const char * fileName) {
     std::string line;
@@ -145,7 +159,8 @@ void BitcoinExchange::readAndParseInput(const char * fileName) {
         }
         if (!this->ValueValidator(value))
             continue ;
-        exchangeDisplay(key, value);
+        double convertedValue = std::atof(value.c_str());
+        exchangeDisplay(key, convertedValue);
     }
 }
 
@@ -159,12 +174,12 @@ void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
             continue ;
         this->suprateDataKeyValue(line, key, value);
         double convertedValue = std::atof(value.c_str());
-        this->data.push_back(std::make_pair(key, convertedValue));
+        this->data[key] = convertedValue;
     }
 }
 
 void BitcoinExchange::displayData() {
-    for(std::list<std::pair<std::string, float> >::iterator it = data.begin() 
+    for(std::map<std::string, float >::iterator it = data.begin() 
     ; it != data.end()
     ; it++) {
         std::cout << "key => " << it->first << "value => " << it->second << std::endl;

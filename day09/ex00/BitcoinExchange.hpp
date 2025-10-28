@@ -2,7 +2,7 @@
 #define BTC_H
 
 #include <iostream>
-#include <list>
+#include <map>
 #include <cstdlib>
 #include <fstream>
 #include <string>
@@ -11,14 +11,14 @@
 class BitcoinExchange
 {
     private:
-        std::list<std::pair<std::string, float> > data;
+        std::map<std::string, float> data;
 
         void suprateInputKeyValue(std::string const & line, std::string & key, std::string & value);
         void suprateDataKeyValue(std::string const & line, std::string & key, std::string & value);
         void push(std::string key, std::string value);
         bool dateValidator(std::string date);
         bool ValueValidator(std::string value);
-        void exchangeDisplay(std::string key, std::string value);
+        void exchangeDisplay(std::string key, float value);
 
     public:
         BitcoinExchange();
