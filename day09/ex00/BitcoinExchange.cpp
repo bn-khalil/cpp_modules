@@ -154,11 +154,20 @@ void BitcoinExchange::readAndParseInput(const char * fileName) {
         throw message; // should be handled in error hading phase
     }
 
+    while(std::getline(inputFile, line) && line.empty())
+        ;
+
+    if (line != "date | value") {
+        std::cout << "Error: bad input => not in the following format: 'data | value'" << "." << std::endl;
+        return ;
+    }
+
+
     while (std::getline(inputFile, line)) {
         std::string key;
         std::string value;
-        if (line.empty() || line == "date | value")
-            continue ;
+        if (line.empty())
+            continue ;        
         this->suprateInputKeyValue(line, key, value);
 
         if (!this->dateValidator(key)) {
@@ -175,15 +184,22 @@ void BitcoinExchange::readAndParseInput(const char * fileName) {
 void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
     std::string line;
 
+    while(std::getline(database, line) && line.empty())
+        ;
+    if (line != "date,exchange_rate") {
+        std::cout << "Error: bad input => not in the following format: 'date,exchange_rate'" << "." << std::endl;
+        return ;
+    }
     while (std::getline(database, line)) {
         std::string key;
         std::string value;
-        if (line.empty() || line == "date | value")
+        if (line.empty())
             continue ;
         this->suprateDataKeyValue(line, key, value);
         double convertedValue = std::atof(value.c_str());
         this->data[key] = convertedValue;
     }
+    database.close();
 }
 
 void BitcoinExchange::displayData() {
