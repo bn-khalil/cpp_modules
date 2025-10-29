@@ -123,14 +123,22 @@ bool BitcoinExchange::ValueValidator(std::string value) {
 }
 
 void BitcoinExchange::exchangeDisplay(std::string key, float value) {
-    (void)key;
-    (void)value;
     std::map<std::string, float>::iterator item = this->data.find(key);
     if (item == this->data.end()) {
-        std::map<std::string, float>::iterator closest = this->data.lower_bound(key);
-        if (closest == this->data.begin())
-        else
-            std::cout << key << " => " << value << " = " << this->data.lower_bound(key)->second * value << std::endl;
+        std::map<std::string, float>::iterator closest;
+        std::map<std::string, float>::iterator it = this->data.begin();
+        if (key < it->first)
+            std::cout << key << " => " << value << " = " << it->second * value << std::endl;
+        else {
+            while(it != this->data.end()) {
+                if (it->first <= key)
+                    closest = it;
+                else
+                    break ;
+                it++;
+            }
+            std::cout << key << " => " << value << " = " << closest->second * value << std::endl;
+        }
     }
     else 
         std::cout << key << " => " << value << " = " << item->second * value << std::endl;
