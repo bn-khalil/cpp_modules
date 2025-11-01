@@ -146,23 +146,24 @@ void BitcoinExchange::exchangeDisplay(std::string key, float value) {
 }
 
 
-void BitcoinExchange::readAndParseInput(const char * fileName) {
+bool BitcoinExchange::readAndParseInput(const char * fileName) {
     std::string line;
+    std::string file(fileName);
+
+    if (file.empty())
+        return false;
 
     std::ifstream inputFile(fileName);
-    if (!inputFile.is_open()) {
-        std::string message = "Error: could not open file.";
-        throw message; // should be handled in error hading phase
-    }
+    if (!inputFile.is_open())
+        return false;
 
     while(std::getline(inputFile, line) && line.empty())
         ;
 
     if (line != "date | value") {
         std::cout << "Error: bad input => not in the following format: 'data | value'" << "." << std::endl;
-        return ;
+        return true;
     }
-
 
     while (std::getline(inputFile, line)) {
         std::string key;
@@ -180,6 +181,7 @@ void BitcoinExchange::readAndParseInput(const char * fileName) {
         double convertedValue = std::atof(value.c_str());
         exchangeDisplay(key, convertedValue);
     }
+    return true;
 }
 
 void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {

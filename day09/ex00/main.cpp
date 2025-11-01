@@ -4,14 +4,17 @@
 
 int main(int argc, char **argv)
 {
-    if (argc != 2) {
+    if (argc != 2 ) {
         std::cerr << "Error: could not open file." << std::endl;
         return 1;
     }
 
     BitcoinExchange btc;
 
-    btc.readAndParseInput(argv[1]);
+    if (!btc.readAndParseInput(argv[1])) {
+        std::cerr << "Error: could not open file." << std::endl;
+        return 1;
+    }
 
     // btc.displayData();
     return 0;
