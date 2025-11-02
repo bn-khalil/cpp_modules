@@ -51,7 +51,6 @@ bool PmergeMe::pasreInput(const char ** av) {
     while (av[i]) {
         std::string ar(av[i]);
 
-        // std::cout << ar << std::endl;
         if (ar.empty())
             return false;
         size_t j = 0;
@@ -74,20 +73,52 @@ bool PmergeMe::pasreInput(const char ** av) {
         return false;
     if (!dup_Vstore())
         return false;
+    std::cout << "Before: ";
+    displayVstore();
+    mergeSortAlgVstore(0, this->Vstore.size() - 1);
+    std::cout << "After:  ";
+    displayVstore();
     return true;
 }
 
-void mergerVstore(int left, int right) {
+void PmergeMe::mergerVstore(int left, int right, int middle) {
+    std::vector<int> pair_1;
+    std::vector<int> pair_2;
     
+    for (int i = left; i <= middle; i++) {
+        pair_1.push_back(this->Vstore[i]);
+    }
+    for (int i = middle + 1; i <= right; i++) {
+        pair_2.push_back(this->Vstore[i]);
+    }
+
+    size_t i = 0;
+    size_t j = 0;
+    size_t r = left;
+
+    for (;i < pair_1.size()  && j < pair_2.size();){
+        if (pair_1[i] <= pair_2[j])
+            this->Vstore[r++] = pair_1[i++];
+        else
+            this->Vstore[r++] = pair_2[j++];
+    }
+
+    for (; i < pair_1.size();){
+        this->Vstore[r++] = pair_1[i++];
+    }
+
+    for (; j < pair_2.size() ;) {
+        this->Vstore[r++] = pair_2[j++];
+    }
 }
 
-void mergeSortAlgVstore(int left, int right) {
+void PmergeMe::mergeSortAlgVstore(int left, int right) {
     if (left >= right)
         return ;
     int container_mid = left + (right - left) / 2;
     mergeSortAlgVstore(left, container_mid);
     mergeSortAlgVstore(container_mid + 1, right);
-    mergerVstore();
+    mergerVstore(left, right, container_mid);
 }
 
 void PmergeMe::displayVstore( void ) {
@@ -107,3 +138,7 @@ void PmergeMe::displayDstore( void ) {
     }
     std::cout<<std::endl;
 }
+
+void PmergeMe::displayToProcessVstore(){
+
+};

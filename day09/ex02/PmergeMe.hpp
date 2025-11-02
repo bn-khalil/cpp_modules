@@ -23,9 +23,11 @@ class PmergeMe
         void displayVstore( void );
         void displayDstore( void );
         void mergeSortAlgVstore(int left, int right);
-        void mergerVstore(int left, int right);
+        void mergerVstore(int left, int right, int middle);
         bool dup_Vstore();
         bool dup_Dstore();
+        void displayToProcessVstore();
+
 
 };
 
