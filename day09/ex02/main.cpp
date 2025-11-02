@@ -13,6 +13,8 @@ int main(int ac, const char **av) {
         std::cerr << "Error" << std::endl;
         return 1;
     }
-    m.display();
+    // m.mergeSortAlg();
+    m.displayVstore();
+    m.displayDstore();
     return 0;
 }

@@ -14,6 +14,36 @@ PmergeMe & PmergeMe::operator = ( const PmergeMe &other ) {
 
 PmergeMe::~PmergeMe() {}
 
+bool PmergeMe::dup_Vstore() {
+    std::vector<int>::const_iterator index = this->Vstore.begin();
+    while(index != this->Vstore.end()) {
+        for(
+            std::vector<int>::const_iterator it = index + 1;
+            it != this->Vstore.end() ;
+            it++) {
+            if (*it == *index)
+                return false;
+        }
+        index++;
+    }
+    return true;
+}
+
+bool PmergeMe::dup_Dstore() {
+    std::deque<int>::const_iterator index = this->Dstore.begin();
+    while(index != this->Dstore.end()) {
+        for(
+            std::deque<int>::const_iterator it = index + 1;
+            it != this->Dstore.end() ;
+            it++) {
+            if (*it == *index)
+                return false;
+        }
+        index++;
+    }
+    return true;
+}
+
 bool PmergeMe::pasreInput(const char ** av) {
 
     int i = 1;
@@ -36,14 +66,43 @@ bool PmergeMe::pasreInput(const char ** av) {
         long holder = std::atoi(ar.c_str());
         if (holder >= INT_MAX)  
             return false;
-        this->store.push_back(static_cast<int>(holder));
+        this->Vstore.push_back(static_cast<int>(holder));
+        this->Dstore.push_back(static_cast<int>(holder));
         i++;
     }
+    if (!dup_Vstore())
+        return false;
+    if (!dup_Vstore())
+        return false;
     return true;
 }
 
-void PmergeMe::display( void ) {
-    for( std::vector<int>::const_iterator it = this->store.begin(); it != this->store.end();it++) {
+void mergerVstore(int left, int right) {
+    
+}
+
+void mergeSortAlgVstore(int left, int right) {
+    if (left >= right)
+        return ;
+    int container_mid = left + (right - left) / 2;
+    mergeSortAlgVstore(left, container_mid);
+    mergeSortAlgVstore(container_mid + 1, right);
+    mergerVstore();
+}
+
+void PmergeMe::displayVstore( void ) {
+    for( std::vector<int>::const_iterator it = this->Vstore.begin();
+    it != this->Vstore.end();
+    it++) {
+        std::cout << *it << " ";
+    }
+    std::cout<<std::endl;
+}
+
+void PmergeMe::displayDstore( void ) {
+    for( std::deque<int>::const_iterator it = this->Dstore.begin();
+     it != this->Dstore.end();
+     it++) {
         std::cout << *it << " ";
     }
     std::cout<<std::endl;

@@ -3,13 +3,15 @@
 
 #include <iostream>
 #include <vector>
+#include <deque>
 #include <climits>
 
 
 class PmergeMe
 {
     private:
-        std::vector<int> store;
+        std::vector<int> Vstore;
+        std::deque<int> Dstore;
 
     public:
         PmergeMe();
@@ -18,8 +20,13 @@ class PmergeMe
         ~PmergeMe();
 
         bool pasreInput(const char ** av);
+        void displayVstore( void );
+        void displayDstore( void );
+        void mergeSortAlgVstore(int left, int right);
+        void mergerVstore(int left, int right);
+        bool dup_Vstore();
+        bool dup_Dstore();
 
-        void display( void );
 };
 
 #endif
