@@ -52,17 +52,37 @@ double PmergeMe::processDurationVstore() {
     return static_cast<double> (second - first ) / (CLOCKS_PER_SEC); 
 }
 
+double PmergeMe::processDurationDstore() {
+    std::clock_t first = std::clock();
+    mergeSortAlgDstore(0, this->Dstore.size() - 1);
+    std::clock_t second = std::clock();
+
+    return static_cast<double> (second - first ) / (CLOCKS_PER_SEC); 
+}
+
 void PmergeMe::mergeVstoreDetails() {
-    double duration;
+    double Vstoreduration;
+    double Dstoreduration;
 
     std::cout << "Before: ";
     displayVstore();
-    duration = processDurationVstore();
+    Vstoreduration = processDurationVstore();
+    Dstoreduration = processDurationDstore();
     std::cout << "After:  ";
     displayVstore();
-    std::cout << duration << std::endl;
+    std::cout << "Time to process a range of " 
+    << this->Vstore.size() 
+    << " elements with std::vector : " 
+    << std::fixed << std::setprecision(5)
+    << Vstoreduration 
+    << " us" << std::endl;
+    std::cout << "Time to process a range of " 
+    << this->Vstore.size() 
+    << " elements with std::deque : " 
+    << std::fixed << std::setprecision(5)
+    << Dstoreduration 
+    << " us" << std::endl;
 }
-
 
 bool PmergeMe::pasreInput(const char ** av) {
 
@@ -128,6 +148,46 @@ void PmergeMe::mergerVstore(int left, int right, int middle) {
     }
 }
 
+void PmergeMe::mergerDstore(int left, int right, int middle) {
+    std::deque<int> pair_1;
+    std::deque<int> pair_2;
+    
+    for (int i = left; i <= middle; i++) {
+        pair_1.push_back(this->Dstore[i]);
+    }
+    for (int i = middle + 1; i <= right; i++) {
+        pair_2.push_back(this->Dstore[i]);
+    }
+
+    size_t i = 0;
+    size_t j = 0;
+    size_t r = left;
+
+    for (;i < pair_1.size()  && j < pair_2.size();){
+        if (pair_1[i] <= pair_2[j])
+            this->Dstore[r++] = pair_1[i++];
+        else
+            this->Dstore[r++] = pair_2[j++];
+    }
+
+    for (; i < pair_1.size();){
+        this->Dstore[r++] = pair_1[i++];
+    }
+
+    for (; j < pair_2.size() ;) {
+        this->Dstore[r++] = pair_2[j++];
+    }
+}
+
+void PmergeMe::mergeSortAlgDstore(int left, int right) {
+    if (left >= right)
+        return ;
+    int container_mid = left + (right - left) / 2;
+    mergeSortAlgDstore(left, container_mid);
+    mergeSortAlgDstore(container_mid + 1, right);
+    mergerDstore(left, right, container_mid);
+}
+
 void PmergeMe::mergeSortAlgVstore(int left, int right) {
     if (left >= right)
         return ;
@@ -154,7 +214,3 @@ void PmergeMe::displayDstore( void ) {
     }
     std::cout<<std::endl;
 }
-
-void PmergeMe::displayTimeToProcessVstore(){
-
-};
