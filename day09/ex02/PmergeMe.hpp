@@ -26,7 +26,9 @@ class PmergeMe
         void mergerVstore(int left, int right, int middle);
         bool dup_Vstore();
         bool dup_Dstore();
-        void displayToProcessVstore();
+        void displayTimeToProcessVstore();
+        void mergeVstoreDetails();
+        double processDurationVstore();
 
 
 };

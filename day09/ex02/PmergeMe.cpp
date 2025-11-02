@@ -44,6 +44,26 @@ bool PmergeMe::dup_Dstore() {
     return true;
 }
 
+double PmergeMe::processDurationVstore() {
+    std::clock_t first = std::clock();
+    mergeSortAlgVstore(0, this->Vstore.size() - 1);
+    std::clock_t second = std::clock();
+
+    return static_cast<double> (second - first ) / (CLOCKS_PER_SEC); 
+}
+
+void PmergeMe::mergeVstoreDetails() {
+    double duration;
+
+    std::cout << "Before: ";
+    displayVstore();
+    duration = processDurationVstore();
+    std::cout << "After:  ";
+    displayVstore();
+    std::cout << duration << std::endl;
+}
+
+
 bool PmergeMe::pasreInput(const char ** av) {
 
     int i = 1;
@@ -73,11 +93,7 @@ bool PmergeMe::pasreInput(const char ** av) {
         return false;
     if (!dup_Vstore())
         return false;
-    std::cout << "Before: ";
-    displayVstore();
-    mergeSortAlgVstore(0, this->Vstore.size() - 1);
-    std::cout << "After:  ";
-    displayVstore();
+    mergeVstoreDetails();
     return true;
 }
 
@@ -139,6 +155,6 @@ void PmergeMe::displayDstore( void ) {
     std::cout<<std::endl;
 }
 
-void PmergeMe::displayToProcessVstore(){
+void PmergeMe::displayTimeToProcessVstore(){
 
 };
