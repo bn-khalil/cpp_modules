@@ -51,6 +51,9 @@ int main() {
     // int *s = new int[0];
     // s[12] = 12;
 
-    std::cout << .1f;
+    float a = - 0;
+
+
+    std::cout << a ;
     return (0);
 }

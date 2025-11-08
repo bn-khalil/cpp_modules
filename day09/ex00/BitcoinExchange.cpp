@@ -81,7 +81,6 @@ bool BitcoinExchange::dateValidator(std::string date) {
                 return false;
         }
         double time = std::atof(dateArray[i].c_str());
-        
         // waiting for confirmation checking with the current time
         if (i == 1 && ( time > 12 || time <= 0) )
                 return false;
@@ -101,6 +100,11 @@ bool BitcoinExchange::ValueValidator(std::string value) {
     size_t i = 0;
     if (value[i] == '+')
         i++;
+
+    if (value[i] == '.') {
+        std::cout << "Error: value is not digit." << std::endl;
+        return false;
+    }
 
     if (i == value.size()) {
         std::cout << "Error: value is not digit." << std::endl;
