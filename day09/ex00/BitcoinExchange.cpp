@@ -99,9 +99,9 @@ bool BitcoinExchange::ValueValidator(std::string value) {
         return false;
     }
     size_t i = 0;
-    if (value[i] == '-' || value[i] == '+')
+    if (value[i] == '+')
         i++;
-    // std::cout << i << "--"<< value.size() << std::endl;
+
     if (i == value.size()) {
         std::cout << "Error: value is not digit." << std::endl;
         return false;
@@ -123,7 +123,7 @@ bool BitcoinExchange::ValueValidator(std::string value) {
     return true;
 }
 
-void BitcoinExchange::exchangeDisplay(std::string key, float value) {
+void BitcoinExchange::exchangeDisplay(std::string key, double value) {
     std::map<std::string, float>::iterator item = this->data.find(key);
     if (item == this->data.end()) {
         std::map<std::string, float>::iterator closest;

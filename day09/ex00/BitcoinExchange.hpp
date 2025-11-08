@@ -15,10 +15,9 @@ class BitcoinExchange
 
         void suprateInputKeyValue(std::string const & line, std::string & key, std::string & value);
         void suprateDataKeyValue(std::string const & line, std::string & key, std::string & value);
-        void push(std::string key, std::string value);
         bool dateValidator(std::string date);
         bool ValueValidator(std::string value);
-        void exchangeDisplay(std::string key, float value);
+        void exchangeDisplay(std::string key, double value);
 
     public:
         BitcoinExchange();
