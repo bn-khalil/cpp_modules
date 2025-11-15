@@ -3,11 +3,11 @@
 BitcoinExchange::BitcoinExchange() {
     std::ifstream database("data.csv");
     if (!database.is_open()) {
-        std::string message = "Error: could not open file.";
-        throw message; // should be handled in error hading phase
+        std::cerr << "Error: could not open file." << std::endl;
+        exit(1);
     }
+
     readAndParseDatabase(database);
-    // loading data from database file
 }
 
 BitcoinExchange::BitcoinExchange( const BitcoinExchange& other ) {
@@ -24,16 +24,14 @@ BitcoinExchange::~BitcoinExchange() {}
 
 void BitcoinExchange::suprateInputKeyValue(std::string const & line, 
     std::string & key, std::string & value) {
-    if (line.empty())
-        return ;
-    int supIndex = line.find(" | ");
+    int supIndex = line.find("|");
     if (supIndex < 0) {
         key = line;
         return ;
     }
     try {
         key = line.substr(0, supIndex);
-        value = line.substr(supIndex + 3);
+        value = line.substr(supIndex + 1);
     } catch( std::exception const & e) {}
 }
 
@@ -54,21 +52,14 @@ void BitcoinExchange::suprateDataKeyValue(std::string const & line,
 
 bool BitcoinExchange::dateValidator(std::string date) {
 
-    // empty row
     if (date.empty())
         return false;
-
-    // missing or adding
 
     if ( date.size() != 10)
         return false;
 
-    // check suparator
-
     if ( date[4] != '-' || date[7] != '-')
         return false;
-
-    // check years months days
 
     std::string dateArray[3];
     dateArray[0] = date.substr(0, 4);
@@ -80,9 +71,10 @@ bool BitcoinExchange::dateValidator(std::string date) {
             if (!std::isdigit(dateArray[i][j]))
                 return false;
         }
-        double time = std::atof(dateArray[i].c_str());
-        // waiting for confirmation checking with the current time
-        if (i == 1 && ( time > 12 || time <= 0) )
+        long time = std::atol(dateArray[i].c_str());
+        if  (i == 0 && time < 2009)
+                return false;
+        else if (i == 1 && ( time > 12 || time <= 0) )
                 return false;
         else if (i == 2 && ( time > 30 || time <= 0))
                 return false;
@@ -98,21 +90,25 @@ bool BitcoinExchange::ValueValidator(std::string value) {
         return false;
     }
     size_t i = 0;
+    
+    if (value[i] == '-'){
+        std::cout << "Error: not a positive number." << std::endl;
+        return false;
+    }
     if (value[i] == '+')
         i++;
-
     if (value[i] == '.') {
-        std::cout << "Error: value is not digit." << std::endl;
+        std::cout << "Error: value not a number." << std::endl;
         return false;
     }
 
     if (i == value.size()) {
-        std::cout << "Error: value is not digit." << std::endl;
+        std::cout << "Error: value not a number." << std::endl;
         return false;
     }
     for(; i < value.size(); i++) {
         if (!std::isdigit(value[i]) && value[i] != '.') {
-            std::cout << "Error: value is not digit." << std::endl;
+            std::cout << "Error: value not a number." << std::endl;
             return false;
         }
     }
@@ -127,32 +123,43 @@ bool BitcoinExchange::ValueValidator(std::string value) {
     return true;
 }
 
-void BitcoinExchange::exchangeDisplay(std::string key, double value) {
+void BitcoinExchange::exchangeDisplay(std::string key, float value) {
     std::map<std::string, float>::iterator item = this->data.find(key);
     if (item == this->data.end()) {
         std::map<std::string, float>::iterator closest;
         std::map<std::string, float>::iterator it = this->data.begin();
-        if (key < it->first)
-            std::cout << key << " => " << value << " = " << it->second * value << std::endl;
-        else {
-            while(it != this->data.end()) {
-                if (it->first <= key)
-                    closest = it;
-                else
-                    break ;
-                it++;
-            }
-            std::cout << key << " => " << value << " = " << closest->second * value << std::endl;
+
+        while(it != this->data.end()) {
+            if (it->first <= key)
+                closest = it;
+            else
+                break ;
+            it++;
         }
+        std::cout << key << " => " << value << " = " << closest->second * value << std::endl;
     }
     else 
         std::cout << key << " => " << value << " = " << item->second * value << std::endl;
+}
+
+std::string BitcoinExchange::skeepSpaces(std::string ele) {
+    size_t start = 0;
+    size_t end = 0;
+    start = ele.find_first_not_of("\n\r \t");
+    end = ele.find_last_not_of("\n\r \t");
+    if (start >= ele.size() || end < start)
+            return "";
+    size_t length = end - start + 1;
+    return ele.substr(start, length);
 }
 
 
 bool BitcoinExchange::readAndParseInput(const char * fileName) {
     std::string line;
     std::string file(fileName);
+
+    if (this->data.empty())
+        return true;
 
     if (file.empty())
         return false;
@@ -163,6 +170,7 @@ bool BitcoinExchange::readAndParseInput(const char * fileName) {
 
     while(std::getline(inputFile, line) && line.empty())
         ;
+    line = skeepSpaces(line);
 
     if (line != "date | value") {
         std::cout << "Error: bad input => not in the following format: 'data | value'" << "." << std::endl;
@@ -173,16 +181,20 @@ bool BitcoinExchange::readAndParseInput(const char * fileName) {
         std::string key;
         std::string value;
         if (line.empty())
-            continue ;        
+            continue ; 
+        line = skeepSpaces(line);     
         this->suprateInputKeyValue(line, key, value);
-
+        if (!key.empty())
+            key = skeepSpaces(key);
+        if (!value.empty())
+            value = skeepSpaces(value);
         if (!this->dateValidator(key)) {
             std::cout << "Error: bad input => " << key << "." << std::endl;
             continue ;
         }
         if (!this->ValueValidator(value))
             continue ;
-        double convertedValue = std::atof(value.c_str());
+        float convertedValue = std::atof(value.c_str());
         exchangeDisplay(key, convertedValue);
     }
     return true;
@@ -193,6 +205,9 @@ void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
 
     while(std::getline(database, line) && line.empty())
         ;
+    if (line.empty())
+        return ;
+    line = skeepSpaces(line);
     if (line != "date,exchange_rate") {
         std::cout << "Error: bad input => not in the following format: 'date,exchange_rate'" << "." << std::endl;
         return ;
@@ -202,17 +217,13 @@ void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
         std::string value;
         if (line.empty())
             continue ;
+        line = skeepSpaces(line);
         this->suprateDataKeyValue(line, key, value);
-        double convertedValue = std::atof(value.c_str());
+        if (!key.empty())
+            key = skeepSpaces(key);
+        if (!value.empty())
+            value = skeepSpaces(value);
+        float convertedValue = std::atof(value.c_str());
         this->data[key] = convertedValue;
-    }
-    database.close();
-}
-
-void BitcoinExchange::displayData() {
-    for(std::map<std::string, float >::iterator it = data.begin() 
-    ; it != data.end()
-    ; it++) {
-        std::cout << "key => " << it->first << "value => " << it->second << std::endl;
     }
 }

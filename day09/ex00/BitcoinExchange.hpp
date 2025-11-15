@@ -17,7 +17,8 @@ class BitcoinExchange
         void suprateDataKeyValue(std::string const & line, std::string & key, std::string & value);
         bool dateValidator(std::string date);
         bool ValueValidator(std::string value);
-        void exchangeDisplay(std::string key, double value);
+        void exchangeDisplay(std::string key, float value);
+        std::string skeepSpaces(std::string ele);
 
     public:
         BitcoinExchange();
@@ -27,7 +28,6 @@ class BitcoinExchange
 
         bool readAndParseInput(const char * fileName);
         void readAndParseDatabase(std::ifstream & input);
-        void displayData();
 };
 
 #endif
