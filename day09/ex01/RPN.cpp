@@ -84,5 +84,5 @@ bool RPN::execRpn() {
 }
 
 void RPN::displayResuts() {
-    std::cout << "stack => " << this->store.size() << " results " << this->store.top() << std::endl;
+    std::cout << this->store.top() << std::endl;
 }
