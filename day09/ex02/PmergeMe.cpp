@@ -7,8 +7,10 @@ PmergeMe::PmergeMe( const PmergeMe& other ) {
 }
 
 PmergeMe & PmergeMe::operator = ( const PmergeMe &other ) {
-    if (this != &other)
-        ;
+    if (this != &other) {
+        this->Vstore = other.Vstore;
+        this->Dstore = other.Dstore;
+    }
     return ( *this );
 }
 
@@ -102,17 +104,13 @@ bool PmergeMe::pasreInput(const char ** av) {
             if (!std::isdigit(ar[j]))
                 return false;
         }
-        long holder = std::atoi(ar.c_str());
+        long holder = std::atol(ar.c_str());
         if (holder >= INT_MAX)  
             return false;
         this->Vstore.push_back(static_cast<int>(holder));
         this->Dstore.push_back(static_cast<int>(holder));
         i++;
     }
-    if (!dup_Vstore())
-        return false;
-    if (!dup_Vstore())
-        return false;
     mergeVstoreDetails();
     return true;
 }
