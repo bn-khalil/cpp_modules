@@ -189,7 +189,7 @@ bool BitcoinExchange::readAndParseInput(const char * fileName) {
         if (!value.empty())
             value = skeepSpaces(value);
         if (!this->dateValidator(key)) {
-            std::cout << "Error: bad input => " << key << "." << std::endl;
+            std::cout << "Error: bad input => " << line << std::endl;
             continue ;
         }
         if (!this->ValueValidator(value))
