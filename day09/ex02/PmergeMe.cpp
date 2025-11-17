@@ -74,15 +74,15 @@ void PmergeMe::mergeVstoreDetails() {
     displayVstore();
     std::cout << "Time to process a range of " 
     << this->Vstore.size() 
-    << " elements with std::vector : " 
+    << " elements with deque : " 
     << std::fixed << std::setprecision(5)
-    << Vstoreduration 
+    << Dstoreduration 
     << " us" << std::endl;
     std::cout << "Time to process a range of " 
     << this->Vstore.size() 
-    << " elements with std::deque : " 
+    << " elements with vector : " 
     << std::fixed << std::setprecision(5)
-    << Dstoreduration 
+    << Vstoreduration 
     << " us" << std::endl;
 }
 
@@ -149,7 +149,7 @@ void PmergeMe::mergerVstore(int left, int right, int middle) {
 void PmergeMe::mergerDstore(int left, int right, int middle) {
     std::deque<int> pair_1;
     std::deque<int> pair_2;
-    
+
     for (int i = left; i <= middle; i++) {
         pair_1.push_back(this->Dstore[i]);
     }

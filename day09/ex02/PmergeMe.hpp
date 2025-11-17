@@ -11,9 +11,8 @@
 class PmergeMe
 {
     private:
-        std::vector<int> Vstore;
         std::deque<int> Dstore;
-
+        std::vector<int> Vstore;
     public:
         PmergeMe();
         PmergeMe( const PmergeMe & other );
