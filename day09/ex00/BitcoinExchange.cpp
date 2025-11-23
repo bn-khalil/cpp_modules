@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <iostream>
 
 BitcoinExchange::BitcoinExchange() {
     std::ifstream database("data.csv");
@@ -62,6 +63,7 @@ bool BitcoinExchange::dateValidator(std::string date) {
         return false;
 
     std::string dateArray[3];
+    int daysPerMonth[13] = {1337,31,28,31,30,31,30,31,31,30,31,30,31};
     dateArray[0] = date.substr(0, 4);
     dateArray[1] = date.substr(5, 2);
     dateArray[2] = date.substr(8, 2);
@@ -76,8 +78,11 @@ bool BitcoinExchange::dateValidator(std::string date) {
                 return false;
         else if (i == 1 && ( time > 12 || time <= 0) )
                 return false;
-        else if (i == 2 && ( time > 30 || time <= 0))
+        else if (i == 2) {
+            long mo = std::atol(dateArray[1].c_str());
+            if ( time > daysPerMonth[mo] || time <= 0)
                 return false;
+        }
     }
     return true;
 }
@@ -86,38 +91,38 @@ bool BitcoinExchange::ValueValidator(std::string value) {
     float num;
 
     if (value.empty()) {
-        std::cout << "Error: value is empty." << std::endl;
+        std::cerr << "Error: value is empty." << std::endl;
         return false;
     }
     size_t i = 0;
     
     if (value[i] == '-'){
-        std::cout << "Error: not a positive number." << std::endl;
+        std::cerr << "Error: not a positive number." << std::endl;
         return false;
     }
     if (value[i] == '+')
         i++;
     if (value[i] == '.') {
-        std::cout << "Error: value not a number." << std::endl;
+        std::cerr << "Error: value not a number." << std::endl;
         return false;
     }
 
     if (i == value.size()) {
-        std::cout << "Error: value not a number." << std::endl;
+        std::cerr << "Error: value not a number." << std::endl;
         return false;
     }
     for(; i < value.size(); i++) {
         if (!std::isdigit(value[i]) && value[i] != '.') {
-            std::cout << "Error: value not a number." << std::endl;
+            std::cerr << "Error: value not a number." << std::endl;
             return false;
         }
     }
     num = std::atof(value.c_str());
     if (num < 0){
-        std::cout << "Error: not a positive number." << std::endl;
+        std::cerr << "Error: not a positive number." << std::endl;
         return false;
     } else if (num > 1000) {
-        std::cout << "Error: too large a number." << std::endl;
+        std::cerr << "Error: too large a number." << std::endl;
         return false;
     }
     return true;
@@ -153,7 +158,6 @@ std::string BitcoinExchange::skeepSpaces(std::string ele) {
     return ele.substr(start, length);
 }
 
-
 bool BitcoinExchange::readAndParseInput(const char * fileName) {
     std::string line;
     std::string file(fileName);
@@ -170,10 +174,12 @@ bool BitcoinExchange::readAndParseInput(const char * fileName) {
 
     while(std::getline(inputFile, line) && line.empty())
         ;
+    if (line.empty())
+        return true;
     line = skeepSpaces(line);
 
     if (line != "date | value") {
-        std::cout << "Error: bad input => not in the following format: 'data | value'" << "." << std::endl;
+        std::cerr << "Error: bad input => not in the following format: 'data | value'" << "." << std::endl;
         return true;
     }
 
@@ -181,15 +187,15 @@ bool BitcoinExchange::readAndParseInput(const char * fileName) {
         std::string key;
         std::string value;
         if (line.empty())
-            continue ; 
-        line = skeepSpaces(line);     
+            continue ;
+        line = skeepSpaces(line);
         this->suprateInputKeyValue(line, key, value);
         if (!key.empty())
             key = skeepSpaces(key);
         if (!value.empty())
             value = skeepSpaces(value);
         if (!this->dateValidator(key)) {
-            std::cout << "Error: bad input => " << line << std::endl;
+            std::cerr << "Error: bad input => " << line << std::endl;
             continue ;
         }
         if (!this->ValueValidator(value))
@@ -209,7 +215,7 @@ void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
         return ;
     line = skeepSpaces(line);
     if (line != "date,exchange_rate") {
-        std::cout << "Error: bad input => not in the following format: 'date,exchange_rate'" << "." << std::endl;
+        std::cerr << "Error: bad input => not in the following format: 'date,exchange_rate'" << "." << std::endl;
         return ;
     }
     while (std::getline(database, line)) {
