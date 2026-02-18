@@ -31,7 +31,6 @@ class PmergeMe
         void mergeVstoreDetails();
         double processDurationVstore();
         double processDurationDstore();
-
 };
 
 #endif

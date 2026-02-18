@@ -11,8 +11,8 @@ BitcoinExchange::BitcoinExchange() {
     readAndParseDatabase(database);
 }
 
-BitcoinExchange::BitcoinExchange( const BitcoinExchange& other ) {
-    *this = other;
+BitcoinExchange::BitcoinExchange( const BitcoinExchange & other ) {
+    this->data = other.data;
 }
 
 BitcoinExchange & BitcoinExchange::operator = ( const BitcoinExchange &other ) {
@@ -129,22 +129,30 @@ bool BitcoinExchange::ValueValidator(std::string value) {
 }
 
 void BitcoinExchange::exchangeDisplay(std::string key, float value) {
-    std::map<std::string, float>::iterator item = this->data.find(key);
-    if (item == this->data.end()) {
-        std::map<std::string, float>::iterator closest;
-        std::map<std::string, float>::iterator it = this->data.begin();
+    // std::map<std::string, float>::iterator item = this->data.lower_bound(key);
+    // if (this->data.end() || item->first != key) {
+    //     if (this->data.end()) {
+    //         --item;
+    //         std::cout << key << " => " << value << " = " << item->second * value << std::endl;
+    //     } else 
+    //         std::cerr << "Error: date too early => " << key << std::endl;
+    // } else
+    //     std::cout << key << " => " << value << " = " << item->second * value << std::endl;
+    // if (item == this->data.end()) {
+    //     std::map<std::string, float>::iterator closest;
+    //     std::map<std::string, float>::iterator it = this->data.begin();
 
-        while(it != this->data.end()) {
-            if (it->first <= key)
-                closest = it;
-            else
-                break ;
-            it++;
-        }
-        std::cout << key << " => " << value << " = " << closest->second * value << std::endl;
-    }
-    else 
-        std::cout << key << " => " << value << " = " << item->second * value << std::endl;
+    //     while(it != this->data.end()) {
+    //         if (it->first <= key)
+    //             closest = it;
+    //         else
+    //             break ;
+    //         it++;
+    //     }
+    //     std::cout << key << " => " << value << " = " << closest->second * value << std::endl;
+    // }
+    // else 
+    //     std::cout << key << " => " << value << " = " << item->second * value << std::endl;
 }
 
 std::string BitcoinExchange::skeepSpaces(std::string ele) {
@@ -215,7 +223,7 @@ void BitcoinExchange::readAndParseDatabase( std::ifstream & database) {
         return ;
     line = skeepSpaces(line);
     if (line != "date,exchange_rate") {
-        std::cerr << "Error: bad input => not in the following format: 'date,exchange_rate'" << "." << std::endl;
+        std::cerr << "Error: bad input => not in the following format: 'date,exchange_rate'." << std::endl;
         return ;
     }
     while (std::getline(database, line)) {

@@ -3,7 +3,8 @@
 RPN::RPN() {}
 
 RPN::RPN( const RPN& other ) {
-    *this = other;
+    this->store = other.store;
+    this->rpn = other.rpn;
 }
 
 RPN & RPN::operator = ( const RPN &other ) {
@@ -29,7 +30,7 @@ bool RPN::paseRpn(char *arg) {
         && value[i] != '+' 
         && value[i] != '*' 
         && value[i] != '/' 
-        && !std::isspace(value[i]))
+        && !std::isspace(value[i])) // to take a look
             return false;
     }
     i--;

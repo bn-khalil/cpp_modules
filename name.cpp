@@ -1,12 +1,13 @@
 #include <iostream>
 #include <array>
 
-// class a{
-//     public:
-//     ~a(){
-//         throw 12;
-//     }
-// };
+class As{
+    public:
+        int a;
+        As(int a) {
+            this->a = a;
+        }
+};
 
 // class b: public virtual a{
 // };
@@ -44,16 +45,17 @@
 
 
 int main() {
-    // int s = 65;
-    // char& d  = reinterpret_cast<char &>(s);
-    // float y = std::numeric_limits<float>::infinity();
-    // std::cout << 0.0f / 0.0f;
-    // int *s = new int[0];
-    // s[12] = 12;
 
-    float a = - 0;
+    // float * a;
 
+    // a = new float(12);
 
-    std::cout << a ;
+    // *a = *a;
+
+    As * a = new As(12);
+
+    *a = *a;
+
+    // std::cout << *a ;
     return (0);
 }
