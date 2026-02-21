@@ -2,17 +2,17 @@
 #define PMERGEME_H
 
 #include <iostream>
+#include <iomanip>
+#include <limits>
 #include <vector>
 #include <deque>
-#include <climits>
-#include <iomanip>
-
+#include <sys/time.h>
 
 class PmergeMe
 {
     private:
-        std::deque<int> Dstore;
         std::vector<int> Vstore;
+        std::deque<int> Dstore;
     public:
         PmergeMe();
         PmergeMe( const PmergeMe & other );
@@ -22,15 +22,18 @@ class PmergeMe
         bool pasreInput(const char ** av);
         void displayVstore( void );
         void displayDstore( void );
-        void mergeSortAlgVstore(int left, int right);
-        void mergeSortAlgDstore(int left, int right);
-        void mergerVstore(int left, int right, int middle);
-        void mergerDstore(int left, int right, int middle);
-        bool dup_Vstore();
-        bool dup_Dstore();
-        void mergeVstoreDetails();
+        void startAlgoDetails();
+        double get_time(void);
+
         double processDurationVstore();
         double processDurationDstore();
+
+        void mergeSortAlgVstore(std::vector<std::vector<int> > & f_container);
+        void mergeSortAlgDstore(std::deque<std::deque<int> > & f_container);
+
+        std::vector<int> jacobVstore(size_t len_generated);
+        std::deque<int> jacobDstore(size_t len_generated);
+
 };
 
 #endif
