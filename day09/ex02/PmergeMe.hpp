@@ -13,6 +13,7 @@ class PmergeMe
     private:
         std::vector<int> Vstore;
         std::deque<int> Dstore;
+        double get_time(void);
     public:
         PmergeMe();
         PmergeMe( const PmergeMe & other );
@@ -20,10 +21,10 @@ class PmergeMe
         ~PmergeMe();
 
         bool pasreInput(const char ** av);
+        void startAlgoDetails();
+    
         void displayVstore( void );
         void displayDstore( void );
-        void startAlgoDetails();
-        double get_time(void);
 
         double processDurationVstore();
         double processDurationDstore();
@@ -33,7 +34,6 @@ class PmergeMe
 
         std::vector<int> jacobVstore(size_t len_generated);
         std::deque<int> jacobDstore(size_t len_generated);
-
 };
 
 #endif

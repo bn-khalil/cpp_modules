@@ -36,7 +36,7 @@ bool PmergeMe::pasreInput(const char ** av) {
                 return false;
         }
         long holder = std::atol(ar.c_str());
-        if (holder >= INT_MAX)  
+        if (holder > INT_MAX)
             return false;
         this->Vstore.push_back(static_cast<int>(holder));
         this->Dstore.push_back(static_cast<int>(holder));
@@ -63,15 +63,15 @@ double PmergeMe::processDurationVstore() {
     for (size_t i = 0; i < suprator.size(); i++) {
         Vstore.push_back(suprator[i][0]);
     }
-    return static_cast<double> (second - first ) / (CLOCKS_PER_SEC); 
+    return (second - first) / 1000000.0;
 }
 
 double PmergeMe::processDurationDstore() {
     std::deque<std::deque<int> > suprator;
-    for (size_t i = 0; i < Vstore.size(); i++)
+    for (size_t i = 0; i < Dstore.size(); i++)
     {
         std::deque<int> piece;
-        piece.push_back(Vstore[i]);
+        piece.push_back(Dstore[i]);
         suprator.push_back(piece);
     }
 
@@ -79,11 +79,11 @@ double PmergeMe::processDurationDstore() {
     mergeSortAlgDstore(suprator);
     long second = get_time();
 
-    Vstore.clear();
+    Dstore.clear();
     for (size_t i = 0; i < suprator.size(); i++) {
-        Vstore.push_back(suprator[i][0]);
+        Dstore.push_back(suprator[i][0]);
     }
-    return static_cast<double> (second - first ) / (CLOCKS_PER_SEC); 
+    return (second - first) / 1000000.0;
 }
 
 
@@ -92,6 +92,7 @@ void PmergeMe::mergeSortAlgVstore(std::vector<std::vector<int> > & f_container) 
     std::vector<int> strg;  
     std::vector<int> orders;
     std::vector<std::vector<int> > wins;
+
 
     if (f_container.size() <= 1)
         return;
@@ -113,6 +114,7 @@ void PmergeMe::mergeSortAlgVstore(std::vector<std::vector<int> > & f_container) 
 
     std::vector<std::vector<int> > main;
     std::vector<std::vector<int> > pend;
+
     size_t pair_s = wins[0].size() / 2;
 
     for (size_t i = 0; i < wins.size(); ++i) {
