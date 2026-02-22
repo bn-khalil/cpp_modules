@@ -87,8 +87,10 @@ bool BitcoinExchange::dateValidator(std::string date) {
     return true;
 }
 
+
 bool BitcoinExchange::ValueValidator(std::string value) {
     float num;
+    int counter = 0;
 
     if (value.empty()) {
         std::cerr << "Error: value is empty." << std::endl;
@@ -102,10 +104,6 @@ bool BitcoinExchange::ValueValidator(std::string value) {
     }
     if (value[i] == '+')
         i++;
-    if (value[i] == '.') {
-        std::cerr << "Error: value not a number." << std::endl;
-        return false;
-    }
 
     if (i == value.size()) {
         std::cerr << "Error: value not a number." << std::endl;
@@ -116,6 +114,12 @@ bool BitcoinExchange::ValueValidator(std::string value) {
             std::cerr << "Error: value not a number." << std::endl;
             return false;
         }
+        if (value[i] == '.')
+            counter++;
+    }
+    if (counter > 1) {
+        std::cerr << "Error: value not a number." << std::endl;
+        return false;
     }
     num = std::atof(value.c_str());
     if (num < 0){
@@ -129,30 +133,22 @@ bool BitcoinExchange::ValueValidator(std::string value) {
 }
 
 void BitcoinExchange::exchangeDisplay(std::string key, float value) {
-    // std::map<std::string, float>::iterator item = this->data.lower_bound(key);
-    // if (this->data.end() || item->first != key) {
-    //     if (this->data.end()) {
-    //         --item;
-    //         std::cout << key << " => " << value << " = " << item->second * value << std::endl;
-    //     } else 
-    //         std::cerr << "Error: date too early => " << key << std::endl;
-    // } else
-    //     std::cout << key << " => " << value << " = " << item->second * value << std::endl;
-    // if (item == this->data.end()) {
-    //     std::map<std::string, float>::iterator closest;
-    //     std::map<std::string, float>::iterator it = this->data.begin();
+    std::map<std::string, float>::iterator item = this->data.lower_bound(key);
+    if (item == this->data.end()) {
+        std::map<std::string, float>::iterator closest;
+        std::map<std::string, float>::iterator it = this->data.begin();
 
-    //     while(it != this->data.end()) {
-    //         if (it->first <= key)
-    //             closest = it;
-    //         else
-    //             break ;
-    //         it++;
-    //     }
-    //     std::cout << key << " => " << value << " = " << closest->second * value << std::endl;
-    // }
-    // else 
-    //     std::cout << key << " => " << value << " = " << item->second * value << std::endl;
+        while(it != this->data.end()) {
+            if (it->first <= key)
+                closest = it;
+            else
+                break ;
+            it++;
+        }
+        std::cout << key << " => " << value << " = " << closest->second * value << std::endl;
+    }
+    else 
+        std::cout << key << " => " << value << " = " << item->second * value << std::endl;
 }
 
 std::string BitcoinExchange::skeepSpaces(std::string ele) {
