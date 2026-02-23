@@ -55,9 +55,9 @@ double PmergeMe::processDurationVstore() {
         suprator.push_back(piece);
     }
 
-    long first = get_time();
+    double first = get_time();
     mergeSortAlgVstore(suprator);
-    long second = get_time();
+    double second = get_time();
 
     Vstore.clear();
     for (size_t i = 0; i < suprator.size(); i++) {
@@ -75,9 +75,9 @@ double PmergeMe::processDurationDstore() {
         suprator.push_back(piece);
     }
 
-    long first = get_time();
+    double first = get_time();
     mergeSortAlgDstore(suprator);
-    long second = get_time();
+    double second = get_time();
 
     Dstore.clear();
     for (size_t i = 0; i < suprator.size(); i++) {
@@ -88,8 +88,7 @@ double PmergeMe::processDurationDstore() {
 
 
 void PmergeMe::mergeSortAlgVstore(std::vector<std::vector<int> > & f_container) {
-    bool is_strg = false;
-    std::vector<int> strg;  
+    std::vector<int> strg;
     std::vector<int> orders;
     std::vector<std::vector<int> > wins;
 
@@ -100,7 +99,6 @@ void PmergeMe::mergeSortAlgVstore(std::vector<std::vector<int> > & f_container) 
     if (f_container.size() % 2 != 0) {
         strg = f_container.back();
         f_container.pop_back();
-        is_strg = true;
     }
 
     for (size_t i = 0; i < f_container.size(); i += 2) {
@@ -137,7 +135,7 @@ void PmergeMe::mergeSortAlgVstore(std::vector<std::vector<int> > & f_container) 
         main.insert(it, to_push);
     }
 
-    if (is_strg) {
+    if (!strg.empty()) {
         std::vector<std::vector<int> >::iterator it = std::lower_bound(main.begin(), main.end(), strg);
         main.insert(it, strg);
     }
@@ -176,7 +174,6 @@ std::vector<int> PmergeMe::jacobVstore(size_t len_generated) {
 
 
 void PmergeMe::mergeSortAlgDstore(std::deque<std::deque<int> > & f_container) {
-    bool is_strg = false;
     std::deque<int> strg;  
     std::deque<int> orders;
     std::deque<std::deque<int> > wins;
@@ -187,7 +184,6 @@ void PmergeMe::mergeSortAlgDstore(std::deque<std::deque<int> > & f_container) {
     if (f_container.size() % 2 != 0) {
         strg = f_container.back();
         f_container.pop_back();
-        is_strg = true;
     }
 
     for (size_t i = 0; i < f_container.size(); i += 2) {
@@ -223,7 +219,7 @@ void PmergeMe::mergeSortAlgDstore(std::deque<std::deque<int> > & f_container) {
         main.insert(it, to_push);
     }
 
-    if (is_strg) {
+    if (!strg.empty()) {
         std::deque<std::deque<int> >::iterator it = std::lower_bound(main.begin(), main.end(), strg);
         main.insert(it, strg);
     }
@@ -293,17 +289,16 @@ void PmergeMe::startAlgoDetails() {
     Dstoreduration = processDurationDstore();
     std::cout << "After:  ";
     displayVstore();
-
     std::cout << "Time to process a range of " 
-    << this->Vstore.size() 
-    << " elements with deque : " 
+    << this->Dstore.size() 
+    << " elements with std::deque : " 
     << std::fixed << std::setprecision(5)
     << Dstoreduration 
     << " us" << std::endl;
 
     std::cout << "Time to process a range of " 
     << this->Vstore.size() 
-    << " elements with vector : " 
+    << " elements with std::vector : " 
     << std::fixed << std::setprecision(5)
     << Vstoreduration 
     << " us" << std::endl;
