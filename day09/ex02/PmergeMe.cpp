@@ -66,27 +66,6 @@ double PmergeMe::processDurationVstore() {
     return (second - first) / 1000000.0;
 }
 
-double PmergeMe::processDurationDstore() {
-    std::deque<std::deque<int> > suprator;
-    for (size_t i = 0; i < Dstore.size(); i++)
-    {
-        std::deque<int> piece;
-        piece.push_back(Dstore[i]);
-        suprator.push_back(piece);
-    }
-
-    double first = get_time();
-    mergeSortAlgDstore(suprator);
-    double second = get_time();
-
-    Dstore.clear();
-    for (size_t i = 0; i < suprator.size(); i++) {
-        Dstore.push_back(suprator[i][0]);
-    }
-    return (second - first) / 1000000.0;
-}
-
-
 void PmergeMe::mergeSortAlgVstore(std::vector<std::vector<int> > & f_container) {
     std::vector<int> strg;
     std::vector<int> orders;
@@ -171,7 +150,25 @@ std::vector<int> PmergeMe::jacobVstore(size_t len_generated) {
     return inx;
 }
 
+double PmergeMe::processDurationDstore() {
+    std::deque<std::deque<int> > suprator;
+    for (size_t i = 0; i < Dstore.size(); i++)
+    {
+        std::deque<int> piece;
+        piece.push_back(Dstore[i]);
+        suprator.push_back(piece);
+    }
 
+    double first = get_time();
+    mergeSortAlgDstore(suprator);
+    double second = get_time();
+
+    Dstore.clear();
+    for (size_t i = 0; i < suprator.size(); i++) {
+        Dstore.push_back(suprator[i][0]);
+    }
+    return (second - first) / 1000000.0;
+}
 
 void PmergeMe::mergeSortAlgDstore(std::deque<std::deque<int> > & f_container) {
     std::deque<int> strg;  
@@ -276,7 +273,7 @@ void PmergeMe::displayDstore( void ) {
 double PmergeMe::get_time() {
     timeval	tv;
     gettimeofday(&tv, NULL);
-    return static_cast<double>(tv.tv_sec) * 1000000.0 + static_cast<double>(tv.tv_usec);
+    return tv.tv_sec * 1000000.0 + tv.tv_usec;
 }
 
 void PmergeMe::startAlgoDetails() {
