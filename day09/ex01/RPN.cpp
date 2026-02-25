@@ -30,7 +30,7 @@ bool RPN::paseRpn(char *arg) {
         && value[i] != '+' 
         && value[i] != '*' 
         && value[i] != '/' 
-        && !std::isspace(value[i])) // to take a look
+        && !std::isspace(value[i]))
             return false;
     }
     i--;
