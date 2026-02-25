@@ -30,10 +30,8 @@ void BitcoinExchange::suprateInputKeyValue(std::string const & line,
         key = line;
         return ;
     }
-    try {
-        key = line.substr(0, supIndex);
-        value = line.substr(supIndex + 1);
-    } catch( std::exception const & e) {}
+    key = line.substr(0, supIndex);
+    value = line.substr(supIndex + 1);
 }
 
 void BitcoinExchange::suprateDataKeyValue(std::string const & line, 
@@ -45,10 +43,8 @@ void BitcoinExchange::suprateDataKeyValue(std::string const & line,
         key = line;
         return ;
     }
-    try {
-        key = line.substr(0, supIndex);
-        value = line.substr(supIndex + 1);
-    } catch( std::exception const & e) {}
+    key = line.substr(0, supIndex);
+    value = line.substr(supIndex + 1);
 }
 
 bool BitcoinExchange::dateValidator(std::string date) {
@@ -64,6 +60,7 @@ bool BitcoinExchange::dateValidator(std::string date) {
 
     std::string dateArray[3];
     int daysPerMonth[13] = {1337,31,28,31,30,31,30,31,31,30,31,30,31};
+
     dateArray[0] = date.substr(0, 4);
     dateArray[1] = date.substr(5, 2);
     dateArray[2] = date.substr(8, 2);
@@ -74,6 +71,10 @@ bool BitcoinExchange::dateValidator(std::string date) {
                 return false;
         }
         long time = std::atol(dateArray[i].c_str());
+        if (i == 0) {
+            if (time % 400 == 0 || (time % 4 == 0 && time % 100 != 0))
+                daysPerMonth[2] = 29;
+        }
         if  (i == 0 && time < 2009)
                 return false;
         else if (i == 1 && ( time > 12 || time <= 0) )
@@ -134,21 +135,15 @@ bool BitcoinExchange::ValueValidator(std::string value) {
 
 void BitcoinExchange::exchangeDisplay(std::string key, float value) {
     std::map<std::string, float>::iterator item = this->data.lower_bound(key);
-    if (item == this->data.end()) {
-        std::map<std::string, float>::iterator closest;
-        std::map<std::string, float>::iterator it = this->data.begin();
 
-        while(it != this->data.end()) {
-            if (it->first <= key)
-                closest = it;
-            else
-                break ;
-            it++;
+    if (data.end() == item || item->first != key) {
+        if (item == data.begin()) {
+            std::cerr << "Error: invalid date ." << std::endl;
+            return ;
         }
-        std::cout << key << " => " << value << " = " << closest->second * value << std::endl;
+        --item;
     }
-    else 
-        std::cout << key << " => " << value << " = " << item->second * value << std::endl;
+    std::cout << key << " => " << value << " = " << item->second * value << std::endl;
 }
 
 std::string BitcoinExchange::skeepSpaces(std::string ele) {
