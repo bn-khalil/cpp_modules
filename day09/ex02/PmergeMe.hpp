@@ -13,7 +13,7 @@ class PmergeMe
     private:
         std::vector<int> Vstore;
         std::deque<int> Dstore;
-        double get_time(void);
+        double get_current_time(void);
     public:
         PmergeMe();
         PmergeMe( const PmergeMe & other );

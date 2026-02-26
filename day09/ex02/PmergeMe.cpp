@@ -47,7 +47,7 @@ bool PmergeMe::pasreInput(const char ** av) {
 }
 
 double PmergeMe::processDurationVstore() {
-    double first = get_time();
+    double first = get_current_time();
     std::vector<std::vector<int> > suprator;
     for (size_t i = 0; i < Vstore.size(); i++)
     {
@@ -62,7 +62,7 @@ double PmergeMe::processDurationVstore() {
     for (size_t i = 0; i < suprator.size(); i++) {
         Vstore.push_back(suprator[i][0]);
     }
-    double second = get_time();
+    double second = get_current_time();
     return (second - first);
 }
 
@@ -152,7 +152,7 @@ std::vector<int> PmergeMe::jacobVstore(size_t len_generated) {
 
 double PmergeMe::processDurationDstore() {
     std::deque<std::deque<int> > suprator;
-    double first = get_time();
+    double first = get_current_time();
     for (size_t i = 0; i < Dstore.size(); i++)
     {
         std::deque<int> piece;
@@ -166,7 +166,7 @@ double PmergeMe::processDurationDstore() {
     for (size_t i = 0; i < suprator.size(); i++) {
         Dstore.push_back(suprator[i][0]);
     }
-    double second = get_time();
+    double second = get_current_time();
     return (second - first);
 }
 
@@ -270,10 +270,10 @@ void PmergeMe::displayDstore( void ) {
     std::cout<<std::endl;
 }
 
-double PmergeMe::get_time() {
+double PmergeMe::get_current_time() {
     timeval	tv;
     gettimeofday(&tv, NULL);
-    return (tv.tv_sec * 1000000.0) + tv.tv_usec;
+    return tv.tv_sec * 1000000.0 + tv.tv_usec;
 }
 
 void PmergeMe::startAlgoDetails() {
