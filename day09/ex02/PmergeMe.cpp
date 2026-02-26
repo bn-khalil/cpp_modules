@@ -1,10 +1,10 @@
-#include <vector>
 #include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe( const PmergeMe& other ) {
-    *this = other;
+PmergeMe::PmergeMe( const PmergeMe & other ) {
+    this->Vstore = other.Vstore;
+    this->Dstore = other.Dstore;
 }
 
 PmergeMe & PmergeMe::operator = ( const PmergeMe &other ) {
@@ -38,8 +38,8 @@ bool PmergeMe::pasreInput(const char ** av) {
         long holder = std::atol(ar.c_str());
         if (holder > INT_MAX)
             return false;
-        this->Vstore.push_back(static_cast<int>(holder));
-        this->Dstore.push_back(static_cast<int>(holder));
+        this->Vstore.push_back(holder);
+        this->Dstore.push_back(holder);
         i++;
     }
     startAlgoDetails();
@@ -47,6 +47,7 @@ bool PmergeMe::pasreInput(const char ** av) {
 }
 
 double PmergeMe::processDurationVstore() {
+    double first = get_time();
     std::vector<std::vector<int> > suprator;
     for (size_t i = 0; i < Vstore.size(); i++)
     {
@@ -55,70 +56,69 @@ double PmergeMe::processDurationVstore() {
         suprator.push_back(piece);
     }
 
-    double first = get_time();
     mergeSortAlgVstore(suprator);
-    double second = get_time();
 
     Vstore.clear();
     for (size_t i = 0; i < suprator.size(); i++) {
         Vstore.push_back(suprator[i][0]);
     }
-    return (second - first) / 1000000.0;
+    double second = get_time();
+    return (second - first);
 }
 
-void PmergeMe::mergeSortAlgVstore(std::vector<std::vector<int> > & f_container) {
+void PmergeMe::mergeSortAlgVstore(std::vector<std::vector<int> > & c_numbers) {
     std::vector<int> strg;
     std::vector<int> orders;
-    std::vector<std::vector<int> > wins;
+    std::vector<std::vector<int> > winners;
 
 
-    if (f_container.size() <= 1)
+    if (c_numbers.size() <= 1)
         return;
     
-    if (f_container.size() % 2 != 0) {
-        strg = f_container.back();
-        f_container.pop_back();
+    if (c_numbers.size() % 2 != 0) {
+        strg = c_numbers.back();
+        c_numbers.pop_back();
     }
 
-    for (size_t i = 0; i < f_container.size(); i += 2) {
-        if (f_container[i][0] < f_container[i+1][0])
-            std::swap(f_container[i], f_container[i+1]);
-        f_container[i].insert(f_container[i].end(), f_container[i+1].begin(), f_container[i+1].end());
-        wins.push_back(f_container[i]);
+    for (size_t i = 0; i < c_numbers.size(); i += 2) {
+        if (c_numbers[i][0] < c_numbers[i+1][0])
+            std::swap(c_numbers[i], c_numbers[i+1]);
+        c_numbers[i].insert(c_numbers[i].end(), c_numbers[i+1].begin(), c_numbers[i+1].end());
+        winners.push_back(c_numbers[i]);
     }
     
-    mergeSortAlgVstore(wins);
+    mergeSortAlgVstore(winners);
 
-    std::vector<std::vector<int> > main;
-    std::vector<std::vector<int> > pend;
+    std::vector<std::vector<int> > bigs;
+    std::vector<std::vector<int> > lows;
 
-    size_t pair_s = wins[0].size() / 2;
+    size_t pair_s = winners[0].size() / 2;
 
-    for (size_t i = 0; i < wins.size(); ++i) {
-        std::vector<int> alpha(wins[i].begin(),  wins[i].begin() + pair_s);
-        std::vector<int> beta(wins[i].begin() + pair_s, wins[i].end());
-        main.push_back(alpha);
-        pend.push_back(beta);
+    for (size_t i = 0; i < winners.size(); ++i) {
+        std::vector<int> alpha(winners[i].begin(),  winners[i].begin() + pair_s);
+        std::vector<int> beta(winners[i].begin() + pair_s, winners[i].end());
+        bigs.push_back(alpha);
+        lows.push_back(beta);
     }
-    main.insert(main.begin(), pend[0]);
+    bigs.insert(bigs.begin(), lows[0]);
 
-    orders = jacobVstore(pend.size());
+    orders = jacobVstore(lows.size());
 
     for (size_t i = 0; i < orders.size(); i++) {
         int index = orders[i];
 
         if (index == 1)
             continue ;
-        std::vector<int> to_push = pend[index - 1];
-        std::vector<std::vector<int> >::iterator it = std::lower_bound(main.begin(), main.end(), to_push);
-        main.insert(it, to_push);
+        std::vector<int> to_push = lows[index - 1];
+        std::vector<std::vector<int> >::iterator it = std::lower_bound(bigs.begin(), bigs.end(), to_push);
+        bigs.insert(it, to_push);
     }
 
     if (!strg.empty()) {
-        std::vector<std::vector<int> >::iterator it = std::lower_bound(main.begin(), main.end(), strg);
-        main.insert(it, strg);
+        std::vector<std::vector<int> >::iterator it = std::lower_bound(bigs.begin(), bigs.end(), strg);
+        bigs.insert(it, strg);
     }
-    f_container = main;
+    c_numbers = bigs;
 }
 
 std::vector<int> PmergeMe::jacobVstore(size_t len_generated) {
@@ -128,12 +128,12 @@ std::vector<int> PmergeMe::jacobVstore(size_t len_generated) {
     if (len_generated <= 0)
         return inx;
     jcb.push_back(1);
+    inx.push_back(1);
+    if (len_generated == 1)
+        return inx;
     jcb.push_back(3);
     while (jcb[jcb.size() - 1] < (int)len_generated)
         jcb.push_back(jcb[jcb.size() - 1] + 2 * jcb[jcb.size() - 2]);
-
-    inx.push_back(1);
-
 
     size_t lst_jcb = 1;
     for (size_t i = 1; i < jcb.size(); i++) {
@@ -152,6 +152,7 @@ std::vector<int> PmergeMe::jacobVstore(size_t len_generated) {
 
 double PmergeMe::processDurationDstore() {
     std::deque<std::deque<int> > suprator;
+    double first = get_time();
     for (size_t i = 0; i < Dstore.size(); i++)
     {
         std::deque<int> piece;
@@ -159,68 +160,67 @@ double PmergeMe::processDurationDstore() {
         suprator.push_back(piece);
     }
 
-    double first = get_time();
     mergeSortAlgDstore(suprator);
-    double second = get_time();
 
     Dstore.clear();
     for (size_t i = 0; i < suprator.size(); i++) {
         Dstore.push_back(suprator[i][0]);
     }
-    return (second - first) / 1000000.0;
+    double second = get_time();
+    return (second - first);
 }
 
-void PmergeMe::mergeSortAlgDstore(std::deque<std::deque<int> > & f_container) {
+void PmergeMe::mergeSortAlgDstore(std::deque<std::deque<int> > & c_numbers) {
     std::deque<int> strg;  
     std::deque<int> orders;
-    std::deque<std::deque<int> > wins;
+    std::deque<std::deque<int> > winners;
 
-    if (f_container.size() <= 1)
+    if (c_numbers.size() <= 1)
         return;
     
-    if (f_container.size() % 2 != 0) {
-        strg = f_container.back();
-        f_container.pop_back();
+    if (c_numbers.size() % 2 != 0) {
+        strg = c_numbers.back();
+        c_numbers.pop_back();
     }
 
-    for (size_t i = 0; i < f_container.size(); i += 2) {
-        if (f_container[i][0] < f_container[i+1][0])
-            std::swap(f_container[i], f_container[i+1]);
-        f_container[i].insert(f_container[i].end(), f_container[i+1].begin(), f_container[i+1].end());
-        wins.push_back(f_container[i]);
+    for (size_t i = 0; i < c_numbers.size(); i += 2) {
+        if (c_numbers[i][0] < c_numbers[i+1][0])
+            std::swap(c_numbers[i], c_numbers[i+1]);
+        c_numbers[i].insert(c_numbers[i].end(), c_numbers[i+1].begin(), c_numbers[i+1].end());
+        winners.push_back(c_numbers[i]);
     }
     
-    mergeSortAlgDstore(wins);
+    mergeSortAlgDstore(winners);
 
-    std::deque<std::deque<int> > main;
-    std::deque<std::deque<int> > pend;
-    size_t pair_s = wins[0].size() / 2;
+    std::deque<std::deque<int> > bigs;
+    std::deque<std::deque<int> > lows;
+    size_t pair_s = winners[0].size() / 2;
 
-    for (size_t i = 0; i < wins.size(); ++i) {
-        std::deque<int> alpha(wins[i].begin(),  wins[i].begin() + pair_s);
-        std::deque<int> beta(wins[i].begin() + pair_s, wins[i].end());
-        main.push_back(alpha);
-        pend.push_back(beta);
+    for (size_t i = 0; i < winners.size(); ++i) {
+        std::deque<int> alpha(winners[i].begin(),  winners[i].begin() + pair_s);
+        std::deque<int> beta(winners[i].begin() + pair_s, winners[i].end());
+        bigs.push_back(alpha);
+        lows.push_back(beta);
     }
-    main.insert(main.begin(), pend[0]);
+    bigs.insert(bigs.begin(), lows[0]);
 
-    orders = jacobDstore(pend.size());
+    orders = jacobDstore(lows.size());
 
     for (size_t i = 0; i < orders.size(); i++) {
         int index = orders[i];
 
         if (index == 1)
             continue ;
-        std::deque<int> to_push = pend[index - 1];
-        std::deque<std::deque<int> >::iterator it = std::lower_bound(main.begin(), main.end(), to_push);
-        main.insert(it, to_push);
+        std::deque<int> to_push = lows[index - 1];
+        std::deque<std::deque<int> >::iterator it = std::lower_bound(bigs.begin(), bigs.end(), to_push);
+        bigs.insert(it, to_push);
     }
 
     if (!strg.empty()) {
-        std::deque<std::deque<int> >::iterator it = std::lower_bound(main.begin(), main.end(), strg);
-        main.insert(it, strg);
+        std::deque<std::deque<int> >::iterator it = std::lower_bound(bigs.begin(), bigs.end(), strg);
+        bigs.insert(it, strg);
     }
-    f_container = main;
+    c_numbers = bigs;
 }
 
 std::deque<int> PmergeMe::jacobDstore(size_t len_generated) {
@@ -273,7 +273,7 @@ void PmergeMe::displayDstore( void ) {
 double PmergeMe::get_time() {
     timeval	tv;
     gettimeofday(&tv, NULL);
-    return tv.tv_sec * 1000000.0 + tv.tv_usec;
+    return (tv.tv_sec * 1000000.0) + tv.tv_usec;
 }
 
 void PmergeMe::startAlgoDetails() {
@@ -286,17 +286,16 @@ void PmergeMe::startAlgoDetails() {
     Dstoreduration = processDurationDstore();
     std::cout << "After:  ";
     displayVstore();
+
     std::cout << "Time to process a range of " 
     << this->Dstore.size() 
     << " elements with std::deque : " 
-    << std::fixed << std::setprecision(5)
     << Dstoreduration 
     << " us" << std::endl;
 
     std::cout << "Time to process a range of " 
     << this->Vstore.size() 
     << " elements with std::vector : " 
-    << std::fixed << std::setprecision(5)
     << Vstoreduration 
     << " us" << std::endl;
 }
