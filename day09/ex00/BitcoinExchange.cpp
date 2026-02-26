@@ -103,8 +103,13 @@ bool BitcoinExchange::ValueValidator(std::string value) {
         std::cerr << "Error: not a positive number." << std::endl;
         return false;
     }
-    if (value[i] == '+')
+    if (value[i] == '+') {
         i++;
+        if (value[i] != '\0' && value[i + 1] == '\0' && !isdigit(value[i])) {
+            std::cerr << "Error: value not a number." << std::endl;
+            return false;
+        }
+    }
 
     if (i == value.size()) {
         std::cerr << "Error: value not a number." << std::endl;
@@ -119,6 +124,11 @@ bool BitcoinExchange::ValueValidator(std::string value) {
             counter++;
     }
     if (counter > 1) {
+        std::cerr << "Error: value not a number." << std::endl;
+        return false;
+    }
+
+    if (value.size() == 1 && counter == 1 && value[0] == '.') {
         std::cerr << "Error: value not a number." << std::endl;
         return false;
     }
@@ -178,7 +188,7 @@ bool BitcoinExchange::readAndParseInput(const char * fileName) {
     line = skeepSpaces(line);
 
     if (line != "date | value") {
-        std::cerr << "Error: bad input => not in the following format: 'data | value'" << "." << std::endl;
+        std::cerr << "Error: bad input => not in the following format: 'date | value'" << "." << std::endl;
         return true;
     }
 
