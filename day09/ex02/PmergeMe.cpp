@@ -271,9 +271,9 @@ void PmergeMe::displayDstore( void ) {
 }
 
 double PmergeMe::get_current_time() {
-    timeval	tv;
-    gettimeofday(&tv, NULL);
-    return tv.tv_sec * 1000000.0 + tv.tv_usec;
+    timeval	current_time;
+    gettimeofday(&current_time, NULL);
+    return current_time.tv_sec * 1000000.0 + current_time.tv_usec;
 }
 
 void PmergeMe::startAlgoDetails() {
@@ -289,13 +289,15 @@ void PmergeMe::startAlgoDetails() {
 
     std::cout << "Time to process a range of " 
     << this->Dstore.size() 
-    << " elements with std::deque : " 
+    << " elements with std::deque : "
+    << std::fixed << std::setprecision(5)
     << Dstoreduration 
     << " us" << std::endl;
 
     std::cout << "Time to process a range of " 
     << this->Vstore.size() 
     << " elements with std::vector : " 
+    << std::fixed << std::setprecision(5)
     << Vstoreduration 
     << " us" << std::endl;
 }

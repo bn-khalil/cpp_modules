@@ -1,5 +1,4 @@
 #include "BitcoinExchange.hpp"
-#include <iostream>
 
 BitcoinExchange::BitcoinExchange() {
     std::ifstream database("data.csv");
